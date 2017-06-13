@@ -26,6 +26,7 @@ public class MaximumRectangleUnderSkyline {
 		return max;
 	}
 	
+	// TODO: finish this algorithm
 	public int compute_faster(int[] array) {
 		int max = 0;
 		Deque<Integer> queue = new LinkedList<Integer>();
