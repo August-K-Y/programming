@@ -30,11 +30,9 @@ public class OrderingArrayAroundAElement {
 	public static void main(String[] arg) {
 		System.out.println("run");
 		int[] array = { 5, 7, 8, 1, 2, 39, 8, 6, 8 };
-		
 		AlgorithmTestUtil.printArray(array);
 		OrderingArrayAroundAElement ora = new OrderingArrayAroundAElement();
 		ora.orderAround(array, 8);
-
 		AlgorithmTestUtil.printArray(array);
 	}
 

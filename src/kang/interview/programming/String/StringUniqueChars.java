@@ -17,7 +17,8 @@ public class StringUniqueChars {
 		char[] chars = str.toCharArray();
 		int[] counter = new int[256]; // all elements are initialized to zero
 		for (int i = 0; i < chars.length; i++) {
-			if (counter[chars[i]] > 0)
+			counter[chars[i]]++;
+			if (counter[chars[i]] > 1)
 				return false;
 		}
 		return true;
@@ -27,6 +28,9 @@ public class StringUniqueChars {
 		System.out.println("run");
 		StringUniqueChars ora = new StringUniqueChars();
 		boolean end = ora.compute("abcdefg");
+		System.out.println(end);
+		
+		end = ora.compute("abcdefcg");
 		System.out.println(end);
 	}
 
