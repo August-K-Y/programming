@@ -2,7 +2,13 @@ package kang.interview.programming.honors;
 
 public class MaximumTrafficOverSlidingWindow {
 
-	public double[] compute(double[] input, int weight) {
+	/**
+	 * 
+	 * @param input
+	 * @param weight
+	 * @return
+	 */
+	public double[] compute_withExtraArray(double[] input, int weight) {
 
 		double[] result = new double[input.length];
 		for (int i = 0; i < input.length; i++) {
@@ -23,7 +29,7 @@ public class MaximumTrafficOverSlidingWindow {
 
 		double[] array = { 1.3, 0, 2.5, 3.7, 0, 1.4, 2.6, 0, 2.2, 1.7, 0, 0, 0, 0, 1.7 };
 		MaximumTrafficOverSlidingWindow w = new MaximumTrafficOverSlidingWindow();
-		double[] result = w.compute(array, 3);
+		double[] result = w.compute_withExtraArray(array, 3);
 		for (double d : result) {
 			System.out.print(d + " ");
 		}

@@ -2,11 +2,6 @@ package kang.interview.programming.honors;
 
 public class LongestContiguousIncreasingSubarray {
 
-	private static class Range {
-		public int begin;
-		public int end;
-	}
-
 	public Range compute(int[] array) {
 
 		int maxLength = 0;
@@ -43,14 +38,16 @@ public class LongestContiguousIncreasingSubarray {
 		int[] array = { 2, 11, 3, 5, 13, 7, 19, 17, 23 };
 		LongestContiguousIncreasingSubarray s = new LongestContiguousIncreasingSubarray();
 		Range range = s.compute(array);
-		for (int i = range.begin; i <= range.end; i++) {
-			System.out.print(array[i] + " ");
-		}
+		printSubarray(array, range);
 
 		int[] array2 = { 2, 11, 3, 5, 13, 7, 19, 17, 23, 34, 35 };
 		Range range2 = s.compute(array2);
-		for (int i = range2.begin; i <= range2.end; i++) {
-			System.out.print(array2[i] + " ");
+		printSubarray(array2, range2);
+	}
+
+	private static void printSubarray(int[] array, Range range) {
+		for (int i = range.begin; i <= range.end; i++) {
+			System.out.print(array[i] + " ");
 		}
 	}
 
