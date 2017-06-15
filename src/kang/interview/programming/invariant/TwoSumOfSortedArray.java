@@ -13,7 +13,7 @@ public class TwoSumOfSortedArray {
 	 * @param value
 	 * @return
 	 */
-	public boolean hasTwoSum(List<Integer> input, int value) 
+	public boolean hasTwoSum_sorted(List<Integer> input, int value) 
 	{
 		int left = 0;
 		int right = input.size() - 1;
@@ -56,7 +56,7 @@ public class TwoSumOfSortedArray {
 		list.add(11);
 
 		TwoSumOfSortedArray t= new TwoSumOfSortedArray();
-		System.out.println(t.hasTwoSum(list, 6));
+		System.out.println(t.hasTwoSum_sorted(list, 6));
 		System.out.println(t.hasTwoSum_unsorted(list, 6));
 	}
 }
