@@ -1,6 +1,6 @@
-package kang.interview.programming.array.buysellstock;
+package kang.interview.programming.invariant;
 
-public class BuyAndSellStockVariants {
+public class LongestSubarrayWithEqualElements {
 
 	/**
 	 * 
@@ -26,7 +26,7 @@ public class BuyAndSellStockVariants {
 		System.out.println("run");
 		int[] array = { 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 5 };
 
-		BuyAndSellStockVariants ora = new BuyAndSellStockVariants();
+		LongestSubarrayWithEqualElements ora = new LongestSubarrayWithEqualElements();
 		int profit = ora.findLongestSubarrayWithEqualElements(array);
 		System.out.println(profit);
 	}
