@@ -51,7 +51,5 @@ public class SpiralOrderingOf2DArray {
 		int[][] array2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 		List<Integer> result2 = a.compute(array2);
 		AlgorithmTestUtil.printList(result2);
-
 	}
-
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kang.interview.programming.honors.Range;
+import kang.interview.programming.linkedlist.LinkedList.ListNode;
 
 public class AlgorithmTestUtil {
 	
@@ -29,6 +30,26 @@ public class AlgorithmTestUtil {
 		for (int i = range.begin; i <= range.end; i++) {
 			System.out.print(array[i] + " ");
 		}
+	}
+	
+	public static void print2DArray(int[][] array) {
+		int lastRows = array.length - 1;
+		int lastCols = array[0].length - 1;
+
+		for (int i = 0; i <= lastRows; i++) {
+			for (int j = 0; j <= lastCols; j++) {
+				System.out.print(array[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public static ListNode printLinkedList(ListNode head) {
+		while (head != null) {
+			System.out.print(head.data + " ");
+			head = head.next;
+		}
+		return head;
 	}
 
 	public static List<Integer> createList(int... value) {
