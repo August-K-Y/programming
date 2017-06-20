@@ -1,7 +1,5 @@
 package kang.interview.programming.array.multidimentional;
 
-import java.util.List;
-
 import kang.interview.programming.util.AlgorithmTestUtil;
 
 public class Rotate2DArray {

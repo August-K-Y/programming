@@ -44,6 +44,15 @@ public class AlgorithmTestUtil {
 		}
 	}
 	
+	public static void print2DList(List<List<Integer>> twoDList) {
+		for (List<Integer> level : twoDList) {
+			for (int value : level) {
+				System.out.print(value + " ");
+			}
+			System.out.println();
+		}
+	}
+	
 	public static ListNode printLinkedList(ListNode head) {
 		while (head != null) {
 			System.out.print(head.data + " ");
