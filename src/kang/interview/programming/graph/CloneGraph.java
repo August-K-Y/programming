@@ -3,14 +3,20 @@ package kang.interview.programming.graph;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 
+ * @see kang.interview.programming.honors.ClonePostingsList
+ * @author Yan Kang
+ *
+ */
 public class CloneGraph {
 	
-	public GraphVertex clone(GraphVertex vertex) {
+	public GraphVertex clone(GraphVertex source) {
 		Map<String, GraphVertex> track = new HashMap<>();
-		GraphVertex source = new GraphVertex(vertex.getLabel());
-		track.put(source.getLabel(), source);
-		clone(source, vertex, track);
-		return source;
+		GraphVertex clonedSource = new GraphVertex(source.getLabel());
+		track.put(clonedSource.getLabel(), clonedSource);
+		clone(clonedSource, source, track);
+		return clonedSource;
 	}
 
 	private void clone(GraphVertex source, GraphVertex vertex, Map<String, GraphVertex> track) {

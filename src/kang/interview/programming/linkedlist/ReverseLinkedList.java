@@ -4,7 +4,7 @@ import kang.interview.programming.linkedlist.LinkedList.ListNode;
 import kang.interview.programming.util.AlgorithmTestUtil;
 
 public class ReverseLinkedList {
-	
+
 	/**
 	 * Reverses a linked list.
 	 * 
@@ -12,8 +12,7 @@ public class ReverseLinkedList {
 	 *            the head of the linked list
 	 * @return the head of the reversed linked list
 	 */
-	public ListNode reverseLinkedList(ListNode head)
-	{
+	public ListNode reverseLinkedList(ListNode head) {
 		ListNode dummy = new ListNode(0);
 		dummy.next = head;
 
@@ -67,7 +66,7 @@ public class ReverseLinkedList {
 
 		ListNode helper = dummy;
 		ListNode pivot = dummy.next;
-		
+
 		// Move pivot pointer to the start position
 		int i = 0;
 		while (i < start) {
@@ -89,7 +88,7 @@ public class ReverseLinkedList {
 			// insert temp node after the prev node
 			temp.next = helper.next;
 			helper.next = temp;
-			
+
 			i++;
 		}
 		return dummy.next;
@@ -104,32 +103,31 @@ public class ReverseLinkedList {
 	 *            the number of nodes to be reversed repeatedly
 	 * @return the head of the reversed linked list
 	 */
-	public ListNode reverseKNodes(ListNode head, int k)
-	{
+	public ListNode reverseKNodes(ListNode head, int k) {
 		int length = computeLength(head);
-		
+
 		// The number of reversion to be performed
 		int iteration = length / k;
-		
+
 		ListNode dummy = new ListNode(0);
 		dummy.next = head;
-		
+
 		ListNode helper = dummy;
 		ListNode pivot = dummy.next;
-		
+
 		for (int i = 0; i < iteration; i++) {
 			int j = 1;
 			ListNode temp = null;
 			while (j < k && pivot.next != null) {
-				
+
 				temp = pivot.next;
 				pivot.next = temp.next;
-				
+
 				temp.next = helper.next;
 				helper.next = temp;
 				j++;
 			}
-			
+
 			// Forwards the pivot to the start of the next k nodes
 			helper = pivot;
 			pivot = pivot.next;
@@ -149,63 +147,20 @@ public class ReverseLinkedList {
 
 	public static void main(String[] arg) {
 		System.out.println("result:");
-		ListNode head = createLinkedList();
+		ListNode head = LinkedListUtil.createLinkedList();
 		ReverseLinkedList ora = new ReverseLinkedList();
 		ListNode newHead = ora.reverseLinkedList(head);
 		newHead = AlgorithmTestUtil.printLinkedList(newHead);
 
 		System.out.println();
-		head = createLinkedList();
+		head = LinkedListUtil.createLinkedList();
 		newHead = ora.reverseSubLinkedList(head, 2, 4);
 		newHead = AlgorithmTestUtil.printLinkedList(newHead);
-		
+
 		System.out.println();
-		head = createLongLinkedList();
+		head = LinkedListUtil.createLongLinkedList();
 		newHead = ora.reverseKNodes(head, 3);
 		newHead = AlgorithmTestUtil.printLinkedList(newHead);
 	}
 
-	private static ListNode createLinkedList() {
-		ListNode head = new ListNode(11);
-		ListNode node2 = new ListNode(3);
-		ListNode node3 = new ListNode(5);
-		ListNode node4 = new ListNode(7);
-		ListNode node5 = new ListNode(2);
-
-		head.next = node2;
-		node2.next = node3;
-		node3.next = node4;
-		node4.next = node5;
-		return head;
-	}
-	
-	private static ListNode createLongLinkedList() {
-		ListNode head = new ListNode(1);
-		ListNode node2 = new ListNode(2);
-		ListNode node3 = new ListNode(3);
-		ListNode node4 = new ListNode(4);
-		ListNode node5 = new ListNode(5);
-		ListNode node6 = new ListNode(6);
-		ListNode node7 = new ListNode(7);
-		ListNode node8 = new ListNode(8);
-		ListNode node9 = new ListNode(9);
-		ListNode node10 = new ListNode(10);
-		ListNode node11 = new ListNode(11);
-		ListNode node12 = new ListNode(12);
-		ListNode node13 = new ListNode(13);
-
-		head.next = node2;
-		node2.next = node3;
-		node3.next = node4;
-		node4.next = node5;
-		node5.next = node6;
-		node6.next = node7;
-		node7.next = node8;
-		node8.next = node9;
-		node9.next = node10;
-		node10.next = node11;
-		node11.next = node12;
-		node12.next = node13;
-		return head;
-	}
 }
