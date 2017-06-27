@@ -12,7 +12,7 @@ import java.util.Map;
  * and-answers.html#ixzz4giVqgvaT
  *
  */
-public class FindFirstNonRepeatingElement {
+public class FindFirstNonRepeatingNumber {
 
 	public int findFirstNonRepeatingElement(int[] array) {
 
@@ -37,7 +37,7 @@ public class FindFirstNonRepeatingElement {
 	}
 
 	public static void main(String[] args) {
-		FindFirstNonRepeatingElement s = new FindFirstNonRepeatingElement();
+		FindFirstNonRepeatingNumber s = new FindFirstNonRepeatingNumber();
 		int[] array = { 10, 1, 3, 4, 3, 5, 10};
 		int newLength = s.findFirstNonRepeatingElement(array);
 		System.out.println(newLength);

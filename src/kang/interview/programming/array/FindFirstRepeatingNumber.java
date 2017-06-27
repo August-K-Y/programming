@@ -10,8 +10,8 @@ import java.util.Set;
  * How find the first repeating element in an array of integers?
  * 
  * Given an array of integers, find the first repeating element in it. We need
- * to find the element that occurs more than once and whose index of the first
- * occurrence is smallest.
+ * to find the element that occurs more than once and <b>whose index of the
+ * first occurrence is smallest</b>.
  * 
  * Examples:
  * 
@@ -26,7 +26,7 @@ import java.util.Set;
  * http://www.geeksforgeeks.org/find-first-repeating-element-array-integers/
  *
  */
-public class FindFirstRepeatingElement {
+public class FindFirstRepeatingNumber {
 
 	// brute-force: two nested for-loops with time complexity O(n^2)
 
@@ -88,6 +88,7 @@ public class FindFirstRepeatingElement {
 		
 		Set<Integer> track = new HashSet<>();
 		
+		// the pos records the last repeating element
 		int pos = -1;
 		for (int i = array.length - 1; i >= 0; i--) {
 			if (track.contains(array[i])) {
@@ -101,7 +102,7 @@ public class FindFirstRepeatingElement {
 	}
 
 	public static void main(String[] args) {
-		FindFirstRepeatingElement s = new FindFirstRepeatingElement();
+		FindFirstRepeatingNumber s = new FindFirstRepeatingNumber();
 		int[] array = { 10, 1, 3, 4, 3, 5, 6 };
 		int newLength = s.findFirstRepeatingElement_left_to_right(array);
 		System.out.println(newLength);
