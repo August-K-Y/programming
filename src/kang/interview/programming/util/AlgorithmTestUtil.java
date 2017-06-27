@@ -53,6 +53,20 @@ public class AlgorithmTestUtil {
 		}
 	}
 	
+	public static void printGrid(char[][] array) {
+		int rows = array.length;
+		int cols = array[0].length;
+		
+		System.out.println("-------------------------------------");
+		for (int x = 0; x < rows; x++) {
+			for (int y = 0; y < cols; y++) {
+				System.out.print(array[x][y] + " ");
+			}
+			System.out.println();
+		}
+		System.out.println("-------------------------------------");
+	}
+	
 	public static ListNode printLinkedList(ListNode head) {
 		while (head != null) {
 			System.out.print(head.data + " ");
