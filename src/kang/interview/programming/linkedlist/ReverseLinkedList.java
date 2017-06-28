@@ -1,7 +1,7 @@
 package kang.interview.programming.linkedlist;
 
 import kang.interview.programming.linkedlist.LinkedList.ListNode;
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 public class ReverseLinkedList {
 
@@ -150,17 +150,17 @@ public class ReverseLinkedList {
 		ListNode head = LinkedListUtil.createLinkedList();
 		ReverseLinkedList ora = new ReverseLinkedList();
 		ListNode newHead = ora.reverseLinkedList(head);
-		newHead = AlgorithmTestUtil.printLinkedList(newHead);
+		newHead = DataPrinter.printLinkedList(newHead);
 
 		System.out.println();
 		head = LinkedListUtil.createLinkedList();
 		newHead = ora.reverseSubLinkedList(head, 2, 4);
-		newHead = AlgorithmTestUtil.printLinkedList(newHead);
+		newHead = DataPrinter.printLinkedList(newHead);
 
 		System.out.println();
 		head = LinkedListUtil.createLongLinkedList();
 		newHead = ora.reverseKNodes(head, 3);
-		newHead = AlgorithmTestUtil.printLinkedList(newHead);
+		newHead = DataPrinter.printLinkedList(newHead);
 	}
 
 }

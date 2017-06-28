@@ -3,76 +3,21 @@ package kang.interview.programming.array.multidimentional;
 import java.util.HashSet;
 import java.util.Set;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
-
 /**
- * Sudoku is a number-placement puzzle. The objective is to fill a 9 × 9 grid
- * with numbers in such a way that each column, each row, and each of the nine 3
- * × 3 sub-grids that compose the grid all contain all of the numbers from 1 to
- * 9 one time.
- * 
- * Implement an algorithm that will check whether the given grid of numbers
- * represents a valid Sudoku puzzle according to the layout rules described
- * above. Note that the puzzle represented by grid does not have to be solvable.
- * 
- * Example
- * 
- * For
- * 
- * grid = [['.', '.', '.', '1', '4', '.', '.', '2', '.'], ['.', '.', '6', '.',
- * '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.', '.'],
- * ['.', '.', '1', '.', '.', '.', '.', '.', '.'], ['.', '6', '7', '.', '.', '.',
- * '.', '.', '9'], ['.', '.', '.', '.', '.', '.', '8', '1', '.'], ['.', '3',
- * '.', '.', '.', '.', '.', '.', '6'], ['.', '.', '.', '.', '.', '7', '.', '.',
- * '.'], ['.', '.', '.', '5', '.', '.', '.', '7', '.']]
- * 
- * the output should be sudoku2(grid) = true;
- * 
- * For
- * 
- * grid = [['.', '.', '.', '.', '2', '.', '.', '9', '.'], ['.', '.', '.', '.',
- * '6', '.', '.', '.', '.'], ['7', '1', '.', '.', '7', '5', '.', '.', '.'],
- * ['.', '7', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '8', '3',
- * '.', '.', '.'], ['.', '.', '8', '.', '.', '7', '.', '6', '.'], ['.', '.',
- * '.', '.', '.', '2', '.', '.', '.'], ['.', '1', '.', '2', '.', '.', '.', '.',
- * '.'], ['.', '2', '.', '.', '3', '.', '.', '.', '.']]
- * 
- * the output should be sudoku2(grid) = false.
- * 
- * The given grid is not correct because there are two 1s in the second column.
- * Each column, each row, and each 3 × 3 subgrid can only contain the numbers 1
- * through 9 one time.
- * 
- * Input/Output
- * 
- * [time limit] 3000ms (java) [input] array.array.char grid
- * 
- * A 9 × 9 array of characters, in which each character is either a digit from
- * '1' to '9' or a period '.'.
- * 
- * [output] boolean
- * 
- * Return true if grid represents a valid Sudoku puzzle, otherwise return false.
- * 
- * References:
- * Elements of Programming Interview in JAVA: P86 6.16 and P301 16.9
  * 
  * @author Yan Kang
- *
+ * @see kang.interview.programming.recursive.backtracking.Sudoku_resolver
  */
-public class Sudoku {
-
+public class Sudoku_checker {
+	
 	/**
-	 * Check if the Sudoku problem is solvable and if it is the the specified
-	 * grid will hold one solution. 
-	 * 
-	 * Using back tracking. Time complex is O(n!)?
+	 * Check if the Sudoku problem is solvable
 	 * 
 	 * @param grid
 	 *            the grid of the Sudoku
 	 * @return true is the Sudoku problem is solvable; false, otherwise
 	 */
-	public boolean isSolvable_bf(char[][] grid) {
+	public boolean isSolvable_backTracking(char[][] grid) {
 		return isSolvable_backTracking(grid, 0, 0);
 	}
 
@@ -105,36 +50,13 @@ public class Sudoku {
 			}
 		}
 
-		if (grid[i][j] == '.') {
-
-			// If current entry is empty, we try each value for the entry and
-			// see if the updated grid is still valid. If yes, we continue to
-			// search the solution.
-			for (int num = 1; num <= 9; num++) {
-				grid[i][j] = Character.forDigit(num, 10);
-				if (isValid(grid, i, j)) {
-					
-					// Note that we only return true if isSolvable_backTracking
-					// returned true, which means that a solution has been
-					// found. If isSolvable_backTracking returned false, we will
-					// try a different value for this entry and continue to
-					// search the solution
-					if (isSolvable_backTracking(grid, i, j + 1)) {
-						return true;
-					}
-				}
-			}
-
-			// This is an important step of backtracking since we need to go
-			// back to previous status (of the grid) to search a different
-			// solution
-			grid[i][j] = '.';
+		if (!isValid(grid, i, j)) {
 			return false;
-		} else {
-			return isSolvable_backTracking(grid, i, j+1);
 		}
-	}
 
+		return isSolvable_backTracking(grid, i, j + 1);
+	}
+	
 	/**
 	 * Check whether the specified entry violates the constraints.
 	 * 
@@ -146,7 +68,7 @@ public class Sudoku {
 	 *            the column index
 	 * @return true if no violation; false otherwise
 	 */
-	private boolean isValid(char[][] grid, int i, int j) {
+	public boolean isValid(char[][] grid, int i, int j) {
 		int rows = grid.length;
 		int cols = grid[0].length;
 
@@ -188,9 +110,9 @@ public class Sudoku {
 		}
 		return true;
 	}
-
+	
 	public static void main(String[] arg) {
-		Sudoku s = new Sudoku();
+		Sudoku_checker s = new Sudoku_checker();
 
 		char[][] grid = { { '.', '.', '.', '1', '4', '.', '.', '2', '.' },
 						  { '.', '.', '6', '.', '.', '.', '.', '.', '.' }, 
@@ -202,8 +124,7 @@ public class Sudoku {
 						  { '.', '.', '.', '.', '.', '7', '.', '.', '.' }, 
 						  { '.', '.', '.', '5', '.', '.', '.', '7', '.' } };
 
-		System.out.println(s.isSolvable_bf(grid));
-		AlgorithmTestUtil.printGrid(grid);
+		System.out.println(s.isSolvable_backTracking(grid));
 
 		char[][] grid2 = { { '.', '.', '.', '.', '2', '.', '.', '9', '.' },
 						   { '.', '.', '.', '.', '6', '.', '.', '.', '.' }, 
@@ -215,7 +136,6 @@ public class Sudoku {
 						   { '.', '1', '.', '2', '.', '.', '.', '.', '.' }, 
 						   { '.', '2', '.', '.', '3', '.', '.', '.', '.' } };
 		
-		System.out.println(s.isSolvable_bf(grid2));
-		AlgorithmTestUtil.printGrid(grid2);
+		System.out.println(s.isSolvable_backTracking(grid2));
 	}
 }

@@ -3,12 +3,12 @@ package kang.interview.programming.array.multidimentional;
 import java.util.ArrayList;
 import java.util.List;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 /**
  * Question 6.19 on Page 92
  * 
- * @author yankang
+ * @author Yan Kang
  *
  */
 public class PascalTriangle {
@@ -98,14 +98,14 @@ public class PascalTriangle {
 	public static void main(String[] args) {
 		PascalTriangle p = new PascalTriangle();
 		List<List<Integer>> result = p.compute_bf(5);
-		AlgorithmTestUtil.print2DList(result);
+		DataPrinter.print2DList(result);
 		
 		System.out.println();
 		List<List<Integer>> result2 = p.compute(5);
-		AlgorithmTestUtil.print2DList(result2);
+		DataPrinter.print2DList(result2);
 		
 		System.out.println();
 		List<Integer> result3 = p.compute_NthRow(5);
-		AlgorithmTestUtil.printList(result3);
+		DataPrinter.printList(result3);
 	}
 }

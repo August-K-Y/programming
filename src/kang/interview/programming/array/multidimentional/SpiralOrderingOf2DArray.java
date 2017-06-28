@@ -3,7 +3,7 @@ package kang.interview.programming.array.multidimentional;
 import java.util.ArrayList;
 import java.util.List;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 public class SpiralOrderingOf2DArray {
 	
@@ -98,11 +98,11 @@ public class SpiralOrderingOf2DArray {
 		SpiralOrderingOf2DArray a = new SpiralOrderingOf2DArray();
 		int[][] array1 = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
 		List<Integer> result1 = a.compute_bf(array1);
-		AlgorithmTestUtil.printList(result1);
+		DataPrinter.printList(result1);
 
 		System.out.println();
 		int[][] array2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 		List<Integer> result2 = a.compute_bf(array2);
-		AlgorithmTestUtil.printList(result2);
+		DataPrinter.printList(result2);
 	}
 }

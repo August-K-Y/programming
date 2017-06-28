@@ -1,6 +1,6 @@
 package kang.interview.programming.array;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 public class OrderingArrayAroundAElement {
 
@@ -30,10 +30,10 @@ public class OrderingArrayAroundAElement {
 	public static void main(String[] arg) {
 		System.out.println("run");
 		int[] array = { 5, 7, 8, 1, 2, 39, 8, 6, 8 };
-		AlgorithmTestUtil.printArray(array);
+		DataPrinter.printArray(array);
 		OrderingArrayAroundAElement ora = new OrderingArrayAroundAElement();
 		ora.orderAround(array, 8);
-		AlgorithmTestUtil.printArray(array);
+		DataPrinter.printArray(array);
 	}
 
 

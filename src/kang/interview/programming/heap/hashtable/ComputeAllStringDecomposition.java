@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 public class ComputeAllStringDecomposition {
 
@@ -65,7 +65,7 @@ public class ComputeAllStringDecomposition {
 		words.add("ana");
 		
 		ComputeAllStringDecomposition c = new ComputeAllStringDecomposition();
-		AlgorithmTestUtil.printList(c.compute(sentence, words));
+		DataPrinter.printList(c.compute(sentence, words));
 		
 	}
 

@@ -1,6 +1,6 @@
 package kang.interview.programming.array.multidimentional;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 /**
  * You are given an n x n 2D matrix that represents an image. Rotate the image
@@ -116,11 +116,11 @@ public class Rotate2DArray {
 		Rotate2DArray a = new Rotate2DArray();
 		int[][] array1 = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
 		a.rotate2(array1);
-		AlgorithmTestUtil.print2DArray(array1);
+		DataPrinter.print2DArray(array1);
 
 		System.out.println();
 		int[][] array2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 		a.rotate2(array2);
-		AlgorithmTestUtil.print2DArray(array2);
+		DataPrinter.print2DArray(array2);
 	}
 }

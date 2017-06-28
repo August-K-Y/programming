@@ -6,7 +6,7 @@ import java.util.List;
 import kang.interview.programming.honors.Range;
 import kang.interview.programming.linkedlist.LinkedList.ListNode;
 
-public class AlgorithmTestUtil {
+public class DataPrinter {
 	
 	public static void printArray(int[] array) {
 		for (int i = 0; i < array.length; i++) {

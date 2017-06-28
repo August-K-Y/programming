@@ -2,7 +2,7 @@ package kang.interview.programming.honors;
 
 import kang.interview.programming.linkedlist.LinkedList.ListNode;
 import kang.interview.programming.linkedlist.LinkedListUtil;
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 /**
  * 
@@ -76,7 +76,7 @@ public class LinkedListZipping {
 		System.out.println("result:");
 		ListNode head = LinkedListUtil.createLongLinkedList();
 		ListNode newHead = ora.compute(head);
-		newHead = AlgorithmTestUtil.printLinkedList(newHead);
+		newHead = DataPrinter.printLinkedList(newHead);
 	}
 
 }

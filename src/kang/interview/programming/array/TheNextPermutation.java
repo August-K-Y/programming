@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 public class TheNextPermutation {
 
@@ -124,14 +124,14 @@ public class TheNextPermutation {
 		int[] array = { 1,0,3,2 };
 		t.nextPermutation_bf(array);
 		if (array.length > 0) {
-			AlgorithmTestUtil.printArray(array);
+			DataPrinter.printArray(array);
 		} else {
 			System.out.println("no next");
 		}
 
-		List<Integer> perm = AlgorithmTestUtil.createList(1, 0, 2, 3);
+		List<Integer> perm = DataPrinter.createList(1, 0, 2, 3);
 		t.nextPermutation(perm);
-		AlgorithmTestUtil.printList(perm);
+		DataPrinter.printList(perm);
 	}
 
 }

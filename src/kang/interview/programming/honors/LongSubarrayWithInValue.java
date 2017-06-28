@@ -1,6 +1,6 @@
 package kang.interview.programming.honors;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 public class LongSubarrayWithInValue {
 
@@ -29,6 +29,6 @@ public class LongSubarrayWithInValue {
 		int[] array = { 431, -15, 639, 342, -14, 565, -924, 635, 167, -70 };
 		LongSubarrayWithInValue v = new LongSubarrayWithInValue();
 		Range range = v.compute(array, 184);
-		AlgorithmTestUtil.printSubarray(array, range);
+		DataPrinter.printSubarray(array, range);
 	}
 }

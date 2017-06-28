@@ -1,6 +1,6 @@
 package kang.interview.programming.array.deleteduplicates;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 public class DeleteDuplicatedFromSortedArray {
 
@@ -51,11 +51,11 @@ public class DeleteDuplicatedFromSortedArray {
 		System.out.println("run");
 		int[] array = { 2, 3, 5, 5, 5, 7, 11, 11, 11,11, 13};
 		
-		AlgorithmTestUtil.printArray(array);
+		DataPrinter.printArray(array);
 		DeleteDuplicatedFromSortedArray ora = new DeleteDuplicatedFromSortedArray();
 		int end = ora.deleteDuplicatesAllowAtMostTwice(array);
 		System.out.println();
-		AlgorithmTestUtil.printArray(array, end);
+		DataPrinter.printArray(array, end);
 	}
 
 }

@@ -1,7 +1,7 @@
 package kang.interview.programming.linkedlist;
 
 import kang.interview.programming.linkedlist.LinkedList.ListNode;
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 public class RemoveKthFromLastNode {
 	
@@ -91,12 +91,12 @@ public class RemoveKthFromLastNode {
 		ListNode head = createLongLinkedList();
 		RemoveKthFromLastNode ora = new RemoveKthFromLastNode();
 		ListNode newHead = ora.removeKthLastNode_bf(head, 4);
-		newHead = AlgorithmTestUtil.printLinkedList(newHead);
+		newHead = DataPrinter.printLinkedList(newHead);
 
 		System.out.println();
 		head = createLongLinkedList();
 		newHead = ora.removeKthLastNode(head, 4);
-		newHead = AlgorithmTestUtil.printLinkedList(newHead);
+		newHead = DataPrinter.printLinkedList(newHead);
 	}
 
 	private static ListNode createLongLinkedList() {

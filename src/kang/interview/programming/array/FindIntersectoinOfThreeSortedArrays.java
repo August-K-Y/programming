@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 public class FindIntersectoinOfThreeSortedArrays {
 	
@@ -63,11 +63,11 @@ public class FindIntersectoinOfThreeSortedArrays {
 		int[] input3 = { 3, 4, 15, 20, 30, 70, 80, 120 };
 
 		List<Integer> result = s.findIntersection(input1, input2, input3);
-		AlgorithmTestUtil.printList(result);
+		DataPrinter.printList(result);
 		result = s.findIntersection(Arrays.stream(input1).boxed().collect(Collectors.toList()), 
 				Arrays.stream(input2).boxed().collect(Collectors.toList()),
 				Arrays.stream(input3).boxed().collect(Collectors.toList()));
 		System.out.println();
-		AlgorithmTestUtil.printList(result);
+		DataPrinter.printList(result);
 	}
 }

@@ -1,6 +1,6 @@
 package kang.interview.programming.array;
 
-import kang.interview.programming.util.AlgorithmTestUtil;
+import kang.interview.programming.util.DataPrinter;
 
 /**
  * 
@@ -152,18 +152,18 @@ public class RearrangeArrayInAlternatingPosNegNumber {
 		RearrangeArrayInAlternatingPosNegNumber s = new RearrangeArrayInAlternatingPosNegNumber();
 		int[] array = { 1, 2, 3, -4, -1, 4 };
 		int[] result = s.rearrange(array);
-		AlgorithmTestUtil.printArray(result);
+		DataPrinter.printArray(result);
 		System.out.println();
 		int[] array2 = { -5, -2, 5, 2, 4, 7, 1, 8, 0, -8 };
 		result = s.rearrange(array2);
-		AlgorithmTestUtil.printArray(result);
+		DataPrinter.printArray(result);
 		System.out.println("");
 		System.out.println("-------------------");
 		s.rearrange_(array);
-		AlgorithmTestUtil.printArray(array);
+		DataPrinter.printArray(array);
 		System.out.println();
 		s.rearrange_(array2);
-		AlgorithmTestUtil.printArray(array2);
+		DataPrinter.printArray(array2);
 	}
 
 }
