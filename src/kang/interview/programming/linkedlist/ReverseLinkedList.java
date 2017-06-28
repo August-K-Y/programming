@@ -94,57 +94,6 @@ public class ReverseLinkedList {
 		return dummy.next;
 	}
 
-	/**
-	 * Reverses every k nodes of the specified linked list.
-	 * 
-	 * @param head
-	 *            the head of the linked list
-	 * @param k
-	 *            the number of nodes to be reversed repeatedly
-	 * @return the head of the reversed linked list
-	 */
-	public ListNode reverseKNodes(ListNode head, int k) {
-		int length = computeLength(head);
-
-		// The number of reversion to be performed
-		int iteration = length / k;
-
-		ListNode dummy = new ListNode(0);
-		dummy.next = head;
-
-		ListNode helper = dummy;
-		ListNode pivot = dummy.next;
-
-		for (int i = 0; i < iteration; i++) {
-			int j = 1;
-			ListNode temp = null;
-			while (j < k && pivot.next != null) {
-
-				temp = pivot.next;
-				pivot.next = temp.next;
-
-				temp.next = helper.next;
-				helper.next = temp;
-				j++;
-			}
-
-			// Forwards the pivot to the start of the next k nodes
-			helper = pivot;
-			pivot = pivot.next;
-		}
-		return dummy.next;
-	}
-
-	private int computeLength(ListNode head) {
-		int length = 0;
-		ListNode iter = head;
-		while (iter != null) {
-			length++;
-			iter = iter.next;
-		}
-		return length;
-	}
-
 	public static void main(String[] arg) {
 		System.out.println("result:");
 		ListNode head = LinkedListUtil.createLinkedList();
@@ -156,11 +105,5 @@ public class ReverseLinkedList {
 		head = LinkedListUtil.createLinkedList();
 		newHead = ora.reverseSubLinkedList(head, 2, 4);
 		newHead = DataPrinter.printLinkedList(newHead);
-
-		System.out.println();
-		head = LinkedListUtil.createLongLinkedList();
-		newHead = ora.reverseKNodes(head, 3);
-		newHead = DataPrinter.printLinkedList(newHead);
 	}
-
 }
