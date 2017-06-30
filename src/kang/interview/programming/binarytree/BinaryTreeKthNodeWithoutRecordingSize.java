@@ -264,11 +264,12 @@ public class BinaryTreeKthNodeWithoutRecordingSize {
 			}
 		}
 	}
-	
+
 	/*
-	 * This is a clever way of doing this task. Using k keeps tracking the
-	 * number of nodes visited while in-order traversing the tree. When the
-	 * value of k reached zero, we found the kth largest node in the BST
+	 * From CodeFight: This is a clever way of doing this task. Using k keeps
+	 * tracking the number of nodes visited while in-order traversing the tree.
+	 * When the value of k reached zero, we found the kth largest node in the
+	 * BST
 	 */
 
 	int k, r;
