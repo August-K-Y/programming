@@ -1,4 +1,4 @@
-package kang.interview.programming.binarytree;
+package kang.interview.programming.zhe;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +30,7 @@ import java.util.Map;
  * @author Yan Kang
  *
  */
-public class FindProfesstion_withIssue {
+public class FindProfesstion {
 
 	String findProfession_bf(int level, int pos) {
 		Map<Character, String> map = new HashMap<>(2);
@@ -122,7 +122,7 @@ public class FindProfesstion_withIssue {
 	// TODO: any other way that can do this better? Bit manipulation ??
 
 	public static void main(String[] arg) {
-		FindProfesstion_withIssue f = new FindProfesstion_withIssue();
+		FindProfesstion f = new FindProfesstion();
 //		System.out.println(f.findProfession_bf(9, 265));
 		
 		System.out.println(f.findProfession(13, 519));

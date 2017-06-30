@@ -15,9 +15,11 @@ package kang.interview.programming.array;
  * Read more:
  * http://javarevisited.blogspot.com/2015/06/top-20-array-interview-questions-
  * and-answers.html#ixzz4gYECYYCJ
+ * 
+ * @see FindSubarrayWithMaxConsecutiveSum_
  *
  */
-public class FindSubarrayWithMaximumSum {
+public class FindSubarrayWithMaxConsecutiveSum {
 	
 	public int maxSumSubarray(int[] array) {
 
@@ -57,7 +59,7 @@ public class FindSubarrayWithMaximumSum {
 	}
 
 	public static void main(String[] args) {
-		FindSubarrayWithMaximumSum s = new FindSubarrayWithMaximumSum();
+		FindSubarrayWithMaxConsecutiveSum s = new FindSubarrayWithMaxConsecutiveSum();
 		int[] array = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
 		int max = s.maxSumSubarray2(array);
 		System.out.println(max);
