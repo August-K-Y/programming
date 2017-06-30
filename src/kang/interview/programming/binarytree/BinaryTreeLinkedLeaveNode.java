@@ -3,6 +3,10 @@ package kang.interview.programming.binarytree;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * @author Yan Kang
+ *
+ */
 public class BinaryTreeLinkedLeaveNode {
 
 	public List<String> getLinkedLeaves(TreeNode node) {

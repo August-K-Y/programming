@@ -1,5 +1,10 @@
 package kang.interview.programming.binarytree;
 
+/**
+ * @see BinaryTreeKthNodeWithoutRecordingSize
+ * @author Yan Kang
+ *
+ */
 public class BinaryTreeKthNode {
 
 	/**
@@ -18,10 +23,17 @@ public class BinaryTreeKthNode {
 		} else if (k > leftSize + 1) {
 			return findKthNodeRecursively(node.right, k - leftSize - 1);
 		} else {
+			// k <= leftsize
 			return findKthNodeRecursively(node.left, k);
 		}
 	}
 
+	/**
+	 * 
+	 * @param node
+	 * @param k
+	 * @return
+	 */
 	public TreeNode findKthNodeIteratively(TreeNode node, int k) {
 		if (node == null)
 			return null;
