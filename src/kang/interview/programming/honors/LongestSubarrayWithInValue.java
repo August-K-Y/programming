@@ -2,7 +2,7 @@ package kang.interview.programming.honors;
 
 import kang.interview.programming.util.DataPrinter;
 
-public class LongSubarrayWithInValue {
+public class LongestSubarrayWithInValue {
 
 	public Range compute(int[] array, int value) {
 		Range range = new Range();
@@ -27,7 +27,7 @@ public class LongSubarrayWithInValue {
 
 	public static void main(String[] args) {
 		int[] array = { 431, -15, 639, 342, -14, 565, -924, 635, 167, -70 };
-		LongSubarrayWithInValue v = new LongSubarrayWithInValue();
+		LongestSubarrayWithInValue v = new LongestSubarrayWithInValue();
 		Range range = v.compute(array, 184);
 		DataPrinter.printSubarray(array, range);
 	}

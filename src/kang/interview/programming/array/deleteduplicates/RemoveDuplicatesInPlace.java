@@ -1,4 +1,4 @@
-package kang.interview.programming.array;
+package kang.interview.programming.array.deleteduplicates;
 
 /**
  * How to remove duplicates from array in place?
