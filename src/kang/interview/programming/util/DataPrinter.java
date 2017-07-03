@@ -44,6 +44,18 @@ public class DataPrinter {
 		}
 	}
 	
+	public static void print2DArray(String[][] array) {
+		int lastRows = array.length - 1;
+
+		for (int i = 0; i <= lastRows; i++) {
+			int lastCols = array[i].length - 1;
+			for (int j = 0; j <= lastCols; j++) {
+				System.out.print(array[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+	
 	public static void print2DList(List<List<Integer>> twoDList) {
 		for (List<Integer> level : twoDList) {
 			for (int value : level) {
