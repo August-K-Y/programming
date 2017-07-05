@@ -1,16 +1,6 @@
 package kang.interview.programming.array.buysellstock;
 
-public class BuyAndSellStock {
-
-	public int buyAndSellStockOnce(int[] prices) {
-		int minPriceSoFar = prices[0];
-		int maxProfits = 0;
-		for (int i = 1; i < prices.length; i++) {
-			maxProfits = Math.max(maxProfits, prices[i] - minPriceSoFar);
-			minPriceSoFar = Math.min(minPriceSoFar, prices[i]);
-		}
-		return maxProfits;
-	}
+public class BuyAndSellStockTwice {
 	
 	public int buyAndSellStockTwice(int[] prices) {
 		int minPriceSoFar = prices[0];
@@ -37,8 +27,8 @@ public class BuyAndSellStock {
 		System.out.println("run");
 		int[] array = { 310, 315, 275, 295, 260, 270, 290, 230, 255, 250 };
 
-		BuyAndSellStock ora = new BuyAndSellStock();
-		int profit = ora.buyAndSellStockOnce(array);
+		BuyAndSellStockTwice ora = new BuyAndSellStockTwice();
+		int profit = ora.buyAndSellStockTwice(array);
 		System.out.println(profit);
 
 		int[] array2 = { 12, 11, 13, 9, 12, 8, 14, 13, 15 };

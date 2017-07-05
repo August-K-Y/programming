@@ -2,7 +2,7 @@ package kang.interview.programming.search.generalsearch;
 
 import java.util.Random;
 
-public class QuickSearch {
+public class QuickSearch_M {
 	private Random rm = new Random();
 	
 	public int search(int[] array, int k) {
@@ -40,7 +40,7 @@ public class QuickSearch {
 	}
 	
 	public static void main(String[] args) {
-		QuickSearch s = new QuickSearch();
+		QuickSearch_M s = new QuickSearch_M();
 		int[] board = { 3, 2, 1, 5, 4 };
 		System.out.println(s.search(board, 1));
 		System.out.println(s.search(board, 3));

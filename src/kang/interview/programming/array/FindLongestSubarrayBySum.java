@@ -18,8 +18,8 @@ package kang.interview.programming.array;
  * The sum of elements from the 2nd position to the 4th position (1-based) is
  * equal to 12: 2 + 3 + 7.
  * 
- * (2) For s = 15 and arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], the output should be
- * findLongestSubarrayBySum(s, arr) = [1, 5].
+ * (2) For s = 15 and arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], the output should
+ * be findLongestSubarrayBySum(s, arr) = [1, 5].
  * 
  * The sum of elements from the 1st position to the 5th position (1-based) is
  * equal to 15: 1 + 2 + 3 + 4 + 5.
@@ -32,7 +32,7 @@ package kang.interview.programming.array;
  * 
  * Input/Output
  * 
- * [time limit] 3000ms (java) 
+ * [time limit] 3000ms (java)
  * 
  * [input] integer s
  * 
@@ -44,9 +44,7 @@ package kang.interview.programming.array;
  * 
  * The given array.
  * 
- * Guaranteed constraints: 
- * 		1 <= arr.length <= 10^5, 
- * 		0 <= arr[i] <= 10^4.
+ * Guaranteed constraints: 1 <= arr.length <= 10^5, 0 <= arr[i] <= 10^4.
  * 
  * [output] array.integer
  * 
@@ -59,4 +57,31 @@ package kang.interview.programming.array;
  */
 public class FindLongestSubarrayBySum {
 
+	int[] findLongestSubarrayBySum(int s, int[] arr) {
+		int[] res = new int[2];
+		int maxLength = 0;
+		int tempLength = 0;
+		int sum = 0;
+		int l = 0;
+		for (int r = 0; r < arr.length; r++) {
+
+			sum += arr[r];
+			tempLength++;
+
+			while (sum > s) {
+				sum -= arr[l];
+				tempLength--;
+				l++;
+			}
+
+			if (sum == s) {
+				if (tempLength > maxLength) {
+					maxLength = tempLength;
+					res[0] = l + 1;
+					res[1] = r + 1;
+				}
+			}
+		}
+		return maxLength == 0 ? new int[] { -1 } : res;
+	}
 }
