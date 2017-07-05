@@ -1,7 +1,5 @@
 package kang.interview.programming.linkedlist;
 
-import kang.interview.programming.linkedlist.LinkedList.ListNode;
-
 /**
  * 
  * Practice for CodeFight
@@ -21,10 +19,10 @@ public class _isListPalindrome {
 	}
 
 	public boolean isListPalindrome(ListNode<Integer> l) {
-		
+
 		ListNode<Integer> fast = l;
 		ListNode<Integer> slow = l;
-		
+
 		while (fast != null && fast.next != null) {
 			fast = fast.next.next;
 			slow = slow.next;
@@ -39,7 +37,7 @@ public class _isListPalindrome {
 
 		ListNode<Integer> firstHalf = l;
 		while (secondHalf != null) {
-			
+
 			// Since the value is type of Integer, we should be using
 			// Object.equals(Object) rather than ==
 			if (!firstHalf.value.equals(secondHalf.value)) {
@@ -54,10 +52,10 @@ public class _isListPalindrome {
 	private ListNode<Integer> reverse(ListNode<Integer> head) {
 		if (head == null)
 			return null;
-		
+
 		ListNode<Integer> dummy = new ListNode<>(0);
 		dummy.next = head;
-		
+
 		ListNode<Integer> pivot = dummy.next;
 		ListNode<Integer> temp = null;
 		while (pivot.next != null) {
@@ -70,7 +68,7 @@ public class _isListPalindrome {
 		}
 		return dummy.next;
 	}
-	
+
 	public static void main(String[] arg) {
 		_isListPalindrome ora = new _isListPalindrome();
 		System.out.println("result:");
