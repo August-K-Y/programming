@@ -1,11 +1,11 @@
-package kang.interview.programming.heap.hashtable;
+package kang.interview.programming.hashtable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import kang.interview.programming.heap.hashtable.FindSmallestSubarrayCoveringAllValues.Subarray;
+import kang.interview.programming.hashtable.FindSmallestSubarrayCoveringAllValues.Subarray;
 
 public class FindLongestSubarrayWithDistinctEntries {
 

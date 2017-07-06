@@ -1,4 +1,4 @@
-package kang.interview.programming.heap.hashtable;
+package kang.interview.programming.hashtable;
 
 import java.util.HashMap;
 import java.util.Map;

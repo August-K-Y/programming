@@ -1,4 +1,4 @@
-package kang.interview.programming.heap.hashtable;
+package kang.interview.programming.hashtable;
 
 import java.util.ArrayList;
 import java.util.Collections;

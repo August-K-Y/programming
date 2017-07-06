@@ -1,4 +1,10 @@
-package kang.interview.programming.heap.hashtable;
+package kang.interview.programming.hashtable;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 
@@ -41,11 +47,33 @@ package kang.interview.programming.heap.hashtable;
  * @author Yan Kang
  *
  */
-public class SwapLexOrder {
+public class SwapLexOrder_M {
 
 	String swapLexOrder(String str, int[][] pairs) {
 
-		return null;
+		Set<Integer> num = new HashSet<>();
+		for (int[] t : pairs) {
+			num.add(t[0] - 1);
+			num.add(t[1] - 1);
+		}
+
+		List<Character> list = new ArrayList<>(num.size());
+		for (int e : num)
+			list.add(str.charAt(e));
+
+		Collections.sort(list, Collections.reverseOrder());
+
+		StringBuilder sb = new StringBuilder();
+		int j = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (num.contains(i)) {
+				sb.append(list.get(j++));
+			} else {
+				sb.append(str.charAt(i));
+			}
+		}
+		return sb.toString();
+		
 	}
 
 }
