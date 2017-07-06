@@ -12,7 +12,10 @@ import java.util.Map;
 public class CloneGraph {
 	
 	public GraphVertex clone(GraphVertex source) {
+		
+		// map original vertex to its cloned vertex
 		Map<String, GraphVertex> track = new HashMap<>();
+		
 		GraphVertex clonedSource = new GraphVertex(source.getLabel());
 		track.put(clonedSource.getLabel(), clonedSource);
 		clone(clonedSource, source, track);

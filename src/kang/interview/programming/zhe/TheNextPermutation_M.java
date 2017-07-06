@@ -1,6 +1,5 @@
-package kang.interview.programming.array;
+package kang.interview.programming.zhe;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -8,7 +7,11 @@ import java.util.Set;
 
 import kang.interview.programming.util.DataPrinter;
 
-public class TheNextPermutation {
+/**
+ * @see kang.interview.programming.zhe.SwapLexOrder_H
+ * @see https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
+ */
+public class TheNextPermutation_M {
 
 	/**
 	 * brute-force
@@ -119,7 +122,7 @@ public class TheNextPermutation {
 	}
 
 	public static void main(String[] args) {
-		TheNextPermutation t = new TheNextPermutation();
+		TheNextPermutation_M t = new TheNextPermutation_M();
 		
 		int[] array = { 1,0,3,2 };
 		t.nextPermutation_bf(array);

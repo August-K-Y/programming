@@ -21,6 +21,16 @@ public class DataPrinter {
 			System.out.print(array[i] + ", ");
 		}
 	}
+	
+	public static void printArray(char[] chars, int index) {
+		if (index >= chars.length)
+			throw new IllegalArgumentException();
+		int rows = chars.length;
+		for (int x = 0; x < rows; x++) {
+			System.out.print(chars[x] + "");
+		}
+		System.out.println();
+	}
 
 	public static void printList(List<Integer> result) {
 		result.stream().forEach(a -> System.out.print(a + " "));
@@ -93,5 +103,4 @@ public class DataPrinter {
 			perm.add(v);
 		return perm;
 	}
-
 }
