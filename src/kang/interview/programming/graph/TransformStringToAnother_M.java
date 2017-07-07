@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class TransformStringToAnother {
+public class TransformStringToAnother_M {
 
 	private static Set<String> dic = new HashSet<>();
 	private static Set<String> track = new HashSet<>();
@@ -70,7 +70,7 @@ public class TransformStringToAnother {
 
 	public static void main(String[] args) {
 		
-		TransformStringToAnother a = new TransformStringToAnother();
+		TransformStringToAnother_M a = new TransformStringToAnother_M();
 		dic.add("dot");
 		track.add("bat");
 		System.out.println(a.canTransform("bat", "dot", dic, track));
