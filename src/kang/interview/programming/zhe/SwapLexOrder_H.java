@@ -76,7 +76,21 @@ public class SwapLexOrder_H {
 		}
 		return new String(result);
 	}
-	
+
+	/**
+	 * Group numbers in pairs that are connected.</br>
+	 * <p>
+	 * For example:</br>
+	 * [1, 2] and [2, 7] are connected via the number 2. They will be put into a
+	 * set [1,2,7].</br>
+	 * [1, 3] and [4, 5] are not connected. They will be put into different
+	 * sets.
+	 * </p>
+	 * 
+	 * @param pairs
+	 *            an array of integer pair
+	 * @return a list of sets
+	 */
 	public List<Set<Integer>> connect(int[][] pairs) {
 		List<Set<Integer>> lists = new ArrayList<Set<Integer>>();
 		for (int[] p : pairs) {
@@ -109,15 +123,16 @@ public class SwapLexOrder_H {
 	public static void main(String[] arg) {
 		SwapLexOrder_H s = new SwapLexOrder_H();
 		
-		int[][] pairs = {{8,5}, {10,8}, 
-				 {4,18}, 
-				 {20,12}, 
-				 {5,2}, 
-				 {17,2}, 
-				 {13,25}, 
-				 {29,12}, 
-				 {22,2}, 
-				 {17,11}};
+		int[][] pairs = {{8,5}, 
+						 {10,8}, 
+						 {4,18}, 
+						 {20,12}, 
+						 {5,2}, 
+						 {17,2}, 
+						 {13,25}, 
+						 {29,12}, 
+						 {22,2}, 
+						 {17,11}};
 		String o = "fixmfbhyutghwbyezkveyameoamqoi";
 		String e = "fzxmybhtuigowbyefkvhyameoamqei";
 		String res = s.swapLexOrder(o, pairs);

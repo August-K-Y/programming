@@ -102,7 +102,7 @@ package kang.interview.programming.binarytree;
  * @author yankang
  *
  */
-public class DeletionFromBST {
+public class DeletionFromBST_H {
 	class Tree<T> {
 		Tree(T x) {
 			value = x;
