@@ -3,6 +3,7 @@ package kang.interview.programming.invariant;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
+import kang.interview.programming.array.*;
 import kang.interview.programming.util.DataPrinter;
 
 /**
@@ -17,29 +18,39 @@ import kang.interview.programming.util.DataPrinter;
  * Window position         Max 
  * ---------------        ----- 
  * [1 3 -1] -3 5 3 6 7      3 
- * 1 [3 -1 -3] 5 3 6 7      3 
- * 1 3 [-1 -3 5] 3 6 7      5 
- * 1 3 -1 [-3 5 3] 6 7      5 
- * 1 3 -1 -3 [5 3 6] 7      6 
- * 1 3 -1 -3 5 [3 6 7]      7 
+ * 1 [3 -1 -3] 5 3 6 7 		3 
+ * 1 3 [-1 -3 5] 3 6 7 		5 
+ * 1 3 -1 [-3 5 3] 6 7 		5 
+ * 1 3 -1 -3 [5 3 6] 7 		6 
+ * 1 3 -1 -3  5 [3 6 7] 	7
  * 
  * Therefore, return the max sliding window as [3,3,5,5,6,7].
  * 
- * Note: 
+ * Note:
  * 
  * You may assume k is always valid, ie: 1 ≤ k ≤ input array's size for
  * non-empty array.
  * 
  * Follow up: Could you solve it in linear time?
  * 
+ * @see {@link ContainsDuplicate}
+ * @see {@link ContainsNearbyDuplicate}
+ * @see {@link ContainsNearbyAlmostDuplicate_H}
  * @see https://leetcode.com/problems/sliding-window-maximum/#/description
- * 
- * @see kang.interview.programming.array.ContainsNearbyDuplicate
  * @author yankang
  *
  */
 public class SlidingWindowMaximum_M {
 	
+	/**
+	 * This is typical sliding window problem:
+	 * 
+	 * Given a window of certain size and slide the window from typically left
+	 * to right, to check if elements (e.g., number) in each sliding window
+	 * satisfies certain character or perform some work based elements in the
+	 * window.
+	 */
+
 	/**
 	 * Using priority queue to track the max value in the range of window. This
 	 * algorithm takes: N*O(logk)
@@ -56,21 +67,39 @@ public class SlidingWindowMaximum_M {
 		int size = nums.length - k +1;
 		int[] res = new int[size];
 		
-		// Maximum priority queue
+		// Maximum priority queue to track the largest element in each window
 		PriorityQueue<Integer> q = new PriorityQueue<>(Collections.reverseOrder());
-		
-		//
-		int r = 0;
+
+		// This is the initialization of the window. After the initialization, l
+		// variable points to the left boundary of the window while r variable
+		// point to the one position after the right boundary of the window
+		// (Note, this is a convenient design when the window reaches the end of
+		// the array, the sliding will terminate automatically, no additional
+		// work is needed to check the array boundary).
 		int l = 0;
-		for (; l < k; l++) {
-			q.add(nums[l]);
+		int r = 0;
+		for (; r < k; r++) {
+			// do some work on the elements while initializing the window
+			q.add(nums[r]);
 		}
 		int c = 0;
 		res[c++] = q.peek();
 	
-		while(l < nums.length) {
-			q.remove(nums[r++]);
-			q.add(nums[l++]);
+		while (r < nums.length) {
+			// remove the first element in old new window from the priority
+			// queue and add new element from the new window to the priority
+			// queue. 
+			
+			// Since l points to the left boundary of the old window,
+			// q.remove(nums[l++]) first remove this element from the priority
+			// queue and move the left boundary one step to the right.
+
+			// Since r points to one position after the right boundary of the
+			// old window (in other words, r points to the first element of the
+			// forthcoming new window), q.add(nums[r++]) first add the new
+			// element to the priority queue and move one step of r further. 
+			q.remove(nums[l++]);
+			q.add(nums[r++]);
 			res[c++] = q.peek();
 		}
 		return res;

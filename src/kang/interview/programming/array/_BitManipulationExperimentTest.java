@@ -3,7 +3,7 @@ package kang.interview.programming.array;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class TempTest {
+public class _BitManipulationExperimentTest {
 
 	public static void main(String[] args) {
 

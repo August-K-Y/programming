@@ -58,7 +58,7 @@ public class LowestCommonAncestor_BinaryTree {
 
 		boolean onLeft1 = contains(root.left, p);
 		boolean onLeft2 = contains(root.left, q);
-		
+
 		// If p and q are on different sizes
 		if (onLeft1 != onLeft2)
 			return root;

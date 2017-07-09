@@ -27,6 +27,8 @@ import java.util.Set;
  * 
  * [output] boolean
  * 
+ * @see ContainsNearbyDuplicate
+ * @see ContainsNearbyAlmostDuplicate_H
  * @author Yan Kang
  *
  */

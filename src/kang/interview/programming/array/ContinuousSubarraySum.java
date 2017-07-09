@@ -1,6 +1,8 @@
 package kang.interview.programming.array;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -24,10 +26,11 @@ import java.util.Set;
  *
  */
 public class ContinuousSubarraySum {
-	
-	// Pitfalls: consider when k == 0
-	
+
+	// Pitfalls: lots of corner cases to be considered, e.g., when k == 0
+
 	/**
+	 * brute force: time complexity O(N^2)
 	 * 
 	 * @param nums
 	 * @param k
@@ -50,18 +53,34 @@ public class ContinuousSubarraySum {
 		return false;
 	}
 	
+	/**
+	 * We iterate through the input array exactly once, keeping track of the
+	 * running sum mod k of the elements in the process. If we find that a
+	 * running sum value at index j has been previously seen before in some
+	 * earlier index i in the array, then we know that the sub-array (i,j]
+	 * contains a desired sum.
+	 * 
+	 * @param nums
+	 * @param k
+	 * @return
+	 */
 	public boolean checkSubarraySum_(int[] nums, int k) {
-		if (nums == null || nums.length == 0)
-			return false;
-
-		k = k < 0 ? -k : k;
-		Set<Integer> set = new HashSet<>();
-		for (int i = 0; i < nums.length; i++) {
-			if (set.contains(nums[i] % k)) {
-				return true;
-			} else {
-				set.add(k - nums[i] % k);
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>() {
+			{
+				put(0, -1);
 			}
+		};
+		int runningSum = 0;
+		for (int i = 0; i < nums.length; i++) {
+			runningSum += nums[i];
+			if (k != 0)
+				runningSum %= k;
+			Integer prev = map.get(runningSum);
+			if (prev != null) {
+				if (i - prev > 1)
+					return true;
+			} else
+				map.put(runningSum, i);
 		}
 		return false;
 	}
