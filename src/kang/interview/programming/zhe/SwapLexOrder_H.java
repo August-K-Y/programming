@@ -49,7 +49,7 @@ import kang.interview.programming.util.DataPrinter;
  * 
  * [output] string
  * 
- * @see kang.interview.programming.zhe.TheNextPermutation_M
+ * @see {@link TheNextPermutation_M}
  * @see https://www.careercup.com/question?id=5652404478410752
  * @see http://www.geeksforgeeks.org/lexicographic-permutations-of-string/
  * @see https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
@@ -63,15 +63,30 @@ public class SwapLexOrder_H {
 		List<Set<Integer>> lists = connect(pairs);
 		char[] result = str.toCharArray();
 		for (Set<Integer> set : lists) {
-			char[] chars = new char[set.size()];
+
+			// The temporary char array is used to help reorder chars (of the
+			// original String object) located by position points stored in
+			// current set and copy them back to the original String object.
+			char[] temp = new char[set.size()];
+
+			// First copy chars from original String object to the temporary
+			// char array
 			int i = 0;
-			for (int index : set) {
-				chars[i] = result[index - 1];
+			for (int pos : set) {
+				// Note: the position in the set is 1-based rather than 0-based.
+				// Therefore, we need to do corresponding adjustment.
+				temp[i] = result[pos - 1];
 				i++;
 			}
-			Arrays.sort(chars);
-			for (int index : set) {
-				result[index - 1] = chars[--i];
+
+			// Note: the temporary array is sorted in ascending order
+			Arrays.sort(temp);
+
+			// Copy chars in the temporary char array, from back to front, to
+			// the original String object. The variable i is crucial for this
+			// task. So, pay attention to it.
+			for (int pos : set) {
+				result[pos - 1] = temp[--i];
 			}
 		}
 		return new String(result);
@@ -92,32 +107,49 @@ public class SwapLexOrder_H {
 	 * @return a list of sets
 	 */
 	public List<Set<Integer>> connect(int[][] pairs) {
-		List<Set<Integer>> lists = new ArrayList<Set<Integer>>();
+		List<Set<Integer>> list = new ArrayList<Set<Integer>>();
 		for (int[] p : pairs) {
-			Set<Integer> set1 = null;
-			Set<Integer> set2 = null;
-			for (Set<Integer> set : lists) {
+			Set<Integer> firstMatchedSet = null;
+			Set<Integer> secondMatchedSet = null;
+			for (Set<Integer> set : list) {
+
 				if (set.contains(p[0]) || set.contains(p[1])) {
-					if (set1 == null) {
-						set1 = set;
+					// Either point in the current pair matches a point in the
+					// current visiting set.
+
+					if (firstMatchedSet == null) {
+						// The first time current pair found a matched set
+						firstMatchedSet = set;
 					} else {
-						set2 = set;
+						// The current pair had already found a matched set and
+						// it found a section one. The two found sets would be
+						// merged together.
+						secondMatchedSet = set;
 					}
 					set.add(p[0]);
 					set.add(p[1]);
 				}
 			}
-			if (set1 == null) {
+			if (firstMatchedSet == null) {
+				// Current pair has not found a matched set, create a new one
+				// and add it to list.
+
+				// Note, we are using a TreeSet here since we need to keep the
+				// natural order the elements in the set
 				Set<Integer> set = new TreeSet<Integer>();
 				set.add(p[0]);
 				set.add(p[1]);
-				lists.add(set);
-			} else if (set2 != null) {
-				set1.addAll(set2);
-				lists.remove(set2);
+				list.add(set);
+			} else if (secondMatchedSet != null) {
+				// Merge the two sets and remote one from the list of sets
+				firstMatchedSet.addAll(secondMatchedSet);
+				list.remove(secondMatchedSet);
 			}
+
+			// If only one matched set found, points in current pair has already
+			// added to this set.
 		}
-		return lists;
+		return list;
 	}
 
 	public static void main(String[] arg) {
@@ -142,7 +174,12 @@ public class SwapLexOrder_H {
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @param str
+	 * @param pairs
+	 * @return
+	 */
 	String swapLexOrder_(String str, int[][] pairs) {
 	    char[] chars = str.toCharArray();
 	    List<Set<Integer>> pools = new ArrayList<>();
@@ -185,7 +222,12 @@ public class SwapLexOrder_H {
 	    return new String(chars);
 	}
 	
-	
+	/**
+	 * 
+	 * @param string
+	 * @param pairs
+	 * @return
+	 */
 	String swapLexOrder__(String string, int[][] pairs) {
 	    char[] s = string.toCharArray();
 	    int n = s.length;
