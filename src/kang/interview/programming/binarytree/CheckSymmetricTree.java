@@ -95,7 +95,7 @@ public class CheckSymmetricTree {
 			return true;
 		} else if (left != null && right != null) {
 			//
-			return left.data == right.data && isSymmetric(left.left, right.right)
+			return left.val == right.val && isSymmetric(left.left, right.right)
 					&& isSymmetric(left.right, right.left);
 		} else {
 			return false;

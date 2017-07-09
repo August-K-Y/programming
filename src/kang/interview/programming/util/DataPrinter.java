@@ -13,7 +13,7 @@ public class DataPrinter {
 			System.out.print(array[i] + ", ");
 		}
 	}
-
+	
 	public static void printArray(int[] array, int index) {
 		if (index >= array.length)
 			throw new IllegalArgumentException();

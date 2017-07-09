@@ -13,14 +13,14 @@ public class FindLCA {
 		while (node1 != null || node2 != null) {
 
 			if (node1 != null) {
-				if (!track.add(node1.data)) {
+				if (!track.add(node1.val)) {
 					return node1;
 				}
 				node1 = node1.parent;
 
 			}
 			if (node2 != null) {
-				if (!track.add(node2.data)) {
+				if (!track.add(node2.val)) {
 					return node2;
 				}
 				node2 = node2.parent;

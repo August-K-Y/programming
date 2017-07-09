@@ -44,7 +44,7 @@ public class BinaryTreeTraverseIteratively {
 	}
 
 	private void visit(TreeNode top) {
-		System.out.print(top.data + " ");
+		System.out.print(top.val + " ");
 	}
 
 	public static void main(String[] args) {

@@ -10,11 +10,11 @@ public class FindFirstKeylargerThanGivenValue {
 		TreeNode min = null;
 		while(node != null) 
 		{
-			if(value == node.data) {
+			if(value == node.val) {
 				node = leftMost(node.right);
 				if(node == null)
 					return min;
-			} else if (value > node.data){
+			} else if (value > node.val){
 				node = node.right;
 			} else {
 				min = node;
@@ -36,7 +36,7 @@ public class FindFirstKeylargerThanGivenValue {
 	public static void main(String[] arg) 
 	{
 		FindFirstKeylargerThanGivenValue c = new FindFirstKeylargerThanGivenValue();
-		System.out.println(c.find(ZTestDataCreator.createBinarySearchTree(), 14).data);
+		System.out.println(c.find(ZTestDataCreator.createBinarySearchTree(), 14).val);
 	}
 
 }

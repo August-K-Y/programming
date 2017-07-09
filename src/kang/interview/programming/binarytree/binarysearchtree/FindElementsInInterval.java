@@ -21,9 +21,9 @@ public class FindElementsInInterval {
 			return;
 		}
 
-		if (node.data > interval.right) {
+		if (node.val > interval.right) {
 			findElements(node.left, interval, result);
-		} else if (node.data < interval.left) {
+		} else if (node.val < interval.left) {
 			findElements(node.right, interval, result);
 		} else {
 			findElements(node.left, interval, result);
@@ -36,7 +36,7 @@ public class FindElementsInInterval {
 		FindElementsInInterval c = new FindElementsInInterval();
 		Interval interval = new Interval(16, 31);
 		List<TreeNode> result = c.findElements(ZTestDataCreator.createBinarySearchTree2(), interval);
-		result.stream().forEach(a -> System.out.print(a.data + " "));
+		result.stream().forEach(a -> System.out.print(a.val + " "));
 	}
 
 }

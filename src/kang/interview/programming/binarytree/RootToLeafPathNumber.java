@@ -44,7 +44,7 @@ public class RootToLeafPathNumber {
 			return false;
 					
 		sb.append(node.Id);
-		int diff = sum - node.data;
+		int diff = sum - node.val;
 		if (node.left == null && node.right == null) {
 			if (diff == 0) {
 				System.out.println(sb.toString());
@@ -75,7 +75,7 @@ public class RootToLeafPathNumber {
 		
 		sb.append(node.Id);
 //		sb += node.Id;
-		int diff = sum - node.data;
+		int diff = sum - node.val;
 		
 		if(node.left == null && node.right == null) {
 			if(diff == 0) 
@@ -111,7 +111,7 @@ public class RootToLeafPathNumber {
 		if(node == null)
 			return;
 					
-		record[depth] = node.data;
+		record[depth] = node.val;
 		int temp = sum;
 		for (int i = depth; i >= 0; i--) {
 			temp -= record[i];

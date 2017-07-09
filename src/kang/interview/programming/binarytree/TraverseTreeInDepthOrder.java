@@ -1,4 +1,4 @@
-package kang.interview.programming.stack;
+package kang.interview.programming.binarytree;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -7,13 +7,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-import kang.interview.programming.binarytree.TreeNode;
 
-public class BinaryTreeDepthOrder {
+/**
+ * 
+ * @author yankang
+ * @see TraverseTreeLevelByLevel
+ */
+public class TraverseTreeInDepthOrder {
 	
 	public Map<Integer, List<TreeNode>> binaryTreeDepthOrder(TreeNode treeNode) {
 		Map<Integer, List<TreeNode>> map = new LinkedHashMap<Integer, List<TreeNode>>();
-		Queue<TreeNode> queue = new LinkedList<>();
 		process(treeNode, map, 0);
 		return map;
 
@@ -45,7 +48,7 @@ public class BinaryTreeDepthOrder {
 		List<Integer> currentDepth = new ArrayList<>();
 		while (!queue.isEmpty()) {
 			TreeNode node = queue.remove();
-			currentDepth.add(node.data);
+			currentDepth.add(node.val);
 			if (treeNode.left != null) {
 				secondQ.add(node.left);
 			}
@@ -68,12 +71,12 @@ public class BinaryTreeDepthOrder {
 		
 		Queue<TreeNode> queue = new LinkedList<>();
 		queue.add(treeNode);
-		int nextLevel = 0;
 		int currentLevel = 1;
+		int nextLevel = 0;
 		List<Integer> current = new ArrayList<>();
 		while (!queue.isEmpty()) {
 			TreeNode top = queue.remove();
-			current.add(top.data);
+			current.add(top.val);
 			currentLevel--;
 			if (treeNode.left != null) {
 				queue.add(treeNode.left);

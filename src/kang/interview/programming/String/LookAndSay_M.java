@@ -1,6 +1,6 @@
 package kang.interview.programming.String;
 
-public class LookAndSay {
+public class LookAndSay_M {
 
 	/**
 	 * e.g., 1, 11, 21, 1211, 111221,312211,13112221,1113213211
@@ -49,7 +49,7 @@ public class LookAndSay {
 	
 	public static void main(String[] arg) {
 		System.out.println("run");
-		LookAndSay ora = new LookAndSay();
+		LookAndSay_M ora = new LookAndSay_M();
 		String end = ora.lookAndSayRecursively(1);
 		System.out.println(end);
 		end = ora.lookAndSayRecursively(8);
