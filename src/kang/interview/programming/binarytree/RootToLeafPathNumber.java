@@ -1,36 +1,13 @@
 package kang.interview.programming.binarytree;
 
-import javax.xml.soap.Node;
-
+/**
+ * 
+ * @see RootToLeadPathWithGivenSum
+ * @author Yan Kang
+ *
+ */
 public class RootToLeafPathNumber {
 
-	
-//	public int computeRootToLeafBinaryNumber(TreeNode node) 
-//	{
-//        StringBuilder sb = new StringBuilder(node.data);
-//        
-//        compute(node.left, sb);
-//        compute(node.right, sb);
-//        
-//	}
-
-	private void compute(TreeNode node, StringBuilder sb) {
-		// TODO Auto-generated method stub
-		
-		if(node.left == null && node.right == null) {
-			
-			return;
-		}
-
-		if (node.left != null) {
-			compute(node.left, sb);
-		}
-
-		if (node.right != null) {
-			compute(node.right, sb);
-		}
-	}
-	
 	/**
 	 * 
 	 * @param sb the string builder

@@ -37,6 +37,13 @@ public class LongestSubstringWithoutRepeatingCharacters {
 					set.remove(chars[l]);
 					l++;
 				}
+
+				// Here is when chars[l] == c and c is current visiting
+				// character. We need to remove the old character char[l] and
+				// add the current one which is c. The end effect is that we
+				// remove nothing and add nothing since they are canceled off.
+
+				// increase the l index to skip the duplicate character
 				l++;
 
 			} else {

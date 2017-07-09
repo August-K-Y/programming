@@ -23,26 +23,26 @@ import java.util.Set;
  * 
  * [time limit] 3000ms (java) [input] array.integer a
  * 
- * Guaranteed constraints: 0 <= a.length <= 10^5, -2 · 10^9 <= a[i] <= 2 · 10^9.
+ * Guaranteed constraints: 0 <= a.length <= 10^5, -2 ï¿½ 10^9 <= a[i] <= 2 ï¿½ 10^9.
  * 
  * [output] boolean
  * 
- * @author YK044346
+ * @author Yan Kang
  *
  */
-public class ContainsDuplicates {
+public class ContainsDuplicate {
 
 	/**
 	 * 
-	 * @param a
+	 * @param nums
 	 * @return
 	 */
-	boolean containsDuplicates(int[] a) {
-		if (a == null || a.length == 0)
+	boolean containsDuplicate(int[] nums) {
+		if (nums == null || nums.length == 0)
 			return false;
 
 		Set<Integer> s = new HashSet<Integer>();
-		for (int n : a) {
+		for (int n : nums) {
 			if (s.contains(n)) {
 				return true;
 			} else {
@@ -55,18 +55,31 @@ public class ContainsDuplicates {
 	/**
 	 * From CodeFight: This is an interesting variation of first one.
 	 * 
-	 * @param a
+	 * @param nums
 	 * @return
 	 */
-	boolean containsDuplicates_(int[] a) {
-
+	boolean containsDuplicate_(int[] nums) {
+		if (nums == null || nums.length == 0)
+			return false;
 		Set<Integer> s = new HashSet<>();
-
-		for (int b : a)
+		for (int b : nums)
 			s.add(b);
-
-		return s.size() != a.length;
+		return s.size() != nums.length;
 	}
 
+	/**
+	 * 
+	 * @param nums
+	 * @return
+	 */
+	boolean containsDuplicate__(int[] nums) {
+		Set<Integer> set = new HashSet<Integer>();
+		for (int i : nums) {
+			// if there is same
+			if (!set.add(i))
+				return true;
+		}
+		return false;
+	}
 	// TODO: which one is better???
 }

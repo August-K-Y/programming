@@ -67,11 +67,13 @@ import java.util.Stack;
 	digitTreeSum(t) = 193.
 	Because 09 + 091 + 093 = 193
  * 
+ * @see BinaryTreeIterativeTraversal_M
+ * @see RootToLeadPathWithGivenSum
  * @see http://www.geeksforgeeks.org/sum-numbers-formed-root-leaf-paths/
  * @author Yan Kang
  *
  */
-public class DigitTreeSum_M {
+public class RootToLeafPathsFormedNumbersSum_M {
 	public static class Tree<T> {
 		Tree(T x) {
 			value = x;
@@ -83,6 +85,10 @@ public class DigitTreeSum_M {
 	}
 
 	/**
+	 * Recursive version of the digit tree sum algorithm. This is simple, just
+	 * do the normal recursive pre-order binary tree traversal and pass the
+	 * cumulative sum down the tree. When reach the leaf, recording the sum of a
+	 * path in the result list serving like a bus accumulate the sums.
 	 * 
 	 * @param t
 	 * @return
@@ -107,6 +113,13 @@ public class DigitTreeSum_M {
 	
 	/**
 	 * 
+	 * The same as the first algorithm that using recursive method to traverse
+	 * the tree and pass down the cumulative sum.
+	 * 
+	 * The difference is that this method does not use a bus-like result list to
+	 * accumulate the sums of paths. Instead, it passes up the calculated sum
+	 * for each path and adds them together along the way up.
+	 * 
 	 * @param t
 	 * @return
 	 */
@@ -124,14 +137,27 @@ public class DigitTreeSum_M {
 		return computeSum_(t.left, sum) + computeSum_(t.right, sum);
 	}
 	
-	
 	/**
+	 * Iterative algorithm.
+	 * 
+	 * Recursive algorithm has a built-in stack mechanism that the called
+	 * function stores variables passed down from calling function (typically
+	 * the same one as current function) and variables created locally into a
+	 * stack (i.e., current states). Then, when the called function finishes its
+	 * task, the calling function and all its variables from the stack are
+	 * restored (previous states).
+	 * 
+	 * If using iterative algorithm to achieve the same effect, we have to mimic
+	 * the stack mechanism (e.g. using Java Stack class) or use some other ways
+	 * to store current states (e.g., passed-down and local variables) and
+	 * restore previous state.
 	 * 
 	 * @param t
 	 * @return
 	 */
 	long digitTreeSum__(Tree<Integer> t) {
-		if(t==null) return 0;
+		if (t == null)
+			return 0;
 
 		Stack<TreeHolder> stack = new Stack<>();
 		TreeHolder d = new TreeHolder(t, t.value);
@@ -170,7 +196,7 @@ public class DigitTreeSum_M {
 	}
 	
 	public static void main(String[] args) {
-		DigitTreeSum_M d = new DigitTreeSum_M();
+		RootToLeafPathsFormedNumbersSum_M d = new RootToLeafPathsFormedNumbersSum_M();
 		Tree<Integer> tree1 = new Tree<>(1);
 		Tree<Integer> tree2 = new Tree<>(0);
 		Tree<Integer> tree3 = new Tree<>(4);

@@ -34,6 +34,7 @@ import kang.interview.programming.util.DataPrinter;
  * 
  * @see https://leetcode.com/problems/sliding-window-maximum/#/description
  * 
+ * @see kang.interview.programming.array.ContainsNearbyDuplicate
  * @author yankang
  *
  */

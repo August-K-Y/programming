@@ -84,7 +84,7 @@ package kang.interview.programming.binarytree;
  * @author Yan Kang
  *
  */
-public class CheckSymmetricTree {
+public class CheckSymmetricTree_M {
 
 	public boolean isSymmetricBinaryTree(TreeNode root) {
 		return root == null || isSymmetric(root.left, root.right);

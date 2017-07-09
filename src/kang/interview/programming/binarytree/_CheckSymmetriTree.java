@@ -2,7 +2,7 @@ package kang.interview.programming.binarytree;
 
 /**
  * 
- * @see kang.interview.programming.binarytree.CheckSymmetricTree
+ * @see kang.interview.programming.binarytree.CheckSymmetricTree_M
  * @author Yan Kang
  *
  */
