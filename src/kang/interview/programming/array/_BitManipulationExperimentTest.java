@@ -29,14 +29,17 @@ public class _BitManipulationExperimentTest {
 		
 		
 //		int num = Integer.MAX_VALUE;
-		int num = 1000;
-		int num2 = num >> 2;
-		int num3 = num >>> 1;
-		int num4 = 1 << 0;
-		System.out.println(num);
-		System.out.println(num2);
-		System.out.println(num3);
-		System.out.println(num4);
+//		int num = 1000;
+//		int num2 = num >> 2;
+//		int num3 = num >>> 1;
+//		int num4 = 1 << 0;
+//		System.out.println(num);
+//		System.out.println(num2);
+//		System.out.println(num3);
+//		System.out.println(num4);
+		
+		System.out.println(-100 % 8);
+		System.out.println(100 % 8);
 	}
 	
 	

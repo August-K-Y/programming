@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * 
  * @see {@link FindAllTwoSumPairs}
- * @see {@link ContinuousSubarraySum}
+ * @see {@link ContinuousSubarraySum_M}
  * 
  * @author yankang
  *

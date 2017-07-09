@@ -1,6 +1,6 @@
 package kang.interview.programming.binarytree;
 
-public class BinaryTreeSuccessor {
+public class BinaryTreeSuccessorAndPredecessor {
 	
 	public TreeNode findSuccessor(TreeNode node) {
 
