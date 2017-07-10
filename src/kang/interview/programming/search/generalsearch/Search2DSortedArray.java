@@ -6,7 +6,8 @@ public class Search2DSortedArray {
 	{
 		int rowNumber = board.length;
 		int colNumber = board[0].length;
-		
+
+		// Start from the top-right corner
 		int row = 0;
 		int col = colNumber - 1;
 		while (row < rowNumber && col >= 0) {
@@ -19,7 +20,6 @@ public class Search2DSortedArray {
 			}
 		}
 		return false;
-		
 	}
 	
 	public static void main(String[] args) {

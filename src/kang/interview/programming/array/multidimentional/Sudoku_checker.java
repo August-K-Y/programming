@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * 
  * @author Yan Kang
- * @see kang.interview.programming.recursive.backtracking.Sudoku_resolver
+ * @see kang.interview.programming.recursive.backtracking.Sudoku_resolver_H
  */
 public class Sudoku_checker {
 	

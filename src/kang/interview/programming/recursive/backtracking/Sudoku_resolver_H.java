@@ -6,9 +6,9 @@ import java.util.Set;
 import kang.interview.programming.util.DataPrinter;
 
 /**
- * Sudoku is a number-placement puzzle. The objective is to fill a 9 × 9 grid
+ * Sudoku is a number-placement puzzle. The objective is to fill a 9 ï¿½ 9 grid
  * with numbers in such a way that each column, each row, and each of the nine 3
- * × 3 sub-grids that compose the grid all contain all of the numbers from 1 to
+ * ï¿½ 3 sub-grids that compose the grid all contain all of the numbers from 1 to
  * 9 one time.
  * 
  * Implement an algorithm that will check whether the given grid of numbers
@@ -40,14 +40,14 @@ import kang.interview.programming.util.DataPrinter;
  * the output should be sudoku2(grid) = false.
  * 
  * The given grid is not correct because there are two 1s in the second column.
- * Each column, each row, and each 3 × 3 subgrid can only contain the numbers 1
+ * Each column, each row, and each 3 ï¿½ 3 subgrid can only contain the numbers 1
  * through 9 one time.
  * 
  * Input/Output
  * 
  * [time limit] 3000ms (java) [input] array.array.char grid
  * 
- * A 9 × 9 array of characters, in which each character is either a digit from
+ * A 9 ï¿½ 9 array of characters, in which each character is either a digit from
  * '1' to '9' or a period '.'.
  * 
  * [output] boolean
@@ -61,7 +61,7 @@ import kang.interview.programming.util.DataPrinter;
  * @see kang.interview.programming.array.multidimentional.Sudoku_checker
  *
  */
-public class Sudoku_resolver {
+public class Sudoku_resolver_H {
 
 	/**
 	 * Check if the Sudoku problem is solvable and if it is the the specified
@@ -93,7 +93,7 @@ public class Sudoku_resolver {
 		int rows = grid.length;
 		int cols = grid[0].length;
 
-		// This is a clear way to change the position represented by two indices
+		// This is the way to change the position represented by two indices
 		// while traveling: if the column index j equals the size of the columns
 		// of the grid, we start a new row by increasing the row index i by one,
 		// and setting the column index j to zero. If the the increased i equals
@@ -191,7 +191,7 @@ public class Sudoku_resolver {
 	}
 
 	public static void main(String[] arg) {
-		Sudoku_resolver s = new Sudoku_resolver();
+		Sudoku_resolver_H s = new Sudoku_resolver_H();
 
 		char[][] grid = { { '.', '.', '.', '1', '4', '.', '.', '2', '.' },
 						  { '.', '.', '6', '.', '.', '.', '.', '.', '.' }, 
