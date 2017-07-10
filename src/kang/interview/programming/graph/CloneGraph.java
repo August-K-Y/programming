@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * 
- * @see kang.interview.programming.honors.ClonePostingsList
+ * @see kang.interview.programming.zhe.ClonePostingsList
  * @author Yan Kang
  *
  */

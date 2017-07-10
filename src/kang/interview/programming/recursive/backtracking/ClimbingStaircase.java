@@ -59,9 +59,9 @@ public class ClimbingStaircase {
 		
 		result = new int[lists.size()][];
 		int i = 0;
-		for(List<Integer> list : lists) {
+		for (List<Integer> list : lists) {
 			result[i] = new int[list.size()];
-			for(int j = 0; j< list.size();j++) {
+			for (int j = 0; j < list.size(); j++) {
 				result[i][j] = list.get(j);
 			}
 			i++;
@@ -129,8 +129,7 @@ public class ClimbingStaircase {
 
 	HashMap<Integer, int[][]> ht = new HashMap<Integer, int[][]>();
 
-
-	
+	// test
 	public static void main(String[] args) {
 		ClimbingStaircase c = new ClimbingStaircase();
 		DataPrinter.print2DArray(c.climbingStaircase(4, 2));

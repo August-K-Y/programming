@@ -3,8 +3,8 @@ package kang.interview.programming.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import kang.interview.programming.honors.Range;
 import kang.interview.programming.linkedlist.LinkedList.ListNode;
+import kang.interview.programming.zhe.Range;
 
 public class DataPrinter {
 	
@@ -31,6 +31,12 @@ public class DataPrinter {
 		}
 		System.out.println();
 	}
+	
+	public static void printArray(String[] array) {
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + ", ");
+		}
+	}
 
 	public static void printList(List<Integer> result) {
 		result.stream().forEach(a -> System.out.print(a + " "));
@@ -43,6 +49,18 @@ public class DataPrinter {
 	}
 	
 	public static void print2DArray(int[][] array) {
+		int lastRows = array.length - 1;
+
+		for (int i = 0; i <= lastRows; i++) {
+			int lastCols = array[i].length - 1;
+			for (int j = 0; j <= lastCols; j++) {
+				System.out.print(array[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public static void print2DArray(char[][] array) {
 		int lastRows = array.length - 1;
 
 		for (int i = 0; i <= lastRows; i++) {
@@ -102,5 +120,6 @@ public class DataPrinter {
 		for (int v : value)
 			perm.add(v);
 		return perm;
-	}
+	} 
+
 }

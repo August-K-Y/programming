@@ -1,4 +1,4 @@
-package kang.interview.programming.honors;
+package kang.interview.programming.zhe;
 
 import kang.interview.programming.util.DataPrinter;
 
