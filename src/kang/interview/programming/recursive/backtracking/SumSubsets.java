@@ -1,10 +1,7 @@
 package kang.interview.programming.recursive.backtracking;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import kang.interview.programming.util.DataPrinter;
@@ -43,6 +40,7 @@ import kang.interview.programming.util.DataPrinter;
  * have a sum of num. It is guaranteed that there are no more than 1000 subsets
  * in the answer.
  * 
+ * @see {@link CombinationSum)
  * @author Yan Kang
  *
  */

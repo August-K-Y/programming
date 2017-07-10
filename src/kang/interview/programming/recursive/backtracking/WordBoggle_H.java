@@ -1,5 +1,6 @@
 package kang.interview.programming.recursive.backtracking;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -55,7 +56,11 @@ import kang.interview.programming.util.DataPrinter;
  * @author Yan Kang
  *
  */
-public class WordBoggle {
+public class WordBoggle_H {
+	
+	/**
+	 * The hard part for this problem is time efficiency.
+	 */
 
 	private static final int[][] shifts = new int[][] { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 1 },
 			{ 1, -1 }, { 1, 0 }, { 1, 1 } };
@@ -63,6 +68,11 @@ public class WordBoggle {
 	private Set<String> dic;
 	private Set<String> mimicTrie;
 
+	/**
+	 * @param board
+	 * @param words
+	 * @return
+	 */
 	String[] wordBoggle(char[][] board, String[] words) {
 
 		int adjustedCapacity = (int) (words.length / 0.75f) + 1;
@@ -122,7 +132,7 @@ public class WordBoggle {
 	}
 
 	public static void main(String[] args) {
-		WordBoggle c = new WordBoggle();
+		WordBoggle_H c = new WordBoggle_H();
 		
 		char[][] board0 = {{'A','Q','A','H'}, 
 				{'A','X','V','W'}, 
@@ -134,4 +144,120 @@ public class WordBoggle {
 		
 		DataPrinter.printArray(c.wordBoggle(board, words));
 	}
+	
+	
+
+	/**
+	 * From CodeFight
+	 * 
+	 * @param board
+	 * @param words
+	 * @return
+	 */
+	String[] wordBoggle_(char[][] board, String[] words) {
+		HashSet<String> set = new HashSet<String>();
+		ArrayList<String> w = new ArrayList<String>();
+		for (String word : words)
+			w.add(word);
+		int rows = board.length;
+		int cols = board[0].length;
+
+		boolean[][] visited = new boolean[rows][cols];
+
+		for (int row = 0; row < rows; row++) {
+			for (int col = 0; col < cols; col++) {
+				formWords(w, set, 0, board, visited, row, col);
+			}
+		}
+
+		int n = set.size();
+		String[] result = new String[n];
+		int index = 0;
+		for (String word : set) {
+			result[index++] = word;
+		}
+		Arrays.sort(result);
+
+		return result;
+	}
+
+	void formWords(ArrayList<String> words, HashSet<String> set, int index, char[][] board, boolean[][] visited,
+			int row, int col) {
+		if (words.size() == 0)
+			return;
+
+		for (int dr = -1; dr <= 1; dr++) {
+			for (int dc = -1; dc <= 1; dc++) {
+				if (isValid(board, row + dr, col + dc) && !visited[row + dr][col + dc]) {
+					ArrayList<String> newWords = new ArrayList<String>();
+					for (String word : words) {
+						if (word.length() > index + 1 && word.charAt(index) == board[row + dr][col + dc]) {
+							newWords.add(word);
+						} else if (word.length() == index + 1 && word.charAt(index) == board[row + dr][col + dc]) {
+							set.add(word);
+						}
+					}
+
+					visited[row + dr][col + dc] = true;
+					formWords(newWords, set, index + 1, board, visited, row + dr, col + dc);
+					visited[row + dr][col + dc] = false;
+				}
+			}
+		}
+	}
+	
+	boolean isValid(char[][] board, int row, int col) {
+		return row >= 0 && row < board.length && col >= 0 && col < board[0].length;
+	}
+	
+	/**
+	 * From CodeFight: Using dynamic programming
+	 * @param board
+	 * @param words
+	 * @return
+	 */
+	String[] wordBoggle__(char[][] board, String[] words) {
+		int h = board.length;
+		int w = board[0].length;
+
+		HashSet<String> ans = new HashSet<>();
+
+		for (String word : words) {
+			for (int i = 0; i < h; i++) {
+				for (int j = 0; j < w; j++) {
+
+					if (word.charAt(0) == board[i][j]) {
+						boolean[][] visited = new boolean[h][w];
+						visited[i][j] = true;
+						if (dp(visited, word, board, i, j, 1))
+							ans.add(word);
+					}
+				}
+			}
+		}
+		String[] ret = new String[ans.size()];
+		ret = ans.toArray(ret);
+		Arrays.sort(ret);
+		return ret;
+	}
+
+	private boolean dp(boolean[][] v, String word, char[][] board, int r, int c, int idx) {
+		if (idx == word.length())
+			return true;
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				if (r + i < 0 || r + i >= board.length || c + j < 0 || c + j >= board[0].length || v[r + i][c + j])
+					continue;
+				if (board[r + i][c + j] != word.charAt(idx))
+					continue;
+				v[r + i][c + j] = true;
+				boolean ret = dp(v, word, board, r + i, c + j, idx + 1);
+				if (ret)
+					return true;
+				v[r + i][c + j] = false;
+			}
+		}
+		return false;
+	}
+
 }
