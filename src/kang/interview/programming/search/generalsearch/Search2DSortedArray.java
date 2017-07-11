@@ -1,5 +1,10 @@
 package kang.interview.programming.search.generalsearch;
 
+/**
+ * 
+ * @author Yan Kang
+ *
+ */
 public class Search2DSortedArray {
 	
 	public boolean isAvailable(int[][] board, int num) 

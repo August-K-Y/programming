@@ -17,11 +17,15 @@ public class FindFirstKeylargerThanGivenValue {
 			} else if (value > node.val){
 				node = node.right;
 			} else {
+				// value < node.val case
+
+				// Note: this node is a candidate for the next value in the tree
+				// of the given value. But, we keeps searching
 				min = node;
 				node = node.left;
 			}
 		}
-		
+
 		return min;
 		
 	}
