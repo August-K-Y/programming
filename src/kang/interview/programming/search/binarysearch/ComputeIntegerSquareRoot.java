@@ -17,6 +17,7 @@ public class ComputeIntegerSquareRoot {
 		int result = -1;
 		int left = 1;
 		int right = value;
+		
 		while (left <= right) {
 			int mid = left + (right - left) / 2;
 			int squre = mid * mid;

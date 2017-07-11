@@ -1,5 +1,11 @@
 package kang.interview.programming.search.binarysearch;
 
+/**
+ * Binary search a sorted array for a given value
+ * 
+ * @author Yan Kang
+ *
+ */
 public class BinarySearch {
 
 	/**
@@ -17,7 +23,10 @@ public class BinarySearch {
 		
 		int left = 0;
 		int right = array.length - 1;
+		
+		// Note: here is left <= right
 		while (left <= right) {
+			// Note: the resulting mid must >= left and < right
 			int mid = left + (right - left) / 2;
 			if (value > array[mid])
 				left = mid + 1;
@@ -28,5 +37,4 @@ public class BinarySearch {
 		}
 		return -1;
 	}
-	
 }
