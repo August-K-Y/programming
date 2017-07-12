@@ -38,8 +38,12 @@ public class _BitManipulationExperimentTest {
 //		System.out.println(num3);
 //		System.out.println(num4);
 		
-		System.out.println(-100 % 8);
-		System.out.println(100 % 8);
+		int k = 8;
+		System.out.println(1 & 1);
+		System.out.println(k ^ 1);
+		
+//		System.out.println(-100 % 8);
+//		System.out.println(100 % 8);
 	}
 	
 	
