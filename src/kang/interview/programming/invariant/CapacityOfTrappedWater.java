@@ -1,5 +1,11 @@
 package kang.interview.programming.invariant;
 
+/**
+ * 
+ * @see {@link MaximumWaterTrappedByPairOfVerticalLines}
+ * @author Yan Kang
+ *
+ */
 public class CapacityOfTrappedWater {
 	
 	public double compute(double[] array) {

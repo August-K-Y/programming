@@ -31,6 +31,7 @@ public class SpiralOrderingOf2DArray {
 		int lastColIndex = cols - offset - 1;
 		int firstRowIndex = offset;
 		int firstColIndex = offset;
+		
 		for (int i = firstColIndex; i <= lastColIndex; i++) {
 			result.add(array[firstRowIndex][i]);
 		}
@@ -47,13 +48,17 @@ public class SpiralOrderingOf2DArray {
 			result.add(array[i][firstColIndex]);
 		}
 
+		// Continue to compute the inner layer of the 2D array
 		compute_bf(array, result, offset + 1);
 	}
 	
 	
 	/**
+	 * This version of algorithm is almost identical to the previous one except
+	 * that this version do the task in more uniform way.
 	 * 
-	 * @param the input 2D array
+	 * @param the
+	 *            input 2D array
 	 * @return
 	 */
 	public List<Integer> compute(int[][] array) {
@@ -75,6 +80,15 @@ public class SpiralOrderingOf2DArray {
 		int lastColIndex = cols - offset - 1;
 		int firstRowIndex = offset;
 		int firstColIndex = offset;
+		
+		// The only difference between this version of the previous version if
+		// the logic control of the four for loops:
+		//
+		//  -- -- --  | 
+		//   |        | 
+		//   |        |
+		//   | -- -- --
+		//
 		for (int i = firstColIndex; i <= lastColIndex - 1; i++) {
 			result.add(array[firstRowIndex][i]);
 		}
@@ -90,7 +104,8 @@ public class SpiralOrderingOf2DArray {
 		for (int i = lastRowIndex; i >= offset + 1; i--) {
 			result.add(array[i][firstColIndex]);
 		}
-
+		
+		// Continue to compute the inner layer of the 2D array
 		compute(array, result, offset + 1);
 	}
 	

@@ -84,7 +84,7 @@ import java.util.Map;
  * Return true if the solution represents the correct solution to the
  * cryptarithm crypt, otherwise return false.
  * 
- * @author YK044346
+ * @author Yan Kang
  *
  */
 public class CryptSolution_Checker {
@@ -99,22 +99,28 @@ public class CryptSolution_Checker {
 		
 		int sum = 0;
 		for (int i = 0; i <= 2; i++) {
-			String entry = crypt[i];
+			String word = crypt[i];
 
 			// Convert char representation of digit to integer representation of
 			// digit
-			int number = map.get(entry.charAt(0)) - 48;
-			
-			// check whether a number with leading zero
-			if (entry.length() > 1 && number == 0)
+			int number = map.get(word.charAt(0)) - 48;
+
+			// check whether a number with leading zero: if the word has length
+			// of larger than 1 and the first character is 0, the word has
+			// leading zero
+			if (word.length() > 1 && number == 0)
 				return false;
 
-			for (int j = 1; j < entry.length(); j++) {
-				number = number * 10 + (map.get(entry.charAt(j)) - 48);
+			// the 48 is the ASCII value for character '0'
+			for (int j = 1; j < word.length(); j++) {
+				number = number * 10 + (map.get(word.charAt(j)) - 48);
 			}
 			if (i <= 1) {
+				// If the first two numbers, add them up
 				sum += number;
 			} else {
+				// Compare the sum of the first two numbers with the thrid
+				// number
 				if (sum == number) {
 					return true;
 				} else {

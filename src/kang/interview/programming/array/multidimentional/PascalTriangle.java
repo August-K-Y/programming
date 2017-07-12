@@ -8,47 +8,28 @@ import kang.interview.programming.util.DataPrinter;
 /**
  * Question 6.19 on Page 92
  * 
+ * 
+ *          1
+ *         1 1
+ *        1 2 1
+ *       1 3 3 1
+ *      1 4 6 4 1
+ *
+ *         |
+ *         V
+ *
+ *      1 
+ *      1 1
+ *      1 2 1
+ *      1 3 3 1
+ *      1 4 6 4 1
+ *         
  * @author Yan Kang
  *
  */
 public class PascalTriangle {
 
 	/**
-	 * 
-	 * @param numRows
-	 * @return
-	 */
-	public List<List<Integer>> compute_bf(int numRows) {
-
-		List<List<Integer>> result = new ArrayList<List<Integer>>();
-
-		List<Integer> prevRow = null;
-		for (int level = 1; level <= numRows; level++) {
-			List<Integer> curr = new ArrayList<Integer>();
-			if (prevRow == null) {
-				prevRow = new ArrayList<>();
-				curr.add(1);
-			} else {
-				for (int j = 0; j < level; j++) {
-
-					// curr[index] = prev[index] + prev[index-1]
-					// But, should deal with corner cases when index at current
-					// level is index = 0 and index = level - 1
-					int firstH = j - 1 >= 0 ? prevRow.get(j - 1) : 0;
-					int secH = j < level - 1 ? prevRow.get(j) : 0;
-					int value = firstH + secH;
-					curr.add(value);
-				}
-			}
-			result.add(curr);
-			prevRow = curr;
-		}
-		return result;
-	}
-	
-	/**
-	 * Optimized version of compute_bf
-	 * 
 	 * @param numRows
 	 * @return
 	 */
@@ -57,6 +38,11 @@ public class PascalTriangle {
 		for (int i = 0; i < numRows; i++) {
 			List<Integer> curr = new ArrayList<>();
 			for (int j = 0; j <= i; j++) {
+
+				// This is core part of the algorithm:
+				// for each cell (i, j) in a row, if it is neither the first
+				// column nor the last column, It is the sum of cell (i - 1, j -
+				// 1) and cell (i - 1, j). Otherwise, it should be 1.
 				curr.add((j > 0 && j < i) ? result.get(i - 1).get(j - 1) + result.get(i - 1).get(j) : 1);
 			}
 			result.add(curr);
@@ -97,13 +83,10 @@ public class PascalTriangle {
 
 	public static void main(String[] args) {
 		PascalTriangle p = new PascalTriangle();
-		List<List<Integer>> result = p.compute_bf(5);
-		DataPrinter.print2DList(result);
-		
-		System.out.println();
+
 		List<List<Integer>> result2 = p.compute(5);
 		DataPrinter.print2DList(result2);
-		
+
 		System.out.println();
 		List<Integer> result3 = p.compute_NthRow(5);
 		DataPrinter.printList(result3);

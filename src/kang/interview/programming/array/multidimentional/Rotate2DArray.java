@@ -35,62 +35,63 @@ import kang.interview.programming.util.DataPrinter;
  * 
  * [output] array.array.integer
  * 
- * @author YK044346
+ * @author Yan Kang
  *
  */
 public class Rotate2DArray {
 
+	/**
+	 * 
+	 * @param array
+	 */
 	public void rotate(int[][] array) {
 		rotate(array, 0);
 	}
 
-	/**
-	 * 
-	 * @param array
-	 * @param indent
-	 */
-	private void rotate(int[][] array, int indent) {
+	private void rotate(int[][] array, int offset) {
 
-		int length = array.length - 2 * indent;
+		int length = array.length - 2 * offset;
 		if (length <= 0)
 			return;
 
-		int lastRows = array.length - indent - 1; // last row index
-		int lastCols = array[0].length - indent - 1; // last col index
+		int lastRows = array.length - offset - 1; // last row index
+		int lastCols = array[0].length - offset - 1; // last col index
 
 		int[] backup = new int[length];
 		for (int i = 0; i < length; i++) {
-			backup[i] = array[indent][i + indent];
+			backup[i] = array[offset][i + offset];
 		}
 
-		for (int i = lastCols, j = indent; i >= indent && j <= lastRows; i--, j++) {
-			array[indent][i] = array[j][indent];
+		for (int i = lastCols, j = offset; i >= offset && j <= lastRows; i--, j++) {
+			array[offset][i] = array[j][offset];
 		}
 
-		for (int i = indent, j = indent; i <= lastRows && j <= lastCols; i++, j++) {
-			array[i][indent] = array[lastRows][j];
+		for (int i = offset, j = offset; i <= lastRows && j <= lastCols; i++, j++) {
+			array[i][offset] = array[lastRows][j];
 		}
 
-		for (int i = indent, j = lastRows; i <= lastCols && j >= indent; i++, j--) {
+		for (int i = offset, j = lastRows; i <= lastCols && j >= offset; i++, j--) {
 			array[lastRows][i] = array[j][lastCols];
 		}
 
-		for (int i = indent, j = 0; i <= lastRows && j < length; i++, j++) {
+		for (int i = offset, j = 0; i <= lastRows && j < length; i++, j++) {
 			array[i][lastCols] = backup[j];
 		}
-		rotate(array, indent + 1);
+		
+		// Continue to compute the inner layer of the 2D array
+		rotate(array, offset + 1);
 	}
 
-	public void rotate2(int[][] array) {
-		rotate2(array, 0);
-	}
 
 	/**
 	 * 
 	 * @param array
-	 * @param offset
 	 */
-	private void rotate2(int[][] array, int offset) {
+	public void rotate_(int[][] array) {
+		rotate_(array, 0);
+	}
+
+	private void rotate_(int[][] array, int offset) {
 
 		int length = array.length - 2 * offset;
 		if (length <= 0)
@@ -109,18 +110,19 @@ public class Rotate2DArray {
 			array[i][lastColIndex] = temp;
 		}
 
-		rotate2(array, offset + 1);
+		// Continue to compute the inner layer of the 2D array
+		rotate_(array, offset + 1);
 	}
 
 	public static void main(String[] args) {
 		Rotate2DArray a = new Rotate2DArray();
 		int[][] array1 = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
-		a.rotate2(array1);
+		a.rotate_(array1);
 		DataPrinter.print2DArray(array1);
 
 		System.out.println();
 		int[][] array2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-		a.rotate2(array2);
+		a.rotate_(array2);
 		DataPrinter.print2DArray(array2);
 	}
 }
