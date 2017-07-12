@@ -1,4 +1,4 @@
-package kang.interview.programming.invariant;
+package kang.interview.programming.array;
 
 import java.util.ArrayList;
 import java.util.HashSet;

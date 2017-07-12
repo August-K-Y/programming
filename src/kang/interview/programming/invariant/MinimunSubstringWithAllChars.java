@@ -23,6 +23,8 @@ public class MinimunSubstringWithAllChars {
 		if(t ==null || t.length() ==0)
 			return "";
 
+		// the map tracks how many times each character required by t appears in
+		// substring of s with a specific window size
 		Map<Character, Integer> map = toMap(t);
 		int Left = -1;
 		int Right = -1;
@@ -39,12 +41,13 @@ public class MinimunSubstringWithAllChars {
 		for (; r < chars.length; r++) {
 
 			if (map.containsKey(chars[r])) {
-				int v  = map.get(chars[r]);
-				if(v == 0) count++;
+				int v = map.get(chars[r]);
+				
+				// a new required character come in the range of the window
+				if (v == 0) count++;
 				map.put(chars[r], v + 1);
 			}
 
-			// while(allExist(map)) {
 			while (count == t.length()) {
 				
 				if (r - l < minLength) {
@@ -55,6 +58,8 @@ public class MinimunSubstringWithAllChars {
 				
 				if (map.containsKey(chars[l])) {
 					int v  = map.get(chars[l]);
+					
+					// a required character come out of the range of the window
 					if(v == 1) count--;
 					map.put(chars[l], v - 1);
 				}
@@ -65,14 +70,6 @@ public class MinimunSubstringWithAllChars {
 		System.out.println(Left + " " + Right);
 		return s.substring(Left, Right + 1);
 	}
-
-//	private boolean allExists(Map<Character, Integer> map) {
-//		for (char c : map.keySet()) {
-//			if (map.get(c) <= 0)
-//				return false;
-//		}
-//		return true;
-//	}
 
 	private Map<Character, Integer> toMap(String t) {
 		Map<Character, Integer> map = new HashMap<>();

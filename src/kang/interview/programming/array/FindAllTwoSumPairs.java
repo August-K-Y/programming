@@ -36,7 +36,15 @@ public class FindAllTwoSumPairs {
 		public int number2;
 	}
 
+	/**
+	 * Not quite sure if this is 100% right
+	 * @param array
+	 * @param sum
+	 * @return
+	 */
 	public List<Pair> findAllTwoSum(int[] array, int sum) {
+		// the map tracks integer that has a partner to form pair whose sum
+		// equals to the given number.
 		Map<Integer, Boolean> track = new HashMap<>();
 		for (int a : array) {
 			if (track.containsKey(a)) {
