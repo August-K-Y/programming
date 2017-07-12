@@ -17,7 +17,7 @@ package kang.interview.programming.array.deleteduplicates;
  * http://javarevisited.blogspot.com/2015/06/top-20-array-interview-questions-
  * and-answers.html#ixzz4gYA83DDi
  * 
- * @author YK044346
+ * @author Yan Kang
  *
  */
 public class RemoveDuplicatesInPlace {
@@ -28,12 +28,14 @@ public class RemoveDuplicatesInPlace {
 			return 1;
 
 		int prev = array[0];
-		int pos = 1; // pointer point to the position to be filled
+		
+		// pointer point to the position to be filled
+		int pos = 1; 
 		for (int i = 1; i < array.length; i++) {
 
 			// if current element is equal to previous element, skip current
 			// element. Otherwise, put this element to the position specified by
-			// pos.
+			// pos pointer.
 			if (array[i] != prev) {
 				array[pos++] = array[i];
 				prev = array[i];

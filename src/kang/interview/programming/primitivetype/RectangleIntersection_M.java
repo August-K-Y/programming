@@ -1,6 +1,6 @@
 package kang.interview.programming.primitivetype;
 
-public class RectangleIntersection {
+public class RectangleIntersection_M {
 
 	public static class Rectangle {
 		public int x;

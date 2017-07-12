@@ -20,10 +20,10 @@ package kang.interview.programming.search.binarysearch;
  * and-answers.html#ixzz4gYM1Uxnt
  *
  */
-public class SearchCyclicallySortedArray {
+public class SearchMinimumInRotatedSortedArray {
 
 	/**
-	 * brute-force:
+	 * brute-force: O(n)
 	 * 
 	 * @param array
 	 * @return
@@ -67,15 +67,24 @@ public class SearchCyclicallySortedArray {
 	 * @param array
 	 * @return
 	 */
-	public int search_bs2(int[] array) {
+	public int search_minmum_bs2(int[] array) {
 		int left = 0;
 		int right = array.length - 1;
 		while (left < right) {
 			int mid = left + (right - left) / 2;
 
 			if (array[mid] > array[right]) {
+				// this is abnormal case where the rotate point happens. The
+				// minimum value must be on the right side of mid excluding
+				// array[mid].
 				left = mid + 1;
 			} else {
+				// array[mid] <= array[right] case. 
+
+				// This is the normal case of a sorted array, the minimum value
+				// must be on the left size of the mid including array[mid].
+
+				// This why we set right = mid rather then set right = mid + 1
 				right = mid;
 			}
 		}

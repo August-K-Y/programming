@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class SortAlmostSortedArray {
+public class SortAlmostSortedArray_M {
 
 	public List<Integer> sortAlmostSortedArray(List<Integer> sequence, int k) {
 
@@ -25,7 +25,7 @@ public class SortAlmostSortedArray {
 	}
 	public static void main(String[] args) {
 
-		SortAlmostSortedArray r = new SortAlmostSortedArray();
+		SortAlmostSortedArray_M r = new SortAlmostSortedArray_M();
 
 		List<Integer> list = new ArrayList<>();
 		list.add(3);

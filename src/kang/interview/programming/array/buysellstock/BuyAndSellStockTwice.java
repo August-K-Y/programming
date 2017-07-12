@@ -2,13 +2,18 @@ package kang.interview.programming.array.buysellstock;
 
 public class BuyAndSellStockTwice {
 	
+	/**
+	 * brute-force: O(N^2) time complexity
+	 * 
+	 * @param prices
+	 * @return
+	 */
 	public int buyAndSellStockTwice(int[] prices) {
 		int minPriceSoFar = prices[0];
-		int maxProfit = 0;
+		int maxProfits = 0;
 		int maxProfits1 = 0;
 		for (int i = 1; i < prices.length; i++) {
 			maxProfits1 = Math.max(maxProfits1, prices[i] - minPriceSoFar);
-			maxProfit = Math.max(maxProfit, maxProfits1);
 			minPriceSoFar = Math.min(minPriceSoFar, prices[i]);
 			if (i + 1 < prices.length) {
 				int minPriceSoFar2 = prices[i + 1];
@@ -17,10 +22,20 @@ public class BuyAndSellStockTwice {
 					maxProfits2 = Math.max(maxProfits2, prices[j] - minPriceSoFar2);
 					minPriceSoFar2 = Math.min(minPriceSoFar2, prices[j]);
 				}
-				maxProfit = Math.max(maxProfit, maxProfits1 + maxProfits2);
+				maxProfits = Math.max(maxProfits, maxProfits1 + maxProfits2);
 			}
 		}
-		return maxProfit;
+		return maxProfits;
+	}
+
+	/**
+	 * O(N) time complexity
+	 * 
+	 * @param prices
+	 * @return
+	 */
+	public int buyAndSellStockTwice_(int[] prices) {
+		return 0;
 	}
 
 	public static void main(String[] arg) {

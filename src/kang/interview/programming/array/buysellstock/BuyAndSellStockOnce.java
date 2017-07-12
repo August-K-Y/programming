@@ -3,13 +3,13 @@ package kang.interview.programming.array.buysellstock;
 public class BuyAndSellStockOnce {
 
 	public int buyAndSellStockOnce(int[] prices) {
-		int minPriceSoFar = prices[0];
-		int maxProfits = 0;
+		int minsofar = prices[0];
+		int maxprofits = 0;
 		for (int i = 1; i < prices.length; i++) {
-			maxProfits = Math.max(maxProfits, prices[i] - minPriceSoFar);
-			minPriceSoFar = Math.min(minPriceSoFar, prices[i]);
+			maxprofits = Math.max(maxprofits, prices[i] - minsofar);
+			minsofar = Math.min(minsofar, prices[i]);
 		}
-		return maxProfits;
+		return maxprofits;
 	}
 
 	public static void main(String[] arg) {

@@ -1,5 +1,11 @@
 package kang.interview.programming.invariant;
 
+/**
+ * Elements of Programming. P71 variant
+ * 
+ * @author Yan Kang
+ *
+ */
 public class LongestSubarrayWithEqualElements {
 
 	/**
@@ -10,13 +16,13 @@ public class LongestSubarrayWithEqualElements {
 	public int findLongestSubarrayWithEqualElements(int array[]) {
 
 		int longestSoFar = 0;
-		int current = 1;
+		int count = 1;
 		for (int i = 1; i < array.length; i++) {
 			if (array[i - 1] == array[i]) {
-				current++;
+				count++;
 			} else {
-				longestSoFar = Math.max(current, longestSoFar);
-				current = 1;
+				longestSoFar = Math.max(count, longestSoFar);
+				count = 1;
 			}
 		}
 		return longestSoFar;
