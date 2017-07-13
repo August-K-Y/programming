@@ -52,6 +52,7 @@ public class LongestIncreasingSubsequence {
 	 * <ul>
 	 * <li>L(i) = 1 + max( L(j) ) where 0 <= j < i and arr[j] < arr[i]
 	 * <ul>
+	 * </br>
 	 * <li>literately, this means looking through all elements that are before
 	 * element i and with values smaller than that of element i for the one with
 	 * maximum< LIS value</li>
