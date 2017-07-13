@@ -9,7 +9,7 @@ package kang.interview.programming.recursive.dynamicprogramming;
  * @author yankang
  *
  */
-public class LongestImcreasingSubsequence {
+public class LongestIncreasingSubsequence {
 	
 	/**
 	 * The brute force recursion version of the algorithm. It's time complexity
@@ -95,7 +95,7 @@ public class LongestImcreasingSubsequence {
 	}
 
 	public static void main(String args[]) {
-		LongestImcreasingSubsequence alg = new LongestImcreasingSubsequence();
+		LongestIncreasingSubsequence alg = new LongestIncreasingSubsequence();
 		int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60, 65, 67 };
 		System.out.println("Length of lis is " + alg.LIS_bf(arr));
 		System.out.println("Length of lis is " + alg.LIS_bottomup(arr));
