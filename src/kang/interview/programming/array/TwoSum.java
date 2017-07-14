@@ -5,7 +5,7 @@ import java.util.Set;
 
 /**
  * 
- * @see {@link FindAllTwoSumPairs}
+ * @see {@link FindAllParisOfTwoSum}
  * @see {@link ContinuousSubarraySum_M}
  * 
  * @author yankang

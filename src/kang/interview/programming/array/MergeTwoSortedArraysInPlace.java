@@ -1,6 +1,6 @@
 package kang.interview.programming.array;
 
-public class MergeSortedArrays {
+public class MergeTwoSortedArraysInPlace {
 
 	/**
 	 * 
@@ -43,7 +43,7 @@ public class MergeSortedArrays {
 		System.out.println("run");
 		int[] aArray = { 1, 2, 4, 6, 7, 12, 14, 16, 17, 21, 32, 44, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		int[] bArray = { 1, 7, 8, 11, 12, 18, 19, 21, 22 };
-		MergeSortedArrays ora = new MergeSortedArrays();
+		MergeTwoSortedArraysInPlace ora = new MergeTwoSortedArraysInPlace();
 		int length = ora.mergeSortedArrays(aArray, 13, bArray, 9);
 		System.out.println("size: " + length);
 		for (int i = 0; i < length; i++) {

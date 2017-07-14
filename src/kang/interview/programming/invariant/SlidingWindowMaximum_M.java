@@ -52,8 +52,54 @@ public class SlidingWindowMaximum_M {
 	 */
 	
 	
-	
-	
+//	/**
+//	 * 
+//	 */
+//	public int[] maxSlidingWindow_bf(int[] nums, int w) {
+//		if (w <= 0)
+//			return new int[0];
+//
+//		// compute the number of sliding windows and create an array to hold max
+//		// values for these windows
+//		int size = nums.length - w + 1;
+//		int[] max = new int[size];
+//		
+//		int m = Integer.MIN_VALUE;
+//		
+//		// This is the initialization of the window. After the initialization, l
+//		// variable points to the left boundary of the window while r variable
+//		// point to the one position after the right boundary of the window
+//		// (Note, this is a convenient design when the window reaches the end of
+//		// the array, the sliding will terminate automatically, no additional
+//		// work is needed to check the array boundary).
+//		int l = 0;
+//		int r = 0;
+//		for (; r < w; r++) {
+//			// do some work on the elements while initializing the window
+//			m = Math.max(m, nums[r]);
+//		}
+//		int c = 0;
+//		max[c++] = m;
+//	
+//		while (r < nums.length) {
+//			// remove the first element in old new window from the priority
+//			// queue and add new element from the new window to the priority
+//			// queue. 
+//			
+//			// Since l points to the left boundary of the old window,
+//			// q.remove(nums[l++]) first remove this element from the priority
+//			// queue and move the left boundary one step to the right.
+//			l++;
+//			if (l % w == 0)
+//				m = nums[l];
+//			
+//			q.remove(nums[l++]);
+//			q.add(nums[r++]);
+//			max[c++] = q.peek();
+//		}
+//		return max;
+//		
+//	}
 	
 
 	/**
@@ -61,17 +107,18 @@ public class SlidingWindowMaximum_M {
 	 * algorithm takes: N*O(logk)
 	 * 
 	 * @param nums
-	 * @param k
+	 * @param w the weight of the sliding window
 	 * @return
 	 */
-	public int[] maxSlidingWindow(int[] nums, int k) {
-		if (k <= 0)
+	public int[] maxSlidingWindow_(int[] nums, int w) {
+		if (w <= 0)
 			return new int[0];
 
-		// 
-		int size = nums.length - k +1;
-		int[] res = new int[size];
-		
+		// compute the number of sliding windows and create an array to hold max
+		// values for these windows
+		int size = nums.length - w + 1;
+		int[] max = new int[size];
+
 		// Maximum priority queue to track the largest element in each window
 		PriorityQueue<Integer> q = new PriorityQueue<>(Collections.reverseOrder());
 
@@ -83,12 +130,12 @@ public class SlidingWindowMaximum_M {
 		// work is needed to check the array boundary).
 		int l = 0;
 		int r = 0;
-		for (; r < k; r++) {
+		for (; r < w; r++) {
 			// do some work on the elements while initializing the window
 			q.add(nums[r]);
 		}
 		int c = 0;
-		res[c++] = q.peek();
+		max[c++] = q.peek();
 	
 		while (r < nums.length) {
 			// remove the first element in old new window from the priority
@@ -105,52 +152,56 @@ public class SlidingWindowMaximum_M {
 			// element to the priority queue and move one step of r further. 
 			q.remove(nums[l++]);
 			q.add(nums[r++]);
-			res[c++] = q.peek();
+			max[c++] = q.peek();
 		}
-		return res;
+		return max;
 	}
 
 	/**
 	 * From LeetCode: O(n) solution with two simple pass in the array.</br>
 	 * 
-	 * For Example: A = [2,1,3,4,6,3,8,9,10,12,56], w=4
+	 * For Example: A = [2,7,3,4,6,3,8,9,10,12,56], w=4
 	 * 
 	 * partition the array in blocks of size w=4. The last block may have less
-	 * then w. 2, 1, 3, 4 | 6, 3, 8, 9 | 10, 12, 56|
+	 * then w. 2, 7, 3, 4 | 6, 3, 8, 9 | 10, 12, 56|
 	 * 
 	 * Traverse the list from start to end and calculate max_so_far. Reset max
 	 * after each block boundary (of w elements). 
-	 * left_max[] = 2, 2, 3, 4 | 6, 6, 8, 9 | 10, 12, 56
+	 * left_max[] = 2, 7, 7, 7 | 6, 6, 8, 9 | 10, 12, 56
 	 * 
 	 * Similarly calculate max in future by traversing from end to start.
-	 * right_max[] = 4, 4, 4, 4 | 9, 9, 9, 9 | 56, 56, 56
+	 * right_max[] = 7, 7, 4, 4 | 9, 9, 9, 9 | 56, 56, 56
 	 * 
 	 * now, sliding max at each position i in current window, sliding-max(i) =
 	 * max{right_max(i), left_max(i+w-1)} 
-	 * sliding_max = 4, 6, 6, 8, 9, 10, 12, 56
+	 * sliding_max = 7, 7, 6, 8, 9, 10, 12, 56
 	 * 
-	 * @param in
-	 * @param w
+	 * Rational behind this logic:
+	 * 
+	 * 
+	 * 
+	 * @param num
+	 * @param w the weight of the sliding window
 	 * @return
 	 * @see https://discuss.leetcode.com/topic/26480/o-n-solution-in-java-with-
 	 *      two-simple-pass-in-the-array
 	 */
-	public static int[] maxSlidingWindow_(int[] in, int w) {
-		final int[] max_left = new int[in.length];
-		final int[] max_right = new int[in.length];
+	public int[] maxSlidingWindow__(int[] num, int w) {
+		final int[] max_left = new int[num.length];
+		final int[] max_right = new int[num.length];
 
-		max_left[0] = in[0];
-		max_right[in.length - 1] = in[in.length - 1];
+		max_left[0] = num[0];
+		max_right[num.length - 1] = num[num.length - 1];
 
-		for (int i = 1; i < in.length; i++) {
-			max_left[i] = (i % w == 0) ? in[i] : Math.max(max_left[i - 1], in[i]);
+		for (int i = 1; i < num.length; i++) {
+			max_left[i] = (i % w == 0) ? num[i] : Math.max(max_left[i - 1], num[i]);
 
-			final int j = in.length - i - 1;
-			max_right[j] = (j % w == 0) ? in[j] : Math.max(max_right[j + 1], in[j]);
+			final int j = num.length - i - 1;
+			max_right[j] = ((j + 1) % w == 0) ? num[j] : Math.max(max_right[j + 1], num[j]);
 		}
-
-		final int[] sliding_max = new int[in.length - w + 1];
-		for (int i = 0, j = 0; i + w <= in.length; i++) {
+		
+		final int[] sliding_max = new int[num.length - w + 1];
+		for (int i = 0, j = 0; i + w <= num.length; i++) {
 			sliding_max[j++] = Math.max(max_right[i], max_left[i + w - 1]);
 		}
 
@@ -158,11 +209,14 @@ public class SlidingWindowMaximum_M {
 	}
 	
 	public static void main(String[] args) {
-		int[] nums = { 1, 3, -1, -3, 5, 3, 6, 7 };
-		int k = 3;
+		
+		int[] nums = { 2, 7, 3, 4, 6, 3, 8, 9, 10, 12, 56 };
+		// int[] nums = { 1, 3, -1, -3, 5, 3, 6, 7 };
+		int k = 4;
 		
 		SlidingWindowMaximum_M s = new SlidingWindowMaximum_M();
-		int[] res = s.maxSlidingWindow(nums, k);
+		int[] res = s.maxSlidingWindow__(nums, k);
+		
 		DataPrinter.printArray(res);
 	}
 }

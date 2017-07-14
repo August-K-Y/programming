@@ -32,7 +32,7 @@ import kang.interview.programming.util.DataPrinter;
  * items-o1-extra-space/
  *
  */
-public class RearrangeArrayInAlternatingPosNegNumber {
+public class RearrangeArrayInAlternatingPosNegNumber_M {
 	
 	/*
 	 * TODO: Any elegant way using O(n) space???
@@ -149,7 +149,7 @@ public class RearrangeArrayInAlternatingPosNegNumber {
 	}
 
 	public static void main(String[] args) {
-		RearrangeArrayInAlternatingPosNegNumber s = new RearrangeArrayInAlternatingPosNegNumber();
+		RearrangeArrayInAlternatingPosNegNumber_M s = new RearrangeArrayInAlternatingPosNegNumber_M();
 		int[] array = { 1, 2, 3, -4, -1, 4 };
 		int[] result = s.rearrange(array);
 		DataPrinter.printArray(result);
