@@ -22,7 +22,7 @@ import java.util.Map;
  * @author Yan Kang
  *
  */
-public class ContinuousSubarraySum_M {
+public class ContinuousSubarrayKTimesOfSum_M {
 
 	// Pitfalls: lots of corner cases to be considered, e.g., when k == 0
 
@@ -86,7 +86,7 @@ public class ContinuousSubarraySum_M {
 	}
 	
 	public static void main(String[] args) {
-		ContinuousSubarraySum_M s = new ContinuousSubarraySum_M();
+		ContinuousSubarrayKTimesOfSum_M s = new ContinuousSubarrayKTimesOfSum_M();
 		int[] input1 = { 23, 2, 4, 6, 7 }; 
 		int k1 = 6, k2 = -6, k3 = 0;
 		

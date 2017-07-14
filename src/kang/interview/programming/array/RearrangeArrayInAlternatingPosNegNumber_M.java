@@ -8,14 +8,19 @@ import kang.interview.programming.util.DataPrinter;
  * 
  * Given an array of positive and negative numbers, arrange them in an alternate
  * fashion such that every positive number is followed by negative and
- * vice-versa maintaining the order of appearance. Number of positive and
- * negative numbers need not be equal. If there are more positive numbers they
- * appear at the end of the array. If there are more negative numbers, they too
- * appear in the end of the array. This is also a difficult array problem to
- * solve and you need lot of practice to solve this kind of problems in real
- * interviews, especially when you see it first time. If you have time
- * constraint then always attempt these kind of questions once you are done with
- * easier ones. Example:
+ * vice-versa maintaining the order of appearance. (Note, you should maintain
+ * the order of appearance)
+ * 
+ * Number of positive and negative numbers need not be equal. If there are more
+ * positive numbers they appear at the end of the array. If there are more
+ * negative numbers, they too appear in the end of the array.
+ * 
+ * This is also a difficult array problem to solve and you need lot of practice
+ * to solve this kind of problems in real interviews, especially when you see it
+ * first time. If you have time constraint then always attempt these kind of
+ * questions once you are done with easier ones.
+ * 
+ * Example:
  * 
  * Input: {1, 2, 3, -4, -1, 4} Output: {-4, 1, -1, 2, 3, 4}
  * 

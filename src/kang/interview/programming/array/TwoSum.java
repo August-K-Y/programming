@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * 
  * @see {@link FindAllParisOfTwoSum}
- * @see {@link ContinuousSubarraySum_M}
+ * @see {@link ContinuousSubarrayKTimesOfSum_M}
  * 
  * @author yankang
  *
