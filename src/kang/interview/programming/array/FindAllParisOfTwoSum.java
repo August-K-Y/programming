@@ -47,24 +47,32 @@ public class FindAllParisOfTwoSum {
 	public List<Pair> findAllTwoSum(int[] array, int sum) {
 		// the map tracks integer that has a partner to form pair whose sum
 		// equals to the given number.
-		Map<Integer, Boolean> track = new HashMap<>();
+		Map<Integer, Boolean> tracker = new HashMap<>();
 		for (int a : array) {
-			if (track.containsKey(a)) {
-				//
-				track.put(a, true);
+			if (tracker.containsKey(a)) {
+				// If the picked element contained in the tracker. It means that
+				// it has been paired with some other element appearing before
+				// it.
+				
+				// We set element a to be true to indicate that a pair (a, sum -
+				// a) has been found and since an element can only be paired
+				// with one other distinct element (a and sum - a is one-to-one
+				// matching), we no need to the track the partner of a and thus
+				// we are using else clause here.
+				tracker.put(a, true);
 			} else {
-				// Start tracking the other part of a pair if it has not been
-				// tracked yet. If it has already been tracked, we do not want
-				// to overwrite it's value.
-				if (!track.containsKey(sum - a)) {
-					track.put(sum - a, false);
+				// Start tracking the other part (i.e., sum - a) of the pair if
+				// it has not been tracked yet. If it has already been tracked,
+				// we do not want to overwrite it's value.
+				if (!tracker.containsKey(sum - a)) {
+					tracker.put(sum - a, false);
 				}
 			}
 		}
 
 		List<Pair> pairs = new ArrayList<>();
-		for (int key : track.keySet()) {
-			if (track.get(key)) {
+		for (int key : tracker.keySet()) {
+			if (tracker.get(key)) {
 				Pair pair = new Pair(sum - key, key);
 				pairs.add(pair);
 			}
