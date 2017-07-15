@@ -120,6 +120,10 @@ public class DataPrinter {
 		for (int v : value)
 			perm.add(v);
 		return perm;
-	} 
+	}
+
+	public static void println(int num) {
+		System.out.println(num);
+	}
 
 }
