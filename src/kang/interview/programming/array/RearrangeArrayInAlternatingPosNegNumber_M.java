@@ -27,20 +27,13 @@ import kang.interview.programming.util.DataPrinter;
  * Input: {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8} output: {-5, 5, -2, 2, -8, 4, 7, 1,
  * 8, 0}
  * 
- * 
  * Read more:
- * http://javarevisited.blogspot.com/2015/06/top-20-array-interview-questions-
- * and-answers.html#ixzz4gjUnlRXc
- * 
- * Read more:
- * http://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-
- * items-o1-extra-space/
- *
+ * http://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/
  */
 public class RearrangeArrayInAlternatingPosNegNumber_M {
 	
 	/*
-	 * TODO: Any elegant way using O(n) space???
+	 * TODO: Any elegant way using O(n) space??? this algorithm has bug, fix it
 	 */
 	public int[] rearrange(int[] array) {
 		
@@ -96,21 +89,24 @@ public class RearrangeArrayInAlternatingPosNegNumber_M {
 	 * 
 	 * @param array
 	 */
-	public void rearrange_(int[] array) {
+	public int[] rearrange_(int[] array) {
 
 		for (int i = 0; i < array.length; i++) {
 			if (array[i] >= 0 && i % 2 == 0) {
 				int index = find(array, i + 1, false);
 				if (index == -1)
-					return;
+					return array;
+				// Since need to maintain the order of appearance, we rotate the
+				// array rather than swap it
 				rotate(array, i, index);
 			} else if (array[i] < 0 && i % 2 == 1) {
 				int index = find(array, i + 1, true);
 				if (index == -1)
-					return;
+					return array;
 				rotate(array, i, index);
 			}
 		}
+		return array;
 	}
 	
 	/**
@@ -140,35 +136,96 @@ public class RearrangeArrayInAlternatingPosNegNumber_M {
 	 * 
 	 * @param array
 	 *            the array
-	 * @param start
-	 *            the start index
+	 * @param outofplace
+	 *            the index of the position where the out-of-place happens
 	 * @param end
 	 *            the end index
 	 */
-	private void rotate(int[] array, int start, int end) {
+	private void rotate(int[] array, int outofplace, int end) {
 		int temp = array[end];
-		for (int i = end - 1; i >= start; i--) {
+		for (int i = end - 1; i >= outofplace; i--) {
 			array[i + 1] = array[i];
 		}
-		array[start] = temp;
+		array[outofplace] = temp;
 	}
+	
+	
+	/**
+	 * 
+	 * @param arr
+	 * @param n
+	 */
+    void rearrange__(int[] arr, int n) 
+    {
+        int outofplace = -1;
+ 
+        for (int index = 0; index < n; index++) 
+        {
+            if (outofplace >= 0) 
+            {
+                // find the item which must be moved into the out-of-place
+                // entry if out-of-place entry is positive and current
+                // entry is negative OR if out-of-place entry is negative
+                // and current entry is negative then right rotate
+                //
+                // [...-3, -4, -5, 6...] -->   [...6, -3, -4, -5...]
+                //      ^                          ^
+                //      |                          |
+                //     outofplace      -->      outofplace
+                //
+                if (((arr[index] >= 0) && (arr[outofplace] < 0))
+                        || ((arr[index] < 0) && (arr[outofplace] >= 0))) 
+                {
+                    rightrotate(arr, n, outofplace, index);
+ 
+                    // the new out-of-place entry is now 2 steps ahead
+                    if (index - outofplace > 2) 
+                        outofplace = outofplace + 2;
+                    else
+                        outofplace = -1;
+                }
+            }
+ 
+            // if no entry has been flagged out-of-place
+            if (outofplace == -1) 
+            {
+                // check if current entry is out-of-place
+                if (((arr[index] >= 0) && ((index & 0x01)==0))
+                        || ((arr[index] < 0) && (index & 0x01)==1))
+                    outofplace = index;
+            }
+        }
+    }
+    
+	// Utility function to right rotate all elements 
+    // between [outofplace, cur]
+    void rightrotate(int arr[], int n, int outofplace, int cur) 
+    {
+        int tmp = arr[cur];
+        for (int i = cur; i > outofplace; i--)
+            arr[i] = arr[i - 1];
+        arr[outofplace] = tmp;
+    }
 
 	public static void main(String[] args) {
-		RearrangeArrayInAlternatingPosNegNumber_M s = new RearrangeArrayInAlternatingPosNegNumber_M();
-		int[] array = { 1, 2, 3, -4, -1, 4 };
-		int[] result = s.rearrange(array);
-		DataPrinter.printArray(result);
-		System.out.println();
-		int[] array2 = { -5, -2, 5, 2, 4, 7, 1, 8, 0, -8 };
-		result = s.rearrange(array2);
-		DataPrinter.printArray(result);
-		System.out.println("");
-		System.out.println("-------------------");
-		s.rearrange_(array);
-		DataPrinter.printArray(array);
-		System.out.println();
-		s.rearrange_(array2);
-		DataPrinter.printArray(array2);
+		
+		int[][] testData = {{ 1, 2, 3, -4, -1, 4 },
+							{ -5, -2, 5, 2, 4, 7, 1, 8, 0, -8 },
+							{ -5, 3, 4, 5, -6, -2, 8, 9, -1, -4 },
+							{ -5, -3, -4, -5, -6, 2, 8, 9, 1, 4 },
+							{ 5, 3, 4, 2, 1, -2, -8, -9, -1, -4 },
+							{ -5, 3, -4, -7, -1, -2, -8, -9, 1, -4 },
+							{ -5, -2, 5, 2, 4, 7, 1, 8, 0, -8 }};
+		
+		runTest(testData);
 	}
-
+	
+	public static void runTest(int[][] testData){
+		RearrangeArrayInAlternatingPosNegNumber_M s = new RearrangeArrayInAlternatingPosNegNumber_M();
+		for (int[] test : testData) {
+			int[] result = s.rearrange_(test);
+			DataPrinter.printArray(result);
+			System.out.println();
+		}
+	}
 }
