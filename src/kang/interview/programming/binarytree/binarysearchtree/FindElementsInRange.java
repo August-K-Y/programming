@@ -7,7 +7,7 @@ import kang.interview.programming.binarytree.TreeNode;
 import kang.interview.programming.binarytree.ZTestDataCreator;
 import kang.interview.programming.sort.interval.Interval;
 
-public class FindElementsInInterval {
+public class FindElementsInRange {
 	
 	public List<TreeNode> findElements(TreeNode node, Interval interval) 
 	{
@@ -26,14 +26,18 @@ public class FindElementsInInterval {
 		} else if (node.val < interval.left) {
 			findElements(node.right, interval, result);
 		} else {
+			// Node is between the interval/range and add it the the result
+			// list. Since the left node and right node of current node are both
+			// possible in the range, we should explore both sizes of current
+			// node.
 			findElements(node.left, interval, result);
 			result.add(node);
 			findElements(node.right, interval, result);
 		}
 	}
-	
+
 	public static void main(String[] arg) {
-		FindElementsInInterval c = new FindElementsInInterval();
+		FindElementsInRange c = new FindElementsInRange();
 		Interval interval = new Interval(16, 31);
 		List<TreeNode> result = c.findElements(ZTestDataCreator.createBinarySearchTree2(), interval);
 		result.stream().forEach(a -> System.out.print(a.val + " "));

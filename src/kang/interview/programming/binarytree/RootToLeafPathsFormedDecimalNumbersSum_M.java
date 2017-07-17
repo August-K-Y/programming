@@ -67,13 +67,14 @@ import java.util.Stack;
 	digitTreeSum(t) = 193.
 	Because 09 + 091 + 093 = 193
  * 
- * @see BinaryTreeIterativeTraversal_M
- * @see RootToLeadPathWithGivenSum
+ * @see {@link RootToLeafPathsFormedBinaryNumberSum}
+ * @see {@link BinaryTreeIterativeTraversal_M}
+ * @see {@link RootToLeadPathWithGivenSum}
  * @see http://www.geeksforgeeks.org/sum-numbers-formed-root-leaf-paths/
  * @author Yan Kang
  *
  */
-public class RootToLeafPathsFormedNumbersSum_M {
+public class RootToLeafPathsFormedDecimalNumbersSum_M {
 	public static class Tree<T> {
 		Tree(T x) {
 			value = x;
@@ -98,6 +99,8 @@ public class RootToLeafPathsFormedNumbersSum_M {
 		
 		List<Long> result = new LinkedList<>();
 		computeSum(t, 0, result);
+		
+		// this is the stream way of create the sum of a list
 		return result.stream().mapToLong(i -> i).sum();
 	}
 
@@ -196,7 +199,7 @@ public class RootToLeafPathsFormedNumbersSum_M {
 	}
 	
 	public static void main(String[] args) {
-		RootToLeafPathsFormedNumbersSum_M d = new RootToLeafPathsFormedNumbersSum_M();
+		RootToLeafPathsFormedDecimalNumbersSum_M d = new RootToLeafPathsFormedDecimalNumbersSum_M();
 		Tree<Integer> tree1 = new Tree<>(1);
 		Tree<Integer> tree2 = new Tree<>(0);
 		Tree<Integer> tree3 = new Tree<>(4);

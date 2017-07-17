@@ -115,7 +115,7 @@ package kang.interview.programming.binarytree;
 	There is no path from root to leaf with the given sum 7.
 
  * @see RootToLeafPathNumber
- * @see RootToLeafPathsFormedNumbersSum_M
+ * @see RootToLeafPathsFormedDecimalNumbersSum_M
  * @see 
  * @author Yan kang
  *

@@ -12,7 +12,7 @@ public class ComputeUnionIntervals {
 
 		Collections.sort(intervals);
 		print(intervals);
-		
+
 		Interval curr = intervals.get(0);
 		for (int i = 1; i < intervals.size(); i++) {
 			if (curr.right >= intervals.get(i).left) {

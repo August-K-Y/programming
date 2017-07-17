@@ -1,6 +1,7 @@
 package kang.interview.programming.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,12 +40,11 @@ public class FindAllParisOfTwoSum {
 	}
 
 	/**
-	 * Not quite sure if this is 100% right
 	 * @param array
 	 * @param sum
 	 * @return
 	 */
-	public List<Pair> findAllTwoSum(int[] array, int sum) {
+	public List<Pair> findAllTwoSum_byHash(int[] array, int sum) {
 		// the map tracks integer that has a partner to form pair whose sum
 		// equals to the given number.
 		Map<Integer, Boolean> tracker = new HashMap<>();
@@ -79,14 +79,43 @@ public class FindAllParisOfTwoSum {
 		}
 		return pairs;
 	}
+	
+	/**
+	 * 
+	 * @param array
+	 * @param sum
+	 * @return
+	 */
+	public List<Pair> findAllTwoSum_bySort(int[] array, int sum) {
+		Arrays.sort(array);
+		List<Pair> pairs = new ArrayList<>();
+
+		int l = 0;
+		int r = array.length - 1;
+		while (l < r) {
+			int tempSum = array[l] + array[r];
+			if (tempSum == sum) {
+				Pair pair = new Pair(array[l], array[r]);
+				pairs.add(pair);
+				l++;
+				r++;
+			} else if (tempSum < sum) {
+				l++;
+			} else {
+				r++;
+			}
+		}
+
+		return pairs;
+	}
 
 	public static void main(String[] args) {
 		FindAllParisOfTwoSum s = new FindAllParisOfTwoSum();
 		int[] array = { 0, 5, 3, 4, 2 };
 		int[] array2 = { 0, 5, 0, 5, 2, 3};
 
-		List<Pair> res1 = s.findAllTwoSum(array, 5);
-		List<Pair> res2 = s.findAllTwoSum(array2, 5);
+		List<Pair> res1 = s.findAllTwoSum_byHash(array, 5);
+		List<Pair> res2 = s.findAllTwoSum_byHash(array2, 5);
 
 		for (Pair p : res1) {
 			System.out.println(p.number1 + ", " + p.number2);

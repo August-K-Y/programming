@@ -3,7 +3,7 @@ package kang.interview.programming.binarytree;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BinaryTreeExterior {
+public class BinaryTreeExterior_M {
 
 	public List<String> extractExterior(TreeNode node) {
 		List<String> list = new LinkedList<>();
@@ -41,7 +41,7 @@ public class BinaryTreeExterior {
 
 	public static void main(String[] args) {
 		TreeNode root = ZTestDataCreator.createBinaryTree();
-		BinaryTreeExterior r = new BinaryTreeExterior();
+		BinaryTreeExterior_M r = new BinaryTreeExterior_M();
 		List<String> result = r.extractExterior(root);
 		result.stream().forEach(n -> System.out.print(n + " "));
 	}

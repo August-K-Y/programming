@@ -127,4 +127,15 @@ public class DataPrinter {
 		System.out.println(num);
 	}
 
+	public static void println(int[] array, int l, int r) {
+		if (l > r)
+			throw new IllegalArgumentException();
+		
+		for (int x = l; x <= r; x++) {
+			System.out.print(array[x] + " ");
+		}
+		System.out.println();
+
+	}
+
 }
