@@ -39,7 +39,7 @@ public class DataPrinter {
 		System.out.println();
 	}
 
-	public static void printList(List<Integer> result) {
+	public static <T> void printList(List<T> result) {
 		result.stream().forEach(a -> System.out.print(a + " "));
 	}
 
@@ -137,5 +137,6 @@ public class DataPrinter {
 		System.out.println();
 
 	}
+
 
 }
