@@ -123,7 +123,7 @@ public class DataPrinter {
 		return perm;
 	}
 
-	public static void println(int num) {
+	public static <T> void println(T num) {
 		System.out.println(num);
 	}
 

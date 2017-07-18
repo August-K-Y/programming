@@ -7,7 +7,7 @@ import kang.interview.programming.array.*;
 import kang.interview.programming.util.DataPrinter;
 
 /**
- * 239. Sliding Window Maximum
+ * LeetCode 239. Sliding Window Maximum
  * 
  * Given an array nums, there is a sliding window of size k which is moving from
  * the very left of the array to the very right. You can only see the k numbers
@@ -51,57 +51,6 @@ public class SlidingWindowMaximum_M {
 	 * window.
 	 */
 	
-	
-//	/**
-//	 * 
-//	 */
-//	public int[] maxSlidingWindow_bf(int[] nums, int w) {
-//		if (w <= 0)
-//			return new int[0];
-//
-//		// compute the number of sliding windows and create an array to hold max
-//		// values for these windows
-//		int size = nums.length - w + 1;
-//		int[] max = new int[size];
-//		
-//		int m = Integer.MIN_VALUE;
-//		
-//		// This is the initialization of the window. After the initialization, l
-//		// variable points to the left boundary of the window while r variable
-//		// point to the one position after the right boundary of the window
-//		// (Note, this is a convenient design when the window reaches the end of
-//		// the array, the sliding will terminate automatically, no additional
-//		// work is needed to check the array boundary).
-//		int l = 0;
-//		int r = 0;
-//		for (; r < w; r++) {
-//			// do some work on the elements while initializing the window
-//			m = Math.max(m, nums[r]);
-//		}
-//		int c = 0;
-//		max[c++] = m;
-//	
-//		while (r < nums.length) {
-//			// remove the first element in old new window from the priority
-//			// queue and add new element from the new window to the priority
-//			// queue. 
-//			
-//			// Since l points to the left boundary of the old window,
-//			// q.remove(nums[l++]) first remove this element from the priority
-//			// queue and move the left boundary one step to the right.
-//			l++;
-//			if (l % w == 0)
-//				m = nums[l];
-//			
-//			q.remove(nums[l++]);
-//			q.add(nums[r++]);
-//			max[c++] = q.peek();
-//		}
-//		return max;
-//		
-//	}
-	
-
 	/**
 	 * Using priority queue to track the max value in the range of window. This
 	 * algorithm takes: N*O(logk)
@@ -110,7 +59,7 @@ public class SlidingWindowMaximum_M {
 	 * @param w the weight of the sliding window
 	 * @return
 	 */
-	public int[] maxSlidingWindow_(int[] nums, int w) {
+	public int[] maxSlidingWindow(int[] nums, int w) {
 		if (w <= 0)
 			return new int[0];
 
@@ -186,7 +135,7 @@ public class SlidingWindowMaximum_M {
 	 * @see https://discuss.leetcode.com/topic/26480/o-n-solution-in-java-with-
 	 *      two-simple-pass-in-the-array
 	 */
-	public int[] maxSlidingWindow__(int[] num, int w) {
+	public int[] maxSlidingWindow_(int[] num, int w) {
 		final int[] max_left = new int[num.length];
 		final int[] max_right = new int[num.length];
 
@@ -215,7 +164,7 @@ public class SlidingWindowMaximum_M {
 		int k = 4;
 		
 		SlidingWindowMaximum_M s = new SlidingWindowMaximum_M();
-		int[] res = s.maxSlidingWindow__(nums, k);
+		int[] res = s.maxSlidingWindow_(nums, k);
 		
 		DataPrinter.printArray(res);
 	}

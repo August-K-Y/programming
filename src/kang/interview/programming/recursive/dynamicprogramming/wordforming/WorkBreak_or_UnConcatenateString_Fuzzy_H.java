@@ -1,9 +1,9 @@
-package kang.interview.programming.recursive.dynamicprogramming;
+package kang.interview.programming.recursive.dynamicprogramming.wordforming;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class UnConcatenateString_H {
+public class WorkBreak_or_UnConcatenateString_Fuzzy_H {
 
 	public static class Result {
 		int min;
@@ -118,10 +118,12 @@ public class UnConcatenateString_H {
 	/**
 	 * TODO: using bottom up dynamic programming
 	 * 
-	 * @param args
 	 */
+	
+	
+	
 	public static void main(String[] args) {
-		UnConcatenateString_H alg = new UnConcatenateString_H();
+		WorkBreak_or_UnConcatenateString_Fuzzy_H alg = new WorkBreak_or_UnConcatenateString_Fuzzy_H();
 		String str = "jesslookedjustliketimherbrother";
 		
 		Set<String> dic = new HashSet<>();

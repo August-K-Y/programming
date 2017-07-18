@@ -1,4 +1,4 @@
-package kang.interview.programming.recursive.backtracking;
+package kang.interview.programming.recursive.dynamicprogramming.wordforming;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.Set;
 import kang.interview.programming.util.DataPrinter;
 
 /**
- * Leetcode: 472 Concatenated word 
+ * Leetcode: 472 Concatenated word {@link https://leetcode.com/problems/concatenated-words/#/description}
  * 
  * Given a list of words (without duplicates), please write a program that
  * returns all concatenated words in the given list of words.
@@ -44,7 +44,8 @@ public class ConcatenatedWords_H {
 	public int maxL;
 	
 	/**
-	 * correct but Not efficient
+	 * Back-tracking approach, Correct but NOT efficient
+	 * 
 	 * @param words
 	 * @return
 	 */
@@ -88,6 +89,55 @@ public class ConcatenatedWords_H {
 	}
 	
 	/**
+	 * 
+	 * @param words
+	 * @return
+	 */
+	public List<String> findAllConcatenatedWordsInADict_(String[] words) {
+		
+		LinkedList<String> result = new LinkedList<>();
+		Set<String> preWords = new LinkedHashSet<>();
+		
+		Arrays.sort(words, new Comparator<String>() {
+			public int compare(String s1, String s2) {
+				return s1.length() - s2.length();
+			}
+		});
+		
+		if (words == null || words.length == 0)
+			return result;
+		
+		for(String token : words) {
+			if(canForm_(token, preWords)) {
+				result.add(token);
+			}
+			preWords.add(token);
+		}
+		
+		return result;
+	}
+
+	private boolean canForm_(String token, Set<String> set) {
+		if (set.isEmpty())
+			return false;
+		
+		boolean[] dp = new boolean[token.length() + 1];
+
+		dp[0] = true;
+		for (int i = 1; i < token.length() + 1; i++) {
+			for (int j = 1; j <= i; j++) {
+				
+				// IMPORTANT: 
+				if (dp[j - 1] && set.contains(token.substring(j - 1, i))) {
+					dp[i] = true;
+					break;
+				}
+			}
+		}
+		return dp[token.length()];
+	}
+	
+	/**
 	 * From Leetcode: using DP
 	 * 
 	 * Do you still remember how did you solve this problem?
@@ -104,7 +154,7 @@ public class ConcatenatedWords_H {
 	 * @param words
 	 * @return
 	 */
-	public static List<String> findAllConcatenatedWordsInADict_(String[] words) {
+	public static List<String> findAllConcatenatedWordsInADict__(String[] words) {
 		List<String> result = new ArrayList<>();
 		Set<String> preWords = new HashSet<>();
 		Arrays.sort(words, new Comparator<String>() {
@@ -145,7 +195,7 @@ public class ConcatenatedWords_H {
 		ConcatenatedWords_H alg = new ConcatenatedWords_H();
 
 		String[] words = { "cat", "cats", "catsdogcats", "dog", "",  "dogcatsdog", "hippopotamuses", "rat", "ratcatdogcat" };
-		List<String> result = alg.findAllConcatenatedWordsInADict(words);
+		List<String> result = alg.findAllConcatenatedWordsInADict_(words);
 		
 		DataPrinter.printList(result);
 		

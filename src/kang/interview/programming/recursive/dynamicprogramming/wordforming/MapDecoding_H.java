@@ -1,4 +1,4 @@
-package kang.interview.programming.recursive.dynamicprogramming;
+package kang.interview.programming.recursive.dynamicprogramming.wordforming;
 
 import kang.interview.programming.util.DataPrinter;
 

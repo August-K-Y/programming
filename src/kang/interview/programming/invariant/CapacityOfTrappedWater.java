@@ -15,6 +15,7 @@ public class CapacityOfTrappedWater {
 		double capacity = 0;
 
 		int maxIndex = getIndexOfMax(array);
+		
 		double left = array[0];
 		for (int i = 1; i < maxIndex; i++) {
 			if (array[i] >= left) {
