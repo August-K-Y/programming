@@ -1,5 +1,6 @@
 package kang.interview.programming.array;
 
+import kang.interview.programming.recursive.backtracking.RearrangeStringKDistanceApart_H;
 import kang.interview.programming.util.DataPrinter;
 
 /**
@@ -19,7 +20,9 @@ import kang.interview.programming.util.DataPrinter;
  * Follow up: Given a task sequence and the cool down time, rearrange the task
  * sequence such that the execution time is minimal.
  * 
- * 
+ * @see {@link RearrangeArrayInAlternatingPosNegNumber_M}
+ * @see {@link RearrangeStringKDistanceApart_H}
+ * @see https://discuss.leetcode.com/topic/112/minimal-run-time-scheduler
  * @author Yan Kang
  *
  */
@@ -86,7 +89,6 @@ public class MinimalTimeScheduler_M {
 		chars[j] = temp;
 	}
 
-
 	public static void main(String[] args) {
 		MinimalTimeScheduler_M alg = new MinimalTimeScheduler_M();
 		String str = "AAABBBCC";
@@ -94,5 +96,4 @@ public class MinimalTimeScheduler_M {
 		String str2 = "AAABC";
 		DataPrinter.println(alg.minTime(str2.toCharArray(), 3));
 	}
-
 }
