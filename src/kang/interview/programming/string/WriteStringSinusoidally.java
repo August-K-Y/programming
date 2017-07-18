@@ -1,4 +1,4 @@
-package kang.interview.programming.String;
+package kang.interview.programming.string;
 
 public class WriteStringSinusoidally {
 

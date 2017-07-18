@@ -27,8 +27,9 @@ import kang.interview.programming.util.DataPrinter;
  * Input: {-5, -2, 5, 2, 4, 7, 1, 8, 0, -8} output: {-5, 5, -2, 2, -8, 4, 7, 1,
  * 8, 0}
  * 
- * Read more:
- * http://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/
+ * @see {@link MinimalTimeScheduler_M}
+ * @author Yan Kang
+ * @see http://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/
  */
 public class RearrangeArrayInAlternatingPosNegNumber_M {
 	

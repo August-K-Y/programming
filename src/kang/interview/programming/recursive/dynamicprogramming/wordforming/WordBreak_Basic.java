@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * LeetCode 139 Word Break {@link https://leetcode.com/problems/word-break/#/description}:
+ * LeetCode 139 Word Break:
+ * {@link https://leetcode.com/problems/word-break/#/description}:
  * 
  * Given a non-empty string s and a dictionary wordDict containing a list of
  * non-empty words, determine if s can be segmented into a space-separated
@@ -24,7 +25,7 @@ import java.util.List;
  * @author Yan Kang
  *
  */
-public class WordBreak {
+public class WordBreak_Basic {
 
 	/**
 	 * This version of dynamic programming is in form of top-down approach. But,
@@ -49,6 +50,8 @@ public class WordBreak {
 			return true;
 
 		for (int i = index; i < str.length(); i++) {
+
+			// get substring from position index to i of string str
 			String ss = str.substring(index, i + 1);
 
 			boolean breakable = dict.contains(ss);
@@ -75,25 +78,34 @@ public class WordBreak {
 	 * @return
 	 */
 	public boolean wordBreak_(String s, List<String> wordDict) {
-		boolean[] t = new boolean[s.length() + 1];
 
-		t[0] = true;
+		// dp[i] indicates that substring of s from the first character to ith
+		// character is breakable.
+		boolean[] dp = new boolean[s.length() + 1];
 
+		dp[0] = true;
+
+		// NOTE: i, j are not index of the string s, but 1-based indices of
+		// the dynamic programming table.
 		for (int i = 1; i <= s.length(); i++) {
 			for (int j = 1; j <= i; j++) {
-				// i = i - 1 + 1
-				if (t[j - 1] && wordDict.contains(s.substring(j - 1, i))) {
-					t[i] = true;
+				// dp[i] is breakable only if dp[j - 1] is breakable and
+				// substring from jth char to ith char of string s is a word
+				// contained in the dictionary.
+
+				// Should be careful here: s.substring(j - 1, i) actually
+				// returns jth char to ith char of the string s.
+				if (dp[j - 1] && wordDict.contains(s.substring(j - 1, i))) {
+					dp[i] = true;
 					break;
 				}
 			}
 		}
-		return t[s.length()];
+		return dp[s.length()];
 	}
 	
-
 	public static void main(String[] args) {
-		WordBreak alg = new WordBreak();
+		WordBreak_Basic alg = new WordBreak_Basic();
 		String str = "leetcode";
 		List<String> dict = new ArrayList<>();
 		dict.add("leet");
@@ -101,7 +113,5 @@ public class WordBreak {
 
 		System.out.println(alg.wordBreak(str, dict));
 		System.out.println(alg.wordBreak_(str, dict));
-
 	}
-
 }

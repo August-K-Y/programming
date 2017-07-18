@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import kang.interview.programming.recursive.dynamicprogramming.wordforming.WorkBreak_or_UnConcatenateString_Fuzzy_H.Result;
+import kang.interview.programming.recursive.dynamicprogramming.wordforming.WordBreak_or_UnConcatenateString_Fuzzy_H.Result;
 import kang.interview.programming.util.DataPrinter;
 
 /**
@@ -36,7 +36,7 @@ import kang.interview.programming.util.DataPrinter;
  * @author Yan Kang
  *
  */
-public class WorkBreak_or_UnConcatenateString_Exact_M {
+public class WordBreak_or_UnConcatenateString_Exact_M {
 	public static class Result {
 		boolean canBreak;
 		LinkedList<String> str;
@@ -110,7 +110,7 @@ public class WorkBreak_or_UnConcatenateString_Exact_M {
 	}
 
 	public static void main(String[] args) {
-		WorkBreak_or_UnConcatenateString_Exact_M alg = new WorkBreak_or_UnConcatenateString_Exact_M();
+		WordBreak_or_UnConcatenateString_Exact_M alg = new WordBreak_or_UnConcatenateString_Exact_M();
 
 		String s = "catsanddog";
 		List<String> dict = new ArrayList<>();

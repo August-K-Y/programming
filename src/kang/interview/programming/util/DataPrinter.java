@@ -22,9 +22,7 @@ public class DataPrinter {
 		}
 	}
 	
-	public static void printArray(char[] chars, int index) {
-		if (index >= chars.length)
-			throw new IllegalArgumentException();
+	public static void printArray(char[] chars) {
 		int rows = chars.length;
 		for (int x = 0; x < rows; x++) {
 			System.out.print(chars[x] + "");
@@ -123,8 +121,8 @@ public class DataPrinter {
 		return perm;
 	}
 
-	public static <T> void println(T num) {
-		System.out.println(num);
+	public static <T> void println(T value) {
+		System.out.println(value);
 	}
 
 	public static void println(int[] array, int l, int r) {
@@ -135,8 +133,5 @@ public class DataPrinter {
 			System.out.print(array[x] + " ");
 		}
 		System.out.println();
-
 	}
-
-
 }

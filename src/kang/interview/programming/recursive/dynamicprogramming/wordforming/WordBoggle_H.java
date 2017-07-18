@@ -1,4 +1,4 @@
-package kang.interview.programming.recursive.backtracking;
+package kang.interview.programming.recursive.dynamicprogramming.wordforming;
 
 import java.util.ArrayList;
 import java.util.Arrays;
