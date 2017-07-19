@@ -23,7 +23,7 @@ import kang.interview.programming.invariant.*;
  * @author Yan Kang
  *
  */
-public class FindSubarrayWithMaximumAverage_I_M {
+public class FindSubarrayOfGivenLengthWithMaximumAverage_I_M {
 
 	/**
 	 * 
@@ -50,7 +50,7 @@ public class FindSubarrayWithMaximumAverage_I_M {
     }
 
 	public static void main(String[] args) {
-		FindSubarrayWithMaximumAverage_I_M alg = new FindSubarrayWithMaximumAverage_I_M();
+		FindSubarrayOfGivenLengthWithMaximumAverage_I_M alg = new FindSubarrayOfGivenLengthWithMaximumAverage_I_M();
 		// int[] nums = new int[] { 1, 12, -5, -6, 50, 3 };
 		// DataPrinter.println(alg.findMaxAverage(nums, 4));
 		//

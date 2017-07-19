@@ -1,7 +1,5 @@
 package kang.interview.programming.recursive.backtracking;
 
-import java.util.LinkedList;
-
 import kang.interview.programming.array.MinimalTimeScheduler_M;
 import kang.interview.programming.array.RearrangeArrayInAlternatingPosNegNumber_M;
 import kang.interview.programming.util.DataPrinter;
@@ -30,14 +28,12 @@ public class RearrangeStringKDistanceApart_H {
 	
 	int[] t;
 	public boolean compute(char[] tasks, int k) {
-
 		t = new int[tasks.length];
 		StringBuilder sb = new StringBuilder();
 		boolean found = compute_(tasks, k, sb);
 		
 		DataPrinter.println(sb.toString());
 		return found;
-
 	}
 
 	private boolean compute_(char[] tasks, int k, StringBuilder sb) {
@@ -67,7 +63,7 @@ public class RearrangeStringKDistanceApart_H {
 	 * @return
 	 */
 	private boolean isValid(char[] chars, char e, int k) {
-		int l = chars.length - k + 1>= 0 ? chars.length - k + 1 : 0;
+		int l = chars.length - k + 1 >= 0 ? chars.length - k + 1 : 0;
 		for (int r = chars.length - 1; r >= l; r--) {
 			if (e == chars[r])
 				return false;

@@ -3,10 +3,12 @@ package kang.interview.programming.array;
 import java.util.HashSet;
 import java.util.Set;
 
+import kang.interview.programming.invariant.CheckContinuousSubarrayKTimesOfSum_M;
+
 /**
  * 
  * @see {@link FindAllParisOfTwoSum}
- * @see {@link ContinuousSubarrayKTimesOfSum_M}
+ * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
  * 
  * @author yankang
  *

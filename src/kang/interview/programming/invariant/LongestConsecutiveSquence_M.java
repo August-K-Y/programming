@@ -21,7 +21,7 @@ import java.util.Set;
  * Read more: http://www.geeksforgeeks.org/longest-consecutive-subsequence/
  *
  */
-public class LongestConsecutiveSquence {
+public class LongestConsecutiveSquence_M {
 
 	public int findLongestConsecutiveSquence(int[] array) {
 		Set<Integer> set = new HashSet<>();
@@ -56,7 +56,7 @@ public class LongestConsecutiveSquence {
 	}
 
 	public static void main(String[] args) {
-		LongestConsecutiveSquence s = new LongestConsecutiveSquence();
+		LongestConsecutiveSquence_M s = new LongestConsecutiveSquence_M();
 		int[] array = { 1, 9, 3, 10, 4, 20, 2 };
 		System.out.println(s.findLongestConsecutiveSquence(array));
 	}

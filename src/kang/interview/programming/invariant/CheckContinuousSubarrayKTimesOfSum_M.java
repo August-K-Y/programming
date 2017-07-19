@@ -1,4 +1,4 @@
-package kang.interview.programming.array;
+package kang.interview.programming.invariant;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,10 +19,13 @@ import java.util.Map;
  * Note: The length of the array won't exceed 10,000. You may assume the sum of
  * all the numbers is in the range of a signed 32-bit integer.
  * 
+ * @see {@link CountContinuouSubarrayBySum_withNegativeValue_M}
+ * @see {@link CheckContinuouSubarrayBySum}
+ * @see {@link LongestSubarrayBySum_M}
  * @author Yan Kang
  *
  */
-public class ContinuousSubarrayKTimesOfSum_M {
+public class CheckContinuousSubarrayKTimesOfSum_M {
 
 	// Pitfalls: lots of corner cases to be considered, e.g., when k == 0
 
@@ -86,7 +89,7 @@ public class ContinuousSubarrayKTimesOfSum_M {
 	}
 	
 	public static void main(String[] args) {
-		ContinuousSubarrayKTimesOfSum_M s = new ContinuousSubarrayKTimesOfSum_M();
+		CheckContinuousSubarrayKTimesOfSum_M s = new CheckContinuousSubarrayKTimesOfSum_M();
 		int[] input1 = { 23, 2, 4, 6, 7 }; 
 		int k1 = 6, k2 = -6, k3 = 0;
 		

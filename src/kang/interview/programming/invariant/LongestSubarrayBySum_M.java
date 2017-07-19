@@ -1,8 +1,8 @@
-package kang.interview.programming.array;
+package kang.interview.programming.invariant;
 
 /**
- * You have an unsorted array arr of non-negative integers and a number s. Find
- * a longest contiguous subarray in arr that has a sum equal to s. Return two
+ * CodeFight: You have an unsorted array arr of non-negative integers and a number s. 
+ * Find a longest contiguous subarray in arr that has a sum equal to s. Return two
  * integers that represent its inclusive bounds. If there are several possible
  * answers, return the one with the smallest left bound. If there are no
  * answers, return [-1].
@@ -52,10 +52,12 @@ package kang.interview.programming.array;
  * of the subarray, respectively (1-based). If there is no such subarray, return
  * [-1].
  * 
+ * @see {@link CheckContinuouSubarrayBySum}
+ * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
  * @author Yan Kang
  *
  */
-public class FindLongestSubarrayBySum {
+public class LongestSubarrayBySum_M {
 
 	int[] findLongestSubarrayBySum(int s, int[] arr) {
 		int[] res = new int[2];
