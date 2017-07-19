@@ -64,14 +64,16 @@ public class CountContinuouSubarrayBySum_withNegativeValue_M {
 	 */
 	public int subarraySum(int[] nums, int k) {
 		int count = 0, sum = 0;
-		
+
 		// map cumulative sum to occurrences this cumulative sum appears.
-		// This only happens in array containing zero and/or negative value
+		// IMPORTANT: multiple cumulative sum of the same value only happens in
+		// array containing zero and/or negative value
 		HashMap<Integer, Integer> map = new HashMap<>();
 
-		// This is important: base value
+		// IMPORTANT: This is base value. You can think of it as sum of empty
+		// array (i.e., when the array has no element)
 		map.put(0, 1);
-		
+
 		for (int i = 0; i < nums.length; i++) {
 			sum += nums[i];
 			if (map.containsKey(sum - k))
@@ -114,6 +116,7 @@ public class CountContinuouSubarrayBySum_withNegativeValue_M {
 		sum[0] = 0;
 		for (int i = 1; i <= nums.length; i++)
 			sum[i] = sum[i - 1] + nums[i - 1];
+		
 		for (int start = 0; start < nums.length; start++) {
 			for (int end = start + 1; end <= nums.length; end++) {
 				if (sum[end] - sum[start] == k)
