@@ -26,7 +26,7 @@ import kang.interview.programming.invariant.*;
 public class FindSubarrayOfGivenLengthWithMaximumAverage_I_M {
 
 	/**
-	 * 
+	 * This is typical sliding window problem
 	 */
 	
 	

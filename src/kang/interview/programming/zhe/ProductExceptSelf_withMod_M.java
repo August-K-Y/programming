@@ -24,11 +24,12 @@ package kang.interview.programming.zhe;
  * modulo m, we get: [0, 0, 8, 6]. The sum of those values is 8 + 6 = 14, making
  * the answer 14 % 12 = 2.
  * 
+ * @see {@link ProductExceptSelf_M}
  * @see http://blog.codefights.com/productexceptself-solution/
  * @author Yan Kang
  *
  */
-public class ProductExceptSelf {
+public class ProductExceptSelf_withMod_M {
 
 	int productExceptSelf(int[] nums, int m) {
 
@@ -54,7 +55,7 @@ public class ProductExceptSelf {
 	public static void main(String[] arg) {
 //		int[] nums = {1,2,3,4};
 		int[] nums = { 27, 37, 47, 30, 17, 6, 20, 17, 21, 43, 5, 49, 49, 50, 20, 42, 45, 1, 22, 44 };
-		ProductExceptSelf f = new ProductExceptSelf();
+		ProductExceptSelf_withMod_M f = new ProductExceptSelf_withMod_M();
 		System.out.println("res: " + f.productExceptSelf(nums, 40));
 		
 	}

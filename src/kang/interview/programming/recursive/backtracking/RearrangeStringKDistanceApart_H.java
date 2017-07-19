@@ -26,17 +26,27 @@ import kang.interview.programming.util.DataPrinter;
  */
 public class RearrangeStringKDistanceApart_H {
 	
-	int[] t;
-	public boolean compute(char[] tasks, int k) {
+	private int[] t;
+
+	/**
+	 * Recursive + backtracking. This algorithm is correct but not efficient.
+	 * 
+	 * @param s
+	 * @param k
+	 * @return
+	 */
+	public String rearrangeString_(String s, int k) {
+		if (s == null || s.length() == 0)
+			return "";
+		
+		char[] tasks = s.toCharArray();
 		t = new int[tasks.length];
 		StringBuilder sb = new StringBuilder();
-		boolean found = compute_(tasks, k, sb);
-		
-		DataPrinter.println(sb.toString());
-		return found;
+		boolean found = compute(tasks, k, sb);
+		return found ? sb.toString() : "";
 	}
 
-	private boolean compute_(char[] tasks, int k, StringBuilder sb) {
+	private boolean compute(char[] tasks, int k, StringBuilder sb) {
 		if (sb.length() == tasks.length)
 			return true;
 
@@ -44,7 +54,7 @@ public class RearrangeStringKDistanceApart_H {
 			if (t[i] == 0 && isValid(sb.toString().toCharArray(), tasks[i], k)) {
 				sb.append(tasks[i]);
 				t[i] = 1;
-				boolean found = compute_(tasks, k, sb);
+				boolean found = compute(tasks, k, sb);
 				if (found) {
 					return true;
 				}
@@ -55,13 +65,6 @@ public class RearrangeStringKDistanceApart_H {
 		return false;
 	}
 
-	/**
-	 * 
-	 * @param chars
-	 * @param e
-	 * @param k
-	 * @return
-	 */
 	private boolean isValid(char[] chars, char e, int k) {
 		int l = chars.length - k + 1 >= 0 ? chars.length - k + 1 : 0;
 		for (int r = chars.length - 1; r >= l; r--) {
@@ -71,15 +74,71 @@ public class RearrangeStringKDistanceApart_H {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * From LeetCode: greedy algorithm
+	 * 
+	 * Every time we want to find the best candidate: which is the character
+	 * with the largest remaining count. Thus we will be having two arrays.
+	 * <ul>
+	 * <li>One array is to store the remaining count of every character.</li>
+	 * <li>Another array is to keep track of the most left position that one
+	 * character can appear.</li>
+	 * </ul>
+	 * We will iterated through these two array to find the best candidate for
+	 * every position. Since the array is fixed size, it will take constant time
+	 * to do this. After we find the candidate, we update two arrays.
+	 * 
+	 * @param str
+	 * @param k
+	 * @return
+	 */
+	public String rearrangeString(String str, int k) {
+		int length = str.length();
+		int[] count = new int[26];
+		int[] valid = new int[26];
+		for (int i = 0; i < length; i++) {
+			count[str.charAt(i) - 'a']++;
+		}
+		StringBuilder sb = new StringBuilder();
+		for (int index = 0; index < length; index++) {
+			int candidatePos = findValidMax(count, valid, index);
+			if (candidatePos == -1)
+				return "";
+			count[candidatePos]--;
+			valid[candidatePos] = index + k;
+			sb.append((char) ('a' + candidatePos));
+		}
+		return sb.toString();
+	}
+
+	private int findValidMax(int[] count, int[] valid, int index) {
+		int max = Integer.MIN_VALUE;
+		int candidatePos = -1;
+		for (int i = 0; i < count.length; i++) {
+			
+			// How to make sense of choose the character with max number of count 
+			if (count[i] > 0 && count[i] > max && index >= valid[i]) {
+				max = count[i];
+				candidatePos = i;
+			}
+		}
+		return candidatePos;
+	}
+	
 	public static void main(String[] args) {
 		RearrangeStringKDistanceApart_H alg = new RearrangeStringKDistanceApart_H();
-		String str = "AAABBBCC";
+		String str = "aabbcc";
 //		DataPrinter.println(alg.compute(str.toCharArray(), 3));
-		String str2 = "AAADBBCC";
-		String str3 = "AAABC";
-		DataPrinter.println(alg.compute(str.toCharArray(), 3));
-		DataPrinter.println(alg.compute(str2.toCharArray(), 3));
-		DataPrinter.println(alg.compute(str3.toCharArray(), 3));
+		String str2 = "aaabc";
+		String str3 = "aaadbbcc";
+		String str4 = "bbabcaccaaabababbaaaaccbbcbacbacacccbbcaabcbcacaacc";
+//		DataPrinter.println(alg.rearrangeString(str, 3));
+//		DataPrinter.println(alg.rearrangeString(str2, 3));
+//		DataPrinter.println(alg.rearrangeString(str3, 2));
+//		DataPrinter.println(alg.rearrangeString(null, 2));
+		
+		DataPrinter.println(alg.rearrangeString(str4, 3));
 	}
 
 }
