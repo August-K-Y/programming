@@ -1,7 +1,7 @@
 package kang.interview.programming.array;
 
-import kang.interview.programming.recursive.backtracking.RearrangeStringKDistanceApart_H;
 import kang.interview.programming.util.DataPrinter;
+import kang.interview.programming.zhe.RearrangeStringKDistanceApart_H;
 
 /**
  * 

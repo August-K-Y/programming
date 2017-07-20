@@ -24,8 +24,6 @@ public class FindFirstMissingPositiveNumber {
 
 		return -1;
 	}
-	
-	
 
 	public static void main(String[] args) {
 		FindFirstMissingPositiveNumber f = new FindFirstMissingPositiveNumber();

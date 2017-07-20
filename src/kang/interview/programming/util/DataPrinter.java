@@ -57,6 +57,7 @@ public class DataPrinter {
 			}
 			System.out.println();
 		}
+		System.out.println();
 	}
 	
 	public static void print2DArray(char[][] array) {
@@ -71,7 +72,7 @@ public class DataPrinter {
 		}
 	}
 	
-	public static void print2DArray(String[][] array) {
+	public static <T> void print2DArray(T[][] array) {
 		int lastRows = array.length - 1;
 
 		for (int i = 0; i <= lastRows; i++) {
@@ -83,9 +84,9 @@ public class DataPrinter {
 		}
 	}
 	
-	public static void print2DList(List<List<Integer>> twoDList) {
-		for (List<Integer> level : twoDList) {
-			for (int value : level) {
+	public static <T> void print2DList(List<List<T>> twoDList) {
+		for (List<T> level : twoDList) {
+			for (T value : level) {
 				System.out.print(value + " ");
 			}
 			System.out.println();

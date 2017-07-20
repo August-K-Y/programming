@@ -1,4 +1,4 @@
-package kang.interview.programming.binarytree.binarysearchtree;
+package kang.interview.programming.search.binarysearch;
 
 import kang.interview.programming.binarytree.TreeNode;
 import kang.interview.programming.binarytree.ZTestDataCreator;

@@ -80,6 +80,10 @@ public class LongestIncreasingSubsequence {
 		 * element i for certain value, or calculate certain (accumulative)
 		 * value and store them in a data structure.
 		 */
+		
+		
+		
+		
 		for (int i = 1; i < n; i++) {
 			for (int j = 0; j < i; j++) {
 				if (array[i] > array[j] && L[j] + 1 > L[i]) {

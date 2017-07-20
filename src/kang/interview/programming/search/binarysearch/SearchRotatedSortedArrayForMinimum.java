@@ -20,7 +20,7 @@ package kang.interview.programming.search.binarysearch;
  * and-answers.html#ixzz4gYM1Uxnt
  *
  */
-public class SearchMinimumInRotatedSortedArray {
+public class SearchRotatedSortedArrayForMinimum {
 
 	/**
 	 * brute-force: O(n)

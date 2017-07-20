@@ -30,7 +30,7 @@ import java.util.Map;
  * @author Yan Kang
  *
  */
-public class FindProfesstion {
+public class FindProfesstion_H {
 
 	String findProfession_bf(int level, int pos) {
 		Map<Character, String> map = new HashMap<>(2);
@@ -122,7 +122,7 @@ public class FindProfesstion {
 	// TODO: any other way that can do this better? Bit manipulation ??
 
 	public static void main(String[] arg) {
-		FindProfesstion f = new FindProfesstion();
+		FindProfesstion_H f = new FindProfesstion_H();
 //		System.out.println(f.findProfession_bf(9, 265));
 		
 		System.out.println(f.findProfession(13, 519));
