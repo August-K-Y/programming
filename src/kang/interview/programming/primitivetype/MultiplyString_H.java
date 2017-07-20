@@ -25,7 +25,7 @@ import kang.interview.programming.util.DataPrinter;
  * @author Yan Kang
  *
  */
-public class MutiplyString_H {
+public class MultiplyString_H {
 	
 	public String multiply(String num1, String num2) {
 		
@@ -137,7 +137,7 @@ public class MutiplyString_H {
 	
 	
 	public static void main(String[] args) {
-		MutiplyString_H alg = new MutiplyString_H();
+		MultiplyString_H alg = new MultiplyString_H();
 		
 		String num1 = "123";
 		String num2 = "123";

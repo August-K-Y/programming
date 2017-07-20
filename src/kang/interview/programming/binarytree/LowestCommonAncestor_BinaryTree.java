@@ -4,9 +4,9 @@ package kang.interview.programming.binarytree;
  * LeetCode 236. Lowest Common Ancestor of a Binary Tree Given a binary tree,
  * find the lowest common ancestor (LCA) of two given nodes in the tree.
  * 
- * According to the definition of LCA on Wikipedia: “The lowest common ancestor
+ * According to the definition of LCA on Wikipedia: The lowest common ancestor
  * is defined between two nodes v and w as the lowest node in T that has both v
- * and w as descendants (where we allow a node to be a descendant of itself).”
+ * and w as descendants (where we allow a node to be a descendant of itself).
  * 
  *      _______3______
        /              \
@@ -52,14 +52,13 @@ public class LowestCommonAncestor_BinaryTree {
 	 * @return the lowest common ancestor of node one and node two
 	 */
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-
-		if (root == p || root == q)
+		if (root == null || root == p || root == q)
 			return root;
 
 		boolean onLeft1 = contains(root.left, p);
 		boolean onLeft2 = contains(root.left, q);
 
-		// If p and q are on different sizes
+		// If p and q are on different sides
 		if (onLeft1 != onLeft2)
 			return root;
 
@@ -77,14 +76,14 @@ public class LowestCommonAncestor_BinaryTree {
 	}
 	
 	/**
-	 * 
+	 * Does not work for only one tree node exists as a child of root??? Verify this
 	 * @param root
 	 * @param p
 	 * @param q
 	 * @return
 	 */
 	public TreeNode lowestCommonAncestor_(TreeNode root, TreeNode p, TreeNode q) {
-		if (root == null || root == p || root == q)
+		if (root == null || root.val == p.val || root.val == q.val)
 			return root;
 		TreeNode left = lowestCommonAncestor_(root.left, p, q);
 		TreeNode right = lowestCommonAncestor_(root.right, p, q);
@@ -104,6 +103,8 @@ public class LowestCommonAncestor_BinaryTree {
 		TreeNode node7 = new TreeNode(-71);
 		TreeNode node8 = new TreeNode(-22);
 		
+		TreeNode node9 = new TreeNode(200);
+		
 		node1.left = node2;
 		node1.right = node3;
 		
@@ -116,8 +117,11 @@ public class LowestCommonAncestor_BinaryTree {
 		node6.right = node8;
 		
 		LowestCommonAncestor_BinaryTree lca = new LowestCommonAncestor_BinaryTree();
-		TreeNode result = lca.lowestCommonAncestor(node1, node5, node7);
+		TreeNode result = lca.lowestCommonAncestor(node1, node5, node9);
 		System.out.println("result: " + result.val);
+		
+		TreeNode result2 = lca.lowestCommonAncestor_(node1, node5, node9);
+		System.out.println("result: " + result2.val);
 	}
 
 }
