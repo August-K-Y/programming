@@ -1,8 +1,9 @@
-package kang.interview.programming.array;
+package kang.interview.programming.array.ksum;
 
 import java.util.HashSet;
 import java.util.Set;
 
+import kang.interview.programming.array.FindAllParisOfTwoSum;
 import kang.interview.programming.invariant.CheckContinuousSubarrayKTimesOfSum_M;
 
 /**

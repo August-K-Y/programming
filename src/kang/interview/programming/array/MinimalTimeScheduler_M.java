@@ -28,6 +28,12 @@ import kang.interview.programming.zhe.RearrangeStringKDistanceApart_H;
  */
 public class MinimalTimeScheduler_M {
 
+	/**
+	 * 
+	 * @param tasks
+	 * @param k
+	 * @return
+	 */
 	public int compute(char[] tasks, int k) {
 
 		if(tasks == null | tasks.length == 0)
@@ -44,6 +50,12 @@ public class MinimalTimeScheduler_M {
 		return time;
 	}
 	
+	/**
+	 * 
+	 * @param tasks
+	 * @param k
+	 * @return
+	 */
 	public int minTime(char[] tasks, int k) {
 		if (tasks == null | tasks.length == 0)
 			return 0;

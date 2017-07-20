@@ -1,4 +1,4 @@
-package kang.interview.programming.array;
+package kang.interview.programming.array.ksum;
 
 import java.util.ArrayList;
 import java.util.Collections;

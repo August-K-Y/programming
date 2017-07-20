@@ -28,7 +28,7 @@ package kang.interview.programming.linkedlist;
  * @author Yan Kang
  *
  */
-public class AddTwoHugeNumber {
+public class AddTwoHugeNumber_M {
 	public static class ListNode<T> {
 		ListNode(T x) {
 			value = x;
@@ -100,7 +100,7 @@ public class AddTwoHugeNumber {
 	}
 	
 	public static void main(String[] arg) {
-		AddTwoHugeNumber ora = new AddTwoHugeNumber();
+		AddTwoHugeNumber_M ora = new AddTwoHugeNumber_M();
 		System.out.println("result:");
 		ListNode<Integer> a = createLinkedList1();
 		ListNode<Integer> b = createLinkedList2();
