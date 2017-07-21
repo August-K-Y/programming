@@ -1,4 +1,6 @@
-package kang.interview.programming.zhe;
+package kang.interview.programming.invariant;
+
+import kang.interview.programming.zhe.Range;
 
 public class LongestContiguousIncreasingSubarray {
 

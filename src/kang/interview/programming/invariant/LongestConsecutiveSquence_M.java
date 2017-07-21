@@ -33,8 +33,12 @@ public class LongestConsecutiveSquence_M {
 		// check each possible sequence from the start
 		// then update optimal length
 		for (int i = 0; i < array.length; i++) {
-			// if current element is the starting
-			// element of a sequence
+			// Check whether current element is the starting element of a
+			// sequence. If it is, we only need to check whether the next
+			// element of current element exists in the set.
+
+			// When the previous element of current next is not in the set, the
+			// current element is the starting element of a sequence.
 			if (!set.contains(array[i] - 1)) {
 
 				int curr = array[i];
