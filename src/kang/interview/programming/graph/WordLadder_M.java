@@ -3,10 +3,9 @@ package kang.interview.programming.graph;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TransformStringToAnother_M {
+public class WordLadder_M {
 
 	private static Set<String> dic = new HashSet<>();
-	private static Set<String> track = new HashSet<>();
 
 	static {
 		dic.add("cot");
@@ -19,7 +18,15 @@ public class TransformStringToAnother_M {
 		dic.add("dat");
 	}
 
-	public int canTransform(String s, String e, Set<String> dic, Set<String> track) {
+	/**
+	 * Depth First Search
+	 * 
+	 * @param s
+	 * @param e
+	 * @param dic
+	 * @return
+	 */
+	public int canTransform(String s, String e, Set<String> dic) {
 
 		if (s.equals(e))
 			return 0;
@@ -29,7 +36,7 @@ public class TransformStringToAnother_M {
 		boolean hasPath = false;
 		int result = Integer.MAX_VALUE;
 		for (String n : neighbors) {
-			int temp = canTransform(n, e, dic, track);
+			int temp = canTransform(n, e, dic);
 			if (temp >= 0) {
 				result = Math.min(result, temp);
 				hasPath = true;
@@ -68,9 +75,8 @@ public class TransformStringToAnother_M {
 
 	public static void main(String[] args) {
 		
-		TransformStringToAnother_M a = new TransformStringToAnother_M();
+		WordLadder_M a = new WordLadder_M();
 		dic.add("dot");
-		track.add("bat");
-		System.out.println(a.canTransform("bat", "dot", dic, track));
+		System.out.println(a.canTransform("bat", "dot", dic));
 	}
 }

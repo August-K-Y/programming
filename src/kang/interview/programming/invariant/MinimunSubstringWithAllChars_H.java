@@ -3,7 +3,25 @@ package kang.interview.programming.invariant;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MinimunSubstringWithAllChars {
+/**
+ * LeetCode 76. Minimum Window Substring: 
+ * https://leetcode.com/problems/minimum-window-substring/#/description
+ * 
+ * Given a string S and a string T, find the minimum window in S which will
+ * contain all the characters in T in complexity O(n).
+ * 
+ * For example, S = "ADOBECODEBANC" T = "ABC" Minimum window is "BANC".
+ * 
+ * Note: If there is no such window in S that covers all characters in T, return
+ * the empty string "".
+ * 
+ * If there are multiple such windows, you are guaranteed that there will always
+ * be only one unique minimum window in S.
+ * 
+ * @author Yan Kang
+ *
+ */
+public class MinimunSubstringWithAllChars_H {
 
 	/**
 	 * Basic idea: </br>
@@ -20,7 +38,7 @@ public class MinimunSubstringWithAllChars {
 	 * @return
 	 */
 	public String minSubstringWithAllChars(String s, String t) {
-		if(t ==null || t.length() ==0)
+		if (t == null || t.length() == 0)
 			return "";
 
 		// the map tracks how many times each character required by t appears in
@@ -42,25 +60,27 @@ public class MinimunSubstringWithAllChars {
 
 			if (map.containsKey(chars[r])) {
 				int v = map.get(chars[r]);
-				
+
 				// a new required character come in the range of the window
-				if (v == 0) count++;
+				if (v == 0)
+					count++;
 				map.put(chars[r], v + 1);
 			}
 
 			while (count == t.length()) {
-				
+
 				if (r - l < minLength) {
 					Right = r;
 					Left = l;
 					minLength = r - l;
 				}
-				
+
 				if (map.containsKey(chars[l])) {
-					int v  = map.get(chars[l]);
-					
+					int v = map.get(chars[l]);
+
 					// a required character come out of the range of the window
-					if(v == 1) count--;
+					if (v == 1)
+						count--;
 					map.put(chars[l], v - 1);
 				}
 
@@ -78,7 +98,7 @@ public class MinimunSubstringWithAllChars {
 		}
 		return map;
 	}
-	
+
 	/**
 	 * From CodeFight. Interesting solution, which I do not fully understand.
 	 * 
@@ -119,9 +139,9 @@ public class MinimunSubstringWithAllChars {
 		}
 		return s.substring(left, right + 1);
 	}
-	
+
 	public static void main(String[] args) {
-		MinimunSubstringWithAllChars c = new MinimunSubstringWithAllChars();
+		MinimunSubstringWithAllChars_H c = new MinimunSubstringWithAllChars_H();
 		String s = "zqyvbfeiee";
 		String t = "ze";
 		System.out.println(c.minSubstringWithAllChars(s, t));

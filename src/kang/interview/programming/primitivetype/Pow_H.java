@@ -15,25 +15,44 @@ public class Pow_H {
 	double myPow(double x, int n) {
 		if (n == 0)
 			return 1;
+		
+		// NOTE, deal with scenario when n is smaller than 0
 		if (n < 0) {
+			
+			if (n == Integer.MIN_VALUE) {
+				++n;
+				n = -n;
+				System.out.println(n);
+				x = 1 / x;
+				return x * myPow(x, n);
+			}
+
 			n = -n;
 			x = 1 / x;
 		}
+		
+		// if n%2 == 0,  (x ^ 2) ^ (n/2)
+		// if n%2 != 0,  x * (x ^ 2) ^ (n/2)
 		return n % 2 == 0 ? myPow(x * x, n / 2) : x * myPow(x * x, n / 2);
 	}
 	
 	public static void main(String[] args) {
 		
+//		System.out.println(Integer.MAX_VALUE);
+//		System.out.println(Integer.MIN_VALUE);
+		
 		Pow_H alg = new Pow_H();
 		
-		DataPrinter.println(alg.myPow(1, 2));
-		DataPrinter.println(alg.myPow(2, 0));
-		DataPrinter.println(alg.myPow(2, 2));
-		DataPrinter.println(alg.myPow(2, 3));
+//		DataPrinter.println(alg.myPow(1, 2));
+//		DataPrinter.println(alg.myPow(2, 0));
+//		DataPrinter.println(alg.myPow(2, 2));
+//		DataPrinter.println(alg.myPow(2, 3));
+//		
+//		DataPrinter.println(alg.myPow(1, -2));
+//		DataPrinter.println(alg.myPow(2, -2));
+//		DataPrinter.println(alg.myPow(2, -3));
 		
-		DataPrinter.println(alg.myPow(1, -2));
-		DataPrinter.println(alg.myPow(2, -2));
-		DataPrinter.println(alg.myPow(2, -3));
+		DataPrinter.println(alg.myPow(2, -2147483648));
 		
 	}
 }
