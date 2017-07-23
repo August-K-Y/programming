@@ -35,7 +35,7 @@ public class ClimbingStairs {
 	/**
 	 * 
 	 * d[i] represent the number of distinct ways need to climb to staircase of
-	 * n steps.
+	 * i steps.
 	 * 
 	 * optimal structure: </br>
 	 * d[i] = d[i - 1] + d[i - 2]

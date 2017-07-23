@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import kang.interview.programming.array.FindAllParisOfTwoSum;
-import kang.interview.programming.invariant.CheckContinuousSubarrayKTimesOfSum_M;
+import kang.interview.programming.invariant.continuous_subarray_sum.CheckContinuousSubarrayKTimesOfSum_M;
 
 /**
  * 

@@ -1,16 +1,21 @@
 package kang.interview.programming.sort.interval;
 
 public class Interval implements Comparable<Interval> {
-	public int left;
-	public int right;
+	public int start;
+	public int end;
 
-	public Interval(int left, int right) {
-		this.left = left;
-		this.right = right;
+	public Interval() {
+		start = 0;
+		end = 0;
+	}
+
+	public Interval(int s, int e) {
+		start = s;
+		end = e;
 	}
 
 	@Override
 	public int compareTo(Interval interval) {
-		return Integer.compare(this.left, interval.left);
+		return Integer.compare(this.start, interval.end);
 	}
 }

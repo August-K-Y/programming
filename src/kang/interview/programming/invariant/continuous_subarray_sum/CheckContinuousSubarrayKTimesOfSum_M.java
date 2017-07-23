@@ -1,4 +1,4 @@
-package kang.interview.programming.invariant;
+package kang.interview.programming.invariant.continuous_subarray_sum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,9 +19,9 @@ import java.util.Map;
  * Note: The length of the array won't exceed 10,000. You may assume the sum of
  * all the numbers is in the range of a signed 32-bit integer.
  * 
- * @see {@link CountContinuouSubarrayBySum_withNegativeValue_M}
- * @see {@link CheckContinuouSubarrayBySum}
- * @see {@link LongestSubarrayBySum_M}
+ * @see {@link ComputeOccurrencesOfContinuouSubarrayBySum_withNegativeValue_M}
+ * @see {@link CheckContinuousSubarrayBySum}
+ * @see {@link MaximumLengthContinuousSubarrayBySum_M}
  * @author Yan Kang
  *
  */
@@ -72,7 +72,7 @@ public class CheckContinuousSubarrayKTimesOfSum_M {
 		
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		map.put(0, -1);
-		
+
 		int runningSum = 0;
 		for (int i = 0; i < nums.length; i++) {
 			runningSum += nums[i];

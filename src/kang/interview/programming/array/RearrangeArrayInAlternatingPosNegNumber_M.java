@@ -1,5 +1,6 @@
 package kang.interview.programming.array;
 
+import kang.interview.programming.array.rearrange.MinimalTimeScheduler_M;
 import kang.interview.programming.util.DataPrinter;
 
 /**

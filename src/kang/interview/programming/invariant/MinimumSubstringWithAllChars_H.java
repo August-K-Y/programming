@@ -21,7 +21,7 @@ import java.util.Map;
  * @author Yan Kang
  *
  */
-public class MinimunSubstringWithAllChars_H {
+public class MinimumSubstringWithAllChars_H {
 
 	/**
 	 * Basic idea: </br>
@@ -99,6 +99,7 @@ public class MinimunSubstringWithAllChars_H {
 		return map;
 	}
 
+	// TODO: understand this
 	/**
 	 * From CodeFight. Interesting solution, which I do not fully understand.
 	 * 
@@ -141,7 +142,7 @@ public class MinimunSubstringWithAllChars_H {
 	}
 
 	public static void main(String[] args) {
-		MinimunSubstringWithAllChars_H c = new MinimunSubstringWithAllChars_H();
+		MinimumSubstringWithAllChars_H c = new MinimumSubstringWithAllChars_H();
 		String s = "zqyvbfeiee";
 		String t = "ze";
 		System.out.println(c.minSubstringWithAllChars(s, t));

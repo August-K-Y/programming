@@ -15,10 +15,10 @@ public class ComputeUnionIntervals {
 
 		Interval curr = intervals.get(0);
 		for (int i = 1; i < intervals.size(); i++) {
-			if (curr.right >= intervals.get(i).left) {
-				int right = Math.max(curr.right, intervals.get(i).right);
-				curr = new Interval(curr.left, right);
-			} else if (curr.right < intervals.get(i).left) {
+			if (curr.end >= intervals.get(i).start) {
+				int right = Math.max(curr.end, intervals.get(i).end);
+				curr = new Interval(curr.start, right);
+			} else if (curr.end < intervals.get(i).start) {
 				result.add(curr);
 				curr = intervals.get(i);
 			}
@@ -63,7 +63,7 @@ public class ComputeUnionIntervals {
 	}
 
 	private static void print(List<Interval> result) {
-		result.stream().forEach(interval -> System.out.print("(" + interval.left + "," + interval.right + ")"));
+		result.stream().forEach(interval -> System.out.print("(" + interval.start + "," + interval.end + ")"));
 	}
 
 }

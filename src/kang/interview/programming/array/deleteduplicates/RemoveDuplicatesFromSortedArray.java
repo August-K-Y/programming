@@ -1,6 +1,12 @@
 package kang.interview.programming.array.deleteduplicates;
 
+import kang.interview.programming.util.DataPrinter;
+
 /**
+ * 
+ * LeetCode 26. Remove Duplicates from Sorted Array:
+ * https://leetcode.com/problems/remove-duplicates-from-sorted-array/#/description
+ * 
  * How to remove duplicates from array in place?
  * 
  * Given a sorted array, remove the duplicates in place such that each element
@@ -20,35 +26,36 @@ package kang.interview.programming.array.deleteduplicates;
  * @author Yan Kang
  *
  */
-public class RemoveDuplicatesInPlace {
+public class RemoveDuplicatesFromSortedArray {
 
 	public int removeDuplicates(int[] array) {
 
-		if (array.length == 1)
+		if (array == null || array.length == 1)
 			return 1;
 
-		int prev = array[0];
-		
 		// pointer point to the position to be filled
 		int pos = 1; 
 		for (int i = 1; i < array.length; i++) {
 
 			// if current element is equal to previous element, skip current
-			// element. Otherwise, put this element to the position specified by
+			// element and not write it back to the array. Otherwise, put this
+			// element to the position specified by
 			// pos pointer.
-			if (array[i] != prev) {
+			if (array[i] != array[i - 1]) {
 				array[pos++] = array[i];
-				prev = array[i];
 			}
 		}
 		return pos;
 	}
 
 	public static void main(String[] args) {
-		RemoveDuplicatesInPlace s = new RemoveDuplicatesInPlace();
+		RemoveDuplicatesFromSortedArray s = new RemoveDuplicatesFromSortedArray();
 		int[] array = { 1, 1, 2, 2, 2, 2, 3, 4, 5, 5 };
+		int[] array2 = { 1, 1, 2 };
 		int newLength = s.removeDuplicates(array);
-		System.out.println(newLength);
+		System.out.println(newLength); // 5
+		
+		DataPrinter.println(s.removeDuplicates(array2)); // 2
 
 		for (int i = 0; i < newLength; i++) {
 			System.out.print(array[i] + " ");

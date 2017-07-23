@@ -1,7 +1,7 @@
-package kang.interview.programming.array;
+package kang.interview.programming.array.rearrange;
 
+import kang.interview.programming.array.RearrangeArrayInAlternatingPosNegNumber_M;
 import kang.interview.programming.util.DataPrinter;
-import kang.interview.programming.zhe.RearrangeStringKDistanceApart_H;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package kang.interview.programming.invariant;
+package kang.interview.programming.invariant.continuous_subarray_sum;
 
 import java.util.HashMap;
 
@@ -16,11 +16,13 @@ import java.util.HashMap;
  * The range of numbers in the array is [-1000, 1000] and the range of the integer k is
  * [-1e7, 1e7].
  * 
+ * @see {@link CheckContinuousSubarrayBySum}
+ * @see {@link ComputeMaxLengthOfContinuouSubarrayBySum_withNegativeValue_M}
  * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
  * @see https://leetcode.com/problems/subarray-sum-equals-k/#/solution
  * @author Yan Kang
  */
-public class CountContinuouSubarrayBySum_withNegativeValue_M {
+public class ComputeOccurrencesOfContinuouSubarrayBySum_withNegativeValue_M {
 	
 	/**
 	 * Using hashmap
@@ -37,16 +39,16 @@ public class CountContinuouSubarrayBySum_withNegativeValue_M {
 	 * difference of k, i.e. if sum[i] - sum[j] = k, the sum of elements lying
 	 * between indices i and j is k.</blockquote>
 	 * 
-	 * Based on these thoughts, we make use of a hashmap mapmap which is used to
+	 * Based on these thoughts, we make use of a hashmap which is used to
 	 * store the cumulative sum upto all the indices possible along with the
 	 * number of times the same sum occurs. We store the data in the form:
-	 * (sum_i, no. of occurences of sum_i). We traverse over the array nums and
+	 * (sum_i, no. of occurrences of sum_i). We traverse over the array nums and
 	 * keep on finding the cumulative sum. Every time we encounter a new sum, we
 	 * make a new entry in the hashmap corresponding to that sum. If the same
 	 * sum occurs again, we increment the count corresponding to that sum in the
 	 * hashmap. Further, for every sum encountered, we also determine the number
-	 * of times the sum sum-k has occured already, since it will determine the
-	 * number of times a subarray with sum kk has occured upto the current
+	 * of times the sum sum-k has occurred already, since it will determine the
+	 * number of times a subarray with sum k has occurred upto the current
 	 * index. We increment the count by the same amount.
 	 * 
 	 * After the complete array has been traversed, the count gives the required
@@ -65,27 +67,30 @@ public class CountContinuouSubarrayBySum_withNegativeValue_M {
 	public int subarraySum(int[] nums, int k) {
 		int count = 0, sum = 0;
 
-		// map cumulative sum to occurrences this cumulative sum appears.
+		// map cumulative sum to occurrences this cumulative sum appears across
+		// the array.
 		// IMPORTANT: multiple cumulative sum of the same value only happens in
 		// array containing zero and/or negative value
 		HashMap<Integer, Integer> map = new HashMap<>();
 
 		// IMPORTANT: This is base value. You can think of it as sum of empty
-		// array (i.e., when the array has no element)
+		// array (i.e., when the array has no element) happens once at the very
+		// beginning
 		map.put(0, 1);
 
 		for (int i = 0; i < nums.length; i++) {
 			sum += nums[i];
 			if (map.containsKey(sum - k))
 				count += map.get(sum - k);
-			
+
+			//
 			map.put(sum, map.getOrDefault(sum, 0) + 1);
 		}
 		return count;
 	}
 
 	/**
-	 * Using Cummulative sum
+	 * Using cumulative sum
 	 * 
 	 * Instead of determining the sum of elements every time for every new
 	 * subarray considered, we can make use of a cumulative sum array , sum.

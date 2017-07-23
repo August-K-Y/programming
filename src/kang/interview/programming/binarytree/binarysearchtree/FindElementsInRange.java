@@ -21,9 +21,9 @@ public class FindElementsInRange {
 			return;
 		}
 
-		if (node.val > interval.right) {
+		if (node.val > interval.end) {
 			findElements(node.left, interval, result);
-		} else if (node.val < interval.left) {
+		} else if (node.val < interval.start) {
 			findElements(node.right, interval, result);
 		} else {
 			// Node is between the interval/range and add it the the result

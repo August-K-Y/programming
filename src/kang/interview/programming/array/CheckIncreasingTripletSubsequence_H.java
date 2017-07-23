@@ -22,7 +22,7 @@ package kang.interview.programming.array;
  * @author Yan Kang
  *
  */
-public class IncreasingTripletSubsequence_H {
+public class CheckIncreasingTripletSubsequence_H {
 
 	public boolean increasingTriplet(int[] nums) {
 

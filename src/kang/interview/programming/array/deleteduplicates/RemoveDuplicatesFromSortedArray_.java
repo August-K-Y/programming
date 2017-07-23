@@ -2,7 +2,7 @@ package kang.interview.programming.array.deleteduplicates;
 
 import kang.interview.programming.util.DataPrinter;
 
-public class DeleteDuplicatedFromSortedArray {
+public class RemoveDuplicatesFromSortedArray_ {
 
 	public int deleteDuplicates(int[] array) {
 		//		int prev = array[0];
@@ -52,7 +52,7 @@ public class DeleteDuplicatedFromSortedArray {
 		int[] array = { 2, 3, 5, 5, 5, 7, 11, 11, 11,11, 13};
 		
 		DataPrinter.printArray(array);
-		DeleteDuplicatedFromSortedArray ora = new DeleteDuplicatedFromSortedArray();
+		RemoveDuplicatesFromSortedArray_ ora = new RemoveDuplicatesFromSortedArray_();
 		int end = ora.deleteDuplicatesAllowAtMostTwice(array);
 		System.out.println();
 		DataPrinter.printArray(array, end);

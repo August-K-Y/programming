@@ -1,4 +1,4 @@
-package kang.interview.programming.invariant;
+package kang.interview.programming.invariant.continuous_subarray_sum;
 
 /**
  * CodeFight: You have an unsorted array arr of non-negative integers and a number s. 
@@ -52,12 +52,12 @@ package kang.interview.programming.invariant;
  * of the subarray, respectively (1-based). If there is no such subarray, return
  * [-1].
  * 
- * @see {@link CheckContinuouSubarrayBySum}
+ * @see {@link CheckContinuousSubarrayBySum}
  * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
  * @author Yan Kang
  *
  */
-public class LongestSubarrayBySum_M {
+public class MaximumLengthContinuousSubarrayBySum_M {
 
 	int[] findLongestSubarrayBySum(int s, int[] arr) {
 		int[] res = new int[2];

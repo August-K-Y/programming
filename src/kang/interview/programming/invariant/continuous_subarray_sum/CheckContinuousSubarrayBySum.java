@@ -1,4 +1,4 @@
-package kang.interview.programming.invariant;
+package kang.interview.programming.invariant.continuous_subarray_sum;
 
 import kang.interview.programming.util.DataPrinter;
 
@@ -12,11 +12,11 @@ import kang.interview.programming.util.DataPrinter;
  * [1, 3, 5, 23, 2], 7 Return False because no sequence in this array adds up to 7
  * 
  * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
- * @see {@link LongestSubarrayBySum_M}
+ * @see {@link MaximumLengthContinuousSubarrayBySum_M}
  * @author Yan Kang
  *
  */
-public class CheckContinuouSubarrayBySum {
+public class CheckContinuousSubarrayBySum {
 
 	public boolean canFind(int[] array, int k) {
 		if (array == null || array.length == 0)
@@ -38,7 +38,7 @@ public class CheckContinuouSubarrayBySum {
 	}
 	
 	public static void main(String[] args) {
-		CheckContinuouSubarrayBySum alg = new CheckContinuouSubarrayBySum();
+		CheckContinuousSubarrayBySum alg = new CheckContinuousSubarrayBySum();
 
 		int[] nums = new int[] { 23, 5, 4, 7, 2, 11 };
 		int[] nums2 = new int[] { 1, 3, 5, 23, 2 };

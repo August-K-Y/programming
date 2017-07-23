@@ -33,7 +33,6 @@ public class LongestIncreasingSubsequence {
 		}
 
 		for (int i = index; i < array.length; i++) {
-
 			if (array[i] > pre) {
 				LIS_bf(array, array[i], i + 1, sum + 1);
 			}
