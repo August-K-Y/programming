@@ -5,7 +5,7 @@ import java.util.List;
 
 import kang.interview.programming.binarytree.TreeNode;
 import kang.interview.programming.binarytree.ZTestDataCreator;
-import kang.interview.programming.sort.interval.Interval;
+import kang.interview.programming.interval.Interval;
 
 public class FindElementsInRange {
 	

@@ -1,5 +1,11 @@
 package kang.interview.programming.search.binarysearch;
 
+/**
+ * 
+ * @see {@link BinarySearchTreeSuccessor_withnoParent_M}
+ * @author Yan Kang
+ *
+ */
 public class BinarySearchFirstOccurenceOfBiggerValue_M {
 	public int search(int[] array, int value) {
 		if (array.length == 0)

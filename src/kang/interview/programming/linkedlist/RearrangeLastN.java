@@ -55,7 +55,7 @@ public class RearrangeLastN {
 		if (l == null || n == 0)
 			return l;
 
-		// 
+		// NOTE we step forward n steps rather than n - 1 steps
 		ListNode<Integer> temp = l;
 		for (int i = 0; i < n; i++) {
 			temp = temp.next;

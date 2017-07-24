@@ -1,6 +1,5 @@
 package kang.interview.programming.array.rearrange;
 
-import kang.interview.programming.array.RearrangeArrayInAlternatingPosNegNumber_M;
 import kang.interview.programming.util.DataPrinter;
 
 /**
@@ -19,6 +18,10 @@ import kang.interview.programming.util.DataPrinter;
  * 
  * Follow up: Given a task sequence and the cool down time, rearrange the task
  * sequence such that the execution time is minimal.
+ * 
+ * Solution:
+ * @see https://leetcode.com/problems/task-scheduler/#/solution
+ * 
  * 
  * @see {@link RearrangeArrayInAlternatingPosNegNumber_M}
  * @see {@link RearrangeStringKDistanceApart_H}

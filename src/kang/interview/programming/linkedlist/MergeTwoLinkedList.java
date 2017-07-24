@@ -1,7 +1,5 @@
 package kang.interview.programming.linkedlist;
 
-import kang.interview.programming.linkedlist.LinkedList.ListNode;
-
 /**
  * Note: Your solution should have O(l1.length + l2.length) time complexity,
  * since this is what you will be asked to accomplish in an interview.
@@ -34,8 +32,8 @@ public class MergeTwoLinkedList {
 	public ListNode<Integer> mergeTwoSortedSinglyLinkedList(ListNode<Integer> l1, ListNode<Integer> l2) {
 
 		ListNode<Integer> dummyNode = new ListNode<>(0);
-
 		ListNode<Integer> cursor = dummyNode;
+		
 		while (l1 != null && l2 != null) {
 			if (l1.value <= l2.value) {
 				cursor.next = l1;
@@ -44,10 +42,12 @@ public class MergeTwoLinkedList {
 				cursor.next = l2;
 				l2 = l2.next;
 			}
+			
+			// DO NOT forget move the cursor forward
 			cursor = cursor.next;
 		}
 		
-		//
+		// Append one of the two lists if it has remaining nodes.
 		cursor.next = l1 == null ? l2 : l1;
 		return dummyNode.next;
 	}

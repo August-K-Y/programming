@@ -55,6 +55,8 @@ public class MinimalTaskScheduler_LeetCode {
 				num++;
 			} else {
 				count[index]--;
+				
+				// set the next valid position for this task
 				valid[index] = i + n + 1;
 			}
 			interval++;
