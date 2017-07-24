@@ -189,7 +189,7 @@ import java.util.List;
 	}
 	the output should be isSubtree(t1, t2) = false.
  * 
- * @see BinaryTreeKthNode
+ * @see BinaryTreeKthNode_M
  * @author Yan Kang
  *
  */

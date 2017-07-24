@@ -5,7 +5,7 @@ import java.util.List;
 
 import kang.interview.programming.binarytree.TreeNode;
 
-public class FindKLargestElements_M {
+public class FindKLargestElementsOfBST_M {
 
 	public List<TreeNode> find(TreeNode node, int k) {
 

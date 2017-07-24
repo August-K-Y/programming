@@ -5,7 +5,7 @@ package kang.interview.programming.binarytree;
  * @author Yan Kang
  *
  */
-public class BinaryTreeKthNode {
+public class BinaryTreeKthNode_M {
 
 	/**
 	 * 
@@ -56,7 +56,7 @@ public class BinaryTreeKthNode {
 	public static void main(String[] args) {
 		TreeNode root = ZTestDataCreator.createBinaryTree();
 
-		BinaryTreeKthNode r = new BinaryTreeKthNode();
+		BinaryTreeKthNode_M r = new BinaryTreeKthNode_M();
 
 		TreeNode node = r.findKthNodeRecursively(root, 6);
 		System.out.println(node.Id);
