@@ -71,7 +71,63 @@ public class MinimumWindowSubstring_containsAllChars_H {
 		}
 		return min == chars.length + 1 ? "" : s.substring(LEFT, RIGHT);
 	}
-	
+
+	/*
+	 * For most substring (consecutive subarray) problem, we are given a string
+	 * and need to find a substring of it which satisfies some constraits. A
+	 * general way is to use a hashmap assisted with two pointers and two nested
+	 * loops (normally while loop since you can control move the pointers more freely).
+	 * 
+	 * One loop: searching for the optimal result (longest/minimal
+	 * substring/subarray) while the constraints are satisfied until constraints
+	 * are violated
+	 * 
+	 * Another loop: re-satisfy constraints the while constraints violated.
+	 * 
+	 * Normally the outer loop tries to enlarge the substring while the inner
+	 * loop tries to shrink the substring. However they have opposite purpose
+	 * when they in maximization and minimization problem respectively.
+	 * 
+	 * Maximize (substring)
+	 * 
+	 * constraint 1 <= v_1
+	 * constraint 2 <= v_2
+	 *       .
+	 * constraint 3 <= v_3
+	 * (The <= does not necessarily mean less than or equal to, it means certain upper bounds)
+	 * 
+	 * To solve maximization problem, normally what we would do is:
+	 * (1) We enlarge the substring in the outer loop while keep recording the (sub-)optimal 
+	 * solutions until one of the constraints are violated. 
+	 * (2) Then we try to resatisfy all the constrains by shrinking the substring in the inner loop. 
+	 * When all constraints are just satisfied, we go back to step (1)
+	 * 
+	 * Minimize (substring)
+	 * 
+	 * constraint 1 >= v_1
+	 * constraint 2 >= v_2
+	 *       .
+	 * constraint 3 >= v_3
+	 * (The >= does not necessarily mean larger than or equal to, it means certain lower bounds)
+	 * 
+	 * To solve minimization problem, normally what we would do is:
+	 * (1) We enlarge the substring in the outer loop until all constraints are just satisfied. 
+	 * (2) Then we search for (sub-)optimal solutions by shrinking the substring in the inner loop 
+	 * until one of the constraint is violated. Then we go back to step (1)
+	 * 
+	 * Then the core/hard part left is:
+	 * Find a way to track whether constraints are satisfied/violated while enlarging/shrinking 
+	 * the two loops by using certain searching data structure such as hash map/set.
+	 * 
+	 * 
+	 * 
+	 * One thing needs to be mentioned is that when asked to find maximum substring, we should 
+	 * update maximum after the inner while loop to guarantee that the substring is valid. On 
+	 * the other hand, when asked to find minimum substring, we should update minimum inside 
+	 * the inner while loop.
+	 * 
+	 * The template is given below.
+	 */
 	public static void main(String[] args) {
 		MinimumWindowSubstring_containsAllChars_H c = new MinimumWindowSubstring_containsAllChars_H();
 		String s = "zqyvbfeiee";
