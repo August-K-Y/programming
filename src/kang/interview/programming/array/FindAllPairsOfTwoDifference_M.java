@@ -86,10 +86,6 @@ public class FindAllPairsOfTwoDifference_M {
 		return count;
 	}
 
-	// public int findAllPairs_bySort(int[] array, int k) {
-	//
-	// }
-
 	/**
 	 * 
 	 * @param array
@@ -130,45 +126,6 @@ public class FindAllPairsOfTwoDifference_M {
 		return count;
 	}
 
-	/**
-	 * This is NOT the right answer.
-	 * 
-	 * For example: int[] array = { 0, 5, 11, 8 }; </br>
-	 * this algorithm will output 1, but it actually has 2 pairs: (5, 8) and
-	 * (11, 8). one number can be paired with two other numbers. This is
-	 * different from find pair that sums up to a given value.
-	 * 
-	 * @param array
-	 * @param k
-	 * @return
-	 */
-	public int findAllPairs(int[] array, int k) {
-
-		Map<Integer, Boolean> track = new HashMap<>();
-
-		for (int a : array) {
-			
-			if (track.containsKey(a)) {
-				track.put(a, true);
-			}
-			
-			if (!track.containsKey(a + k)) {
-				track.put(a + k, false);
-			}
-			
-			if (!track.containsKey(a - k)) {
-				track.put(a - k, false);
-			}
-		}
-		int count = 0;
-		for (int key : track.keySet()) {
-			if (track.get(key)) {
-				count++;
-			}
-		}
-		return count;
-	}
-	
 	public static void main(String[] args) {
 		FindAllPairsOfTwoDifference_M s = new FindAllPairsOfTwoDifference_M();
 		
