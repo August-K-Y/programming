@@ -1,7 +1,7 @@
 package kang.interview.programming.array;
 
+import kang.interview.programming.optimization.*;
 import kang.interview.programming.util.DataPrinter;
-import kang.interview.programming.invariant.*;
 
 /**
  * 

@@ -47,7 +47,7 @@ public class ClimbingStairs {
 			return n;
 		
 		int[] d = new int[n + 1];
-		d[0] = 1;
+//		d[0] = 1;
 		d[1] = 1;
 		d[2] = 2;
 		

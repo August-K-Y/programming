@@ -10,7 +10,7 @@ import java.util.Set;
  * 
  * <p>
  * This is a variation of the sliding window problem, referring to
- * {@link kang.interview.programming.invariant.SlidingWindowMaximum_M} to check
+ * {@link kang.interview.programming.optimization.SlidingWindowMaximum_M} to check
  * the explanation of sliding window problem. One difference is that the window
  * size is not explicitly given, it is the k + 1, the maximum difference between
  * two different position plus one.
@@ -18,7 +18,7 @@ import java.util.Set;
  * 
  * @see ContainsDuplicate
  * @see ContainsNearbyAlmostDuplicate_H
- * @see kang.interview.programming.invariant.SlidingWindowMaximum_M
+ * @see kang.interview.programming.optimization.SlidingWindowMaximum_M
  * @author Yan Kang
  *
  */

@@ -1,4 +1,4 @@
-package kang.interview.programming.invariant;
+package kang.interview.programming.optimization;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ import java.util.Set;
  * @author Yan Kang
  *
  */
-public class LongestSubstringWithoutRepeatingCharacters {
+public class LongestSubstringWithNoRepeatingCharacters {
 	
 	public int lengthOfLongestSubstring(String s) {
 		if (s == null || s.isEmpty()) return 0;
@@ -60,7 +60,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		String str2 = "abcabcbb";
 		String str3 = "pwwkew";
 		
-		LongestSubstringWithoutRepeatingCharacters l = new LongestSubstringWithoutRepeatingCharacters();
+		LongestSubstringWithNoRepeatingCharacters l = new LongestSubstringWithNoRepeatingCharacters();
 		System.out.println(l.lengthOfLongestSubstring(str1));
 		System.out.println(l.lengthOfLongestSubstring(str2));
 		System.out.println(l.lengthOfLongestSubstring(str3));

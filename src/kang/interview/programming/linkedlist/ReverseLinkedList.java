@@ -3,10 +3,19 @@ package kang.interview.programming.linkedlist;
 import kang.interview.programming.linkedlist.LinkedList.ListNode;
 import kang.interview.programming.util.DataPrinter;
 
+/**
+ * LeetCode 206. Reverse Linked List
+ * 
+ * Hint: A linked list can be reversed either iteratively or recursively. Could
+ * you implement both?
+ * 
+ * @author Yan Kang
+ *
+ */
 public class ReverseLinkedList {
 
 	/**
-	 * Reverses a linked list.
+	 * Reverses a linked list iteratively.
 	 * 
 	 * @param head
 	 *            the head of the linked list

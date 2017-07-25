@@ -1,4 +1,4 @@
-package kang.interview.programming.invariant;
+package kang.interview.programming.optimization;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,6 +88,8 @@ public class MinimumWindowSubstring_containsAllChars_H {
 	 * loop tries to shrink the substring. However they have opposite purpose
 	 * when they in maximization and minimization problem respectively.
 	 * 
+	 * Constraints contradict the optimization direction
+	 * 
 	 * Maximize (substring)
 	 * 
 	 * constraint 1 <= v_1
@@ -99,8 +101,13 @@ public class MinimumWindowSubstring_containsAllChars_H {
 	 * To solve maximization problem, normally what we would do is:
 	 * (1) We enlarge the substring in the outer loop while keep recording the (sub-)optimal 
 	 * solutions until one of the constraints are violated. 
-	 * (2) Then we try to resatisfy all the constrains by shrinking the substring in the inner loop. 
-	 * When all constraints are just satisfied, we go back to step (1)
+	 * (2) Then we try to re-satisfy all the constrains by shrinking the substring in the inner loop. 
+	 * When all constraints are just satisfied, we end the inner loop and continue the rest work of
+	 * the outer loop.
+	 * 
+	 * enlarge the substring will violate certain constraints at some point. Before reaching that 
+	 * point, we keep recording the solutions until reach that point of violating certain constraint. 
+	 * Then the inner loop comes to play to re-satisfy all constraints by shrinking substring. 
 	 * 
 	 * Minimize (substring)
 	 * 
@@ -114,6 +121,19 @@ public class MinimumWindowSubstring_containsAllChars_H {
 	 * (1) We enlarge the substring in the outer loop until all constraints are just satisfied. 
 	 * (2) Then we search for (sub-)optimal solutions by shrinking the substring in the inner loop 
 	 * until one of the constraint is violated. Then we go back to step (1)
+	 * 
+	 * enlarge the substring will satisfy all constraints at certain point and if you continue enlarge
+	 * the substring, all constraints will always be satisfied. To minimize the substring while satisfy
+	 * all constraints, we just need to meet all constraints at the minimal level while trying to 
+	 * minimize the substring. Thus, in the inner loop, we keep shrinking the substring and recording 
+	 * the solutions while keep all constraints satisfied.
+	 * 
+	 * Before reaching that 
+	 * point, we keep recording the solutions until reach that point of violating certain constraint. 
+	 * Then the inner loop comes to play to re-satisfy all constraints by shrinking substring. 
+	 * 
+	 * 
+	 * 
 	 * 
 	 * Then the core/hard part left is:
 	 * Find a way to track whether constraints are satisfied/violated while enlarging/shrinking 

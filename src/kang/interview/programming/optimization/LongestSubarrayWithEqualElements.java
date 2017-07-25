@@ -1,4 +1,4 @@
-package kang.interview.programming.invariant;
+package kang.interview.programming.optimization;
 
 /**
  * Elements of Programming. P71 variant

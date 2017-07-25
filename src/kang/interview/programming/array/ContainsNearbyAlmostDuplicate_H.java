@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import kang.interview.programming.invariant.*;
+import kang.interview.programming.optimization.*;
 
 /**
  * LeetCode: 220. Contains Duplicate III
