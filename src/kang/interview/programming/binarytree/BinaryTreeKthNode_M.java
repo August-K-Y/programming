@@ -1,5 +1,7 @@
 package kang.interview.programming.binarytree;
 
+import kang.interview.programming.search.binarysearch.BinaryTreeKthNodeWithoutRecordingSize;
+
 /**
  * @see BinaryTreeKthNodeWithoutRecordingSize
  * @author Yan Kang

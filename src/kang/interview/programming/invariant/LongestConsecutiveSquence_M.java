@@ -3,10 +3,12 @@ package kang.interview.programming.invariant;
 import java.util.HashSet;
 import java.util.Set;
 
+import kang.interview.programming.util.DataPrinter;
+
 /**
  * 
- * Write a program to find length of longest consecutive sequence in array of
- * integers?
+ * LeetCode 128. Longest Consecutive Sequence:
+ * https://leetcode.com/problems/longest-consecutive-sequence/#/description
  * 
  * Given an unsorted array of integers, find the length of the longest
  * consecutive elements sequence.
@@ -58,10 +60,42 @@ public class LongestConsecutiveSquence_M {
 		}
 		return max;
 	}
+	
+	public int longestConsecutive(int[] nums) {
+    	if(nums == null || nums.length == 0)
+    		return 0;
+    	
+    	Set<Integer> set = new HashSet<>();
+    	for(int n : nums) {
+    		set.add(n);
+    	}
+    	
+    	int max = Integer.MIN_VALUE;
+		for (int n : nums) {
+			int count = 1;
+			int s = n - 1;
+			int b = n + 1;
+			while (set.remove(s)) {
+				s--;
+				count++;
+			}
+			while (set.remove(b)) {
+				b++;
+				count++;
+			}
+			max = Math.max(max, count);
+		}
+		return max;
+	}
+    
 
 	public static void main(String[] args) {
 		LongestConsecutiveSquence_M s = new LongestConsecutiveSquence_M();
 		int[] array = { 1, 9, 3, 10, 4, 20, 2 };
 		System.out.println(s.findLongestConsecutiveSquence(array));
+		
+		LongestConsecutiveSquence_M alg = new LongestConsecutiveSquence_M();
+
+		DataPrinter.println(alg.longestConsecutive(new int[] { 100, 4, 200, 1, 3, 2 }));
 	}
 }

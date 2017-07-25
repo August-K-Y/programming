@@ -1,5 +1,7 @@
 package kang.interview.programming.array.multidimentional;
 
+import java.util.LinkedList;
+
 /**
  * Given a matrix of characters. Find length of the longest path from a given
  * character, such that all characters in the path are consecutive to each
@@ -47,7 +49,7 @@ public class LongestConsecutivePathIn2DArray {
 	public int compute(char mat[][], char s) {
 		max = 0;
 		int[][] table = new int[mat.length][mat[0].length];
-
+		
 		int x = -1;
 		int y = -1;
 		for (int i = 0; i < mat.length; i++) {

@@ -38,7 +38,7 @@ public class MinimumSubstringWithAllChars_H {
 	 * @return
 	 */
 	public String minSubstringWithAllChars(String s, String t) {
-		if (t == null || t.length() == 0)
+		if (s == null || s.length() == 0)
 			return "";
 
 		// the map tracks how many times each character required by t appears in
