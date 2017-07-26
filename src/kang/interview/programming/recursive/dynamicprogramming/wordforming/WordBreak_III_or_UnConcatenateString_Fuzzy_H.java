@@ -3,7 +3,7 @@ package kang.interview.programming.recursive.dynamicprogramming.wordforming;
 import java.util.HashSet;
 import java.util.Set;
 
-public class WordBreak_or_UnConcatenateString_Fuzzy_H {
+public class WordBreak_III_or_UnConcatenateString_Fuzzy_H {
 
 	public static class Result {
 		int min;
@@ -123,7 +123,7 @@ public class WordBreak_or_UnConcatenateString_Fuzzy_H {
 	
 	
 	public static void main(String[] args) {
-		WordBreak_or_UnConcatenateString_Fuzzy_H alg = new WordBreak_or_UnConcatenateString_Fuzzy_H();
+		WordBreak_III_or_UnConcatenateString_Fuzzy_H alg = new WordBreak_III_or_UnConcatenateString_Fuzzy_H();
 		String str = "jesslookedjustliketimherbrother";
 		
 		Set<String> dic = new HashSet<>();

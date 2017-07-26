@@ -33,7 +33,7 @@ package kang.interview.programming.binarytree;
  * @author Yan Kang
  *
  */
-public class PathSum_III {
+public class PathSum_III_DownwardPathsOfGivenSum {
     public int pathSum(TreeNode root, int sum) {
     	// TODO
         return 0;

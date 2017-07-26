@@ -20,12 +20,10 @@ import java.util.List;
  * strings (instead of a set of strings). Please reload the code definition to
  * get the latest changes.
  * 
- * 
- * 
  * @author Yan Kang
  *
  */
-public class WordBreak_Basic {
+public class WordBreak_I_Basic {
 
 	/**
 	 * This version of dynamic programming is in form of top-down approach. But,
@@ -37,7 +35,9 @@ public class WordBreak_Basic {
 	 * @return
 	 */
 	public boolean wordBreak(String str, List<String> dict) {
-		d = new boolean[str.length()];
+		// dp[i] indicates that whether substring from index 0 to index i of
+		// string str is work-breakable
+		dp = new boolean[str.length()];
 		return wordBreak(str, 0, dict);
 	}
 	
@@ -46,7 +46,7 @@ public class WordBreak_Basic {
 		if (index >= str.length())
 			return true;
 
-		if (d[index])
+		if (dp[index])
 			return true;
 
 		for (int i = index; i < str.length(); i++) {
@@ -58,20 +58,20 @@ public class WordBreak_Basic {
 			breakable &= wordBreak(str, i + 1, dict);
 
 			if (breakable) {
-				d[index] = true;
+				dp[index] = true;
 				return true;
 			}
 		}
 
-		d[index] = false;
+		dp[index] = false;
 		return false;
 	}
 	
-	private boolean[] d;
+	private boolean[] dp;
 	
 	
 	/**
-	 * Bottom-up Dynamic Programming
+	 * Bottom-up (composite up) Dynamic Programming
 	 * 
 	 * @param s
 	 * @param wordDict
@@ -79,8 +79,8 @@ public class WordBreak_Basic {
 	 */
 	public boolean wordBreak_(String s, List<String> wordDict) {
 
-		// dp[i] indicates that substring of s from the first character to ith
-		// character is breakable.
+		// dp[i] indicates whether substring of string s from the first
+		// character to ith character is word-breakable.
 		boolean[] dp = new boolean[s.length() + 1];
 
 		dp[0] = true;
@@ -105,7 +105,7 @@ public class WordBreak_Basic {
 	}
 	
 	public static void main(String[] args) {
-		WordBreak_Basic alg = new WordBreak_Basic();
+		WordBreak_I_Basic alg = new WordBreak_I_Basic();
 		String str = "leetcode";
 		List<String> dict = new ArrayList<>();
 		dict.add("leet");
