@@ -2,7 +2,7 @@ package kang.interview.programming.binarytree;
 
 /**
  * 
- * @see RootToLeadPathWithGivenSum
+ * @see PathSum_I_RootToLeadPathWithGivenSum
  * @author Yan Kang
  *
  */

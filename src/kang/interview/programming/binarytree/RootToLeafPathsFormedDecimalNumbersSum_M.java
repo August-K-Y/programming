@@ -69,7 +69,7 @@ import java.util.Stack;
  * 
  * @see {@link RootToLeafPathsFormedBinaryNumberSum}
  * @see {@link BinaryTreeIterativeTraversal_M}
- * @see {@link RootToLeadPathWithGivenSum}
+ * @see {@link PathSum_I_RootToLeadPathWithGivenSum}
  * @see http://www.geeksforgeeks.org/sum-numbers-formed-root-leaf-paths/
  * @author Yan Kang
  *

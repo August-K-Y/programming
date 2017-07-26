@@ -1,6 +1,10 @@
 package kang.interview.programming.binarytree;
 
 /**
+ * 
+ * LeetCode 112. Path Sum
+ * https://leetcode.com/problems/path-sum/#/description
+ * 
  * Given a binary tree t and an integer s, determine whether there is a root to leaf path 
  * in t such that the sum of vertex values equals s.
 
@@ -120,46 +124,46 @@ package kang.interview.programming.binarytree;
  * @author Yan kang
  *
  */
-public class RootToLeadPathWithGivenSum {
-	class Tree<T> {
-		Tree(T x) {
-			value = x;
-		}
+public class PathSum_I_RootToLeadPathWithGivenSum {
+	public static class TreeNode {
+		int val;
+		TreeNode left;
+		TreeNode right;
 
-		T value;
-		Tree<T> left;
-		Tree<T> right;
+		TreeNode(int x) {
+			val = x;
+		}
 	}
 
 	/**
 	 * Given a binary tree t and an integer s, determine whether there is a root
 	 * to leaf path in t such that the sum of vertex values equals s.
 	 * 
-	 * @param t
+	 * @param root
 	 *            the tree
-	 * @param s
+	 * @param sum
 	 *            the number
 	 * @return true if the root to leaf path exists; false, otherwise
 	 */
-	public boolean hasPathWithGivenSum(Tree<Integer> t, int s) {
+	public boolean hasPathSum(TreeNode root, int sum) {
 
 		// This algorithm treat an null tree has value of zero
-		if (t == null && s == 0)
+		if (root == null && sum == 0)
 			return true;
 
-		if (t == null && s != 0) {
+		if (root == null && sum != 0) {
 			return false;
 		}
 
-		if (t.value == s && isLeaf(t)) {
+		if (root.val == sum && isLeaf(root)) {
 			return true;
 		}
 
-		return hasPathWithGivenSum(t.right, s - t.value) || hasPathWithGivenSum(t.left, s - t.value);
+		return hasPathSum(root.right, sum - root.val) || hasPathSum(root.left, sum - root.val);
 
 	}
 
-	private boolean isLeaf(Tree<Integer> n) {
+	private boolean isLeaf(TreeNode n) {
 		return n.left == null && n.right == null;
 	}
 

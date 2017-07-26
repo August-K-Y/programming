@@ -58,4 +58,17 @@ public class TargetSum_H {
 		}
 		return find(nums, index + 1, sum + nums[index]) + find(nums, index + 1, sum - nums[index]);
 	}
+	
+	public int findTargetSumWays_(int[] nums, int S) {
+		
+		int[][] dp = new int[nums.length][2001];
+		
+		
+		for (int i = 1; i < nums.length; i++) {
+			for (int j = 0; j < 2001; i++) {
+				dp[i][j + 1000] = dp[i - 1][j + 1000 + nums[i]] + dp[i - 1][j + 1000 - nums[i]];
+			}
+		}
+		return dp[nums.length][S];
+	}
 }
