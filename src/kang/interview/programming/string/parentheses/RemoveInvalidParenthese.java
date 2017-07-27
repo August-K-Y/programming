@@ -27,7 +27,7 @@ import kang.interview.programming.util.DataPrinter;
  * 
  * ")(" -> [""]
  * 
- * @author yankang
+ * @author Yan Kang
  *
  */
 public class RemoveInvalidParenthese {
