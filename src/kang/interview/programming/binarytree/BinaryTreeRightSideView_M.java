@@ -59,6 +59,8 @@ public class BinaryTreeRightSideView_M {
 				nn++;
 			}
 
+			// the end of each level, add the last node of each level to the
+			// result list
 			if (cn == 0) {
 				list.add(top.val);
 				cn = nn;

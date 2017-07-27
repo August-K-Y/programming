@@ -1,7 +1,5 @@
 package kang.interview.programming.search.binarysearch;
 
-import java.util.Stack;
-
 /**
  * LeetCode 285. Inorder Successor in BST
  * https://leetcode.com/problems/inorder-successor-in-bst/#/description
@@ -47,15 +45,15 @@ public class BinarySearchTreeSuccessor_withnoParent_M {
 	 * @return
 	 */
 	public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-	    TreeNode res = null;
-	    while(root!=null) {
-	        if(root.val > p.val) {
-	        	res = root;
-	        	root = root.left;
-	        }
-	        else root = root.right;
-	    }
-	    return res;
+		TreeNode res = null;
+		while (root != null) {
+			if (root.val > p.val) {
+				res = root;
+				root = root.left;
+			} else
+				root = root.right;
+		}
+		return res;
 	}
 	
 	

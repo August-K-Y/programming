@@ -19,25 +19,23 @@ import java.util.Stack;
  * @author Yan Kang
  *
  */
-public class ValidParentheses {
+public class ValidParentheses_multiTypeParenthese {
     public boolean isValid(String s) {
 		Map<Character, Character> map = new HashMap<>();
 		map.put(')', '('); map.put(']', '['); map.put('}', '{');
 
 		Stack<Character> stack = new Stack<>();
 		char[] chars = s.toCharArray();
-		for (int i = 0; i < chars.length; i++) {
-			if (map.containsKey(chars[i])) {
-				if(stack.isEmpty()) return false;
-				if(map.get(chars[i]) != stack.pop()) return false;
-			} else 
-				stack.push(chars[i]);
+		for (char c : chars) {
+			if (map.containsKey(c)) {
+				if (stack.isEmpty() || map.get(c) != stack.pop()) return false;
+			} else
+				stack.push(c);
 		}
 		return stack.isEmpty() ? true : false;
 	}
     
 	/**
-	 * TODO: understand this
 	 * 
 	 * @param s
 	 * @return
@@ -55,5 +53,9 @@ public class ValidParentheses {
 				return false;
 		}
 		return stack.isEmpty();
+	}
+	
+	public static void main(String[] args) {
+		
 	}
 }

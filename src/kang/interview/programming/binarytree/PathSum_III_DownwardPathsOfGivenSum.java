@@ -35,7 +35,31 @@ package kang.interview.programming.binarytree;
  */
 public class PathSum_III_DownwardPathsOfGivenSum {
     public int pathSum(TreeNode root, int sum) {
-    	// TODO
-        return 0;
+    	if(root == null) return 0;
+    	
+    	int height = getHeight(root); 
+    	int[] path = new int[height];
+        return find(root, path, 0, sum);
     }
+
+	private int find(TreeNode root, int[] path, int level, int sum) {
+		if(root == null) return 0;
+
+		path[level] = root.val;
+		int temp = 0, count = 0;
+		for (int i = level; i >= 0; i--) {
+			temp += path[i];
+			if (temp == sum)
+				count++;
+		}
+
+		int num1 = find(root.left, path, level + 1, sum);
+		int num2 = find(root.right, path, level + 1, sum);
+		return count + num1 + num2;
+	}
+
+	private int getHeight(TreeNode root) {
+		if (root == null) return 0;
+		return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
+	}
 }
