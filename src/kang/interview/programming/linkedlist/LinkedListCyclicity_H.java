@@ -2,7 +2,7 @@ package kang.interview.programming.linkedlist;
 
 import kang.interview.programming.linkedlist.LinkedList.ListNode;
 
-public class LinkedListCyclicity {
+public class LinkedListCyclicity_H {
 
 	/**
 	 * Checks if a linked list contains cycle.

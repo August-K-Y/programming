@@ -1,5 +1,7 @@
 package kang.interview.programming.linkedlist;
 
+import kang.interview.programming.sort.MergeSortLinkedList;
+
 /**
  * Note: Your solution should have O(l1.length + l2.length) time complexity,
  * since this is what you will be asked to accomplish in an interview.
@@ -15,7 +17,7 @@ package kang.interview.programming.linkedlist;
  * l2 = [0, 3, 5], the output should be mergeTwoLinkedLists(l1, l2) = [0, 1, 1,
  * 2, 3, 4, 5].
  * 
- * @see {@link SortLinkedList}
+ * @see {@link MergeSortLinkedList}
  * @author Yan Kang
  *
  */

@@ -1,5 +1,24 @@
 package kang.interview.programming.string;
 
+/**
+ * LeetCode 125. Valid Palindrome:
+ * https://leetcode.com/problems/valid-palindrome/tabs/description
+ * 
+ * Given a string, determine if it is a palindrome, considering only
+ * alphanumeric characters and ignoring cases.
+ * 
+ * For example,
+ * 
+ * "A man, a plan, a canal: Panama" is a palindrome.
+ * 
+ * "race a car" is not a palindrome.
+ * 
+ * Note: 
+ * Have you consider that the string might be empty? This is a good
+ * question to ask during an interview.
+ * 
+ * For the purpose of this problem, we define empty string as valid palindrome.
+ */
 public class StringPalindrome {
 
 	/**
@@ -33,59 +52,52 @@ public class StringPalindrome {
 	}
 
 	/**
-	 * Check if characters in a string is palindromic.
-	 * 
-	 * @param str
-	 *            the input string containing only alphabetics
-	 * @return true if the characters of the input string is palindromic
-	 */
-	public boolean isPalindromic(String str) {
-		char[] chars = str.toCharArray();
-		for (int i = 0, j = chars.length - 1; i < chars.length && j > 0 && i <= j; i++, j--) {
-			if (chars[i] != chars[j])
-				return false;
-		}
-		return true;
-	}
-	
-	/**
 	 * Here a palindromic string is defined as a string which when all
 	 * non-alphabetic characters are removed it reads the same front to back
 	 * ignoring case.
 	 * 
-	 * @param str
+	 * @param s
 	 *            the input string
 	 * @return true if the characters of the input string is palindromic
 	 */
-	public boolean isPalindromic2(String str) {
-		char[] chars = str.toUpperCase().toCharArray();
-		for (int i = 0, j = chars.length - 1; i < chars.length && j > 0 && i <= j; i++, j--) {
+	public boolean isPalindrome(String s) {
 
-			// skip non-alphanumeric characters
-			while (isNotAlphenumeric(chars[i]))
-				i++;
-			while (isNotAlphenumeric(chars[j]))
-				j--;
+		if (s == null)
+			return false;
+		if (s.trim().isEmpty())
+			return true;
 
-			if (i > j)
-				break;
+		char[] chars = s.toLowerCase().toCharArray();
+		int l = 0;
+		int r = chars.length - 1;
+		while (l < r) {
 			
-			if (chars[i] != chars[j])
+			// IMPORTANT: need to check if l < r while updating l and/or r
+			while (l < r && !Character.isLetterOrDigit(chars[l]))
+				l++;
+			while (l < r && !Character.isLetterOrDigit(chars[r]))
+				r--;
+
+			// Actually, do not need this since l can only <= r
+			if (l >= r)
+				break;
+
+			if (chars[l] != chars[r])
 				return false;
+
+			l++;
+			r--;
 		}
 		return true;
 	}
-
-	private boolean isNotAlphenumeric(char c) {
-		return ! Character.isLetterOrDigit(c);
-	}
+	   
 
 	public static void main(String[] arg) {
 		System.out.println("run");
 		StringPalindrome ora = new StringPalindrome();
-		boolean end = ora.isPalindromic2("A man, a plan, a canal, Panama.");
+		boolean end = ora.isPalindrome("A man, a plan, a canal, Panama.");
 		System.out.println(end);
-		end = ora.isPalindromic2("Ray a Ray");
+		end = ora.isPalindrome("Ray a Ray");
 		System.out.println(end);
 	}
 }

@@ -2,7 +2,7 @@ package kang.interview.programming.linkedlist;
 
 import kang.interview.programming.linkedlist.LinkedList.ListNode;
 
-public class LinkedListPivoting {
+public class LinkedListPivoting_M {
 
 	public ListNode pivoting(ListNode head, int k) {
 
@@ -38,7 +38,7 @@ public class LinkedListPivoting {
 	public static void main(String[] arg) {
 		System.out.println("result:");
 		ListNode head = createLinkedList();
-		LinkedListPivoting ora = new LinkedListPivoting();
+		LinkedListPivoting_M ora = new LinkedListPivoting_M();
 		ListNode newHead = ora.pivoting(head, 4);
 		newHead = iterateLinkedList(newHead);
 	}

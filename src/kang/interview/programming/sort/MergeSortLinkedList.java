@@ -1,4 +1,6 @@
-package kang.interview.programming.linkedlist;
+package kang.interview.programming.sort;
+
+import kang.interview.programming.linkedlist.MergeTwoLinkedList;
 
 /**
  * Sort a linked list in O(n log n) time using constant space complexity.
@@ -8,7 +10,7 @@ package kang.interview.programming.linkedlist;
  * @author yankang
  *
  */
-public class SortLinkedList {
+public class MergeSortLinkedList {
 
 	public class ListNode {
 		int val;
