@@ -33,7 +33,7 @@ public class TopologicalSort {
 		}
 
 		/**
-		 * Kahnâ€™s algorithm for Topological Sorting: Steps involved in finding
+		 * Kahn’s algorithm for Topological Sorting: Steps involved in finding
 		 * the topological ordering of a DAG:</br>
 		 * <p>
 		 * Step-1: Compute in-degree (number of incoming edges) for each of the
