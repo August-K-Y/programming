@@ -16,7 +16,6 @@ public class MaximumLengthOfContinuousSubarrayOfSmallerSum_withNegativeValue_M {
 			sums[i + 1] = sum;
 		}
 		
-		
 		int l = 0;
 		int r = 1;
 		int maxL = 0;
@@ -27,13 +26,9 @@ public class MaximumLengthOfContinuousSubarrayOfSmallerSum_withNegativeValue_M {
 			while (temp - sums[l] > s){
 				l++;
 			}
-
 			maxL = Math.max(maxL, r - l - 1);
 		}
-
 		return maxL;
-		
-		
 	}
 	
 	public static void main(String[] args) {
