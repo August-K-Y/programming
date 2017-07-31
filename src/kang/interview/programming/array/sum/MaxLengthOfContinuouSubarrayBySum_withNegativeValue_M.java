@@ -22,12 +22,12 @@ import java.util.Map;
  * Follow Up: Can you do it in O(n) time?
  * 
  * @see {@link CheckContinuousSubarrayBySum}
- * @see {@link ComputeOccurrencesOfContinuouSubarrayBySum_withNegativeValue_M}
+ * @see {@link OccurrencesOfContinuouSubarrayBySum_withNegativeValue_M}
  * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
  * @author yankang
  *
  */
-public class ComputeMaxLengthOfContinuouSubarrayBySum_withNegativeValue_M {
+public class MaxLengthOfContinuouSubarrayBySum_withNegativeValue_M {
 	public int maxSubArrayLen(int[] nums, int k) {
 		if (nums == null || nums.length == 0)
 			return 0;
