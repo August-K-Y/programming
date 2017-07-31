@@ -21,6 +21,9 @@ import kang.interview.programming.util.DataPrinter;
 public class ValidParentheses_oneTypeParenthese {
 
 	public boolean isValid(String s) {
+		
+		// NOTE: when the input string is empty, this function will return true.
+		
 		char[] chars = s.toCharArray();
 		int count = 0;
 		/*

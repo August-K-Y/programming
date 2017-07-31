@@ -29,7 +29,7 @@ import kang.interview.programming.util.DataPrinter;
  * @author Yan Kang
  *
  */
-public class ComputeMaxLengthOfContignousSubarrayWithEqual01_H {
+public class MaxLengthOfContignousSubarrayWithEqual01_H {
 
 	/**
 	 * O(n^2) not efficient
@@ -86,7 +86,7 @@ public class ComputeMaxLengthOfContignousSubarrayWithEqual01_H {
 	}
 	
 	public static void main(String[] args) {
-		ComputeMaxLengthOfContignousSubarrayWithEqual01_H alg = new ComputeMaxLengthOfContignousSubarrayWithEqual01_H();
+		MaxLengthOfContignousSubarrayWithEqual01_H alg = new MaxLengthOfContignousSubarrayWithEqual01_H();
 		int[] nums = { 0, 1 }; // 2
 		int[] nums2 = { 0, 1, 0 }; // 2
 		int[] nums3 = { 0 }; // 0

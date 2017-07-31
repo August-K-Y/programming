@@ -17,6 +17,7 @@ import kang.interview.programming.util.DataPrinter;
  *
  */
 public class MinimumLengthContinuousSubarrayBiggerSum_M {
+	
 	public int minSubArrayLen(int s, int[] nums) {
 		if(nums == null || nums.length == 0)
 			return 0;

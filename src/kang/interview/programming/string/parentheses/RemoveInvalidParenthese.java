@@ -40,51 +40,68 @@ public class RemoveInvalidParenthese {
 	 * @return
 	 */
 	public List<String> removeInvalidParentheses_BFS(String s) {
-		List<String> result = new ArrayList<>();
+		List<String> result = new LinkedList<>();
+		if (s == null)
+			return result;
 
 		Set<String> visited = new HashSet<>();
 		Queue<String> q = new LinkedList<>();
 		q.add(s);
-		
+
 		boolean found = false;
-		String top = null;
+
 		while (!q.isEmpty()) {
-			top = q.poll();
+
+			String top = q.poll();
 
 			if (isValid(top)) {
 				result.add(top);
 				found = true;
 			}
 
+			/*
+			 * When a valid parenthesis substring first found in current level,
+			 * the found is set to true forever and the while loop will only
+			 * check whether the rest of the substrings stored in the queue is
+			 * valid parentheses. This aims to find all valid parentheses at the
+			 * current level.
+			 * 
+			 * IMPORTANT: it is possible that the rest of the substrings in the
+			 * queue contains some substrings at the next level in addition to
+			 * substrings at current level. However, substrings at next level
+			 * must not have valid parentheses. This is because we found valid
+			 * parentheses at current level which means open and close
+			 * parentheses have equal amount. All substrings at next level have
+			 * one character less than those of current level, which mean they
+			 * all are invalid parentheses.
+			 */
+
 			if (found)
 				continue;
 
-			for (int i = 0; i < s.length(); i++) {
+			for (int i = 0; i < top.length(); i++) {
+				if (top.charAt(i) != '(' && top.charAt(i) != ')')
+					continue;
 
-				if (s.charAt(i) != '(' && s.charAt(i) != ')') continue;
+				String ss = top.substring(0, i) + top.substring(i + 1);
 
-				String str = s.substring(0, i) + s.substring(i + 1);
-
-				if (!visited.contains(str)) {
-					visited.add(str);
-					q.add(str);
+				if (!visited.contains(ss)) {
+					visited.add(ss);
+					q.add(ss);
 				}
 			}
 		}
 		return result;
 	}
 
-	boolean isValid(String s) {
+	private boolean isValid(String s) {
 		int count = 0;
-
-		for (int i = 0; i < s.length(); i++) {
-			char c = s.charAt(i);
+		for (char c : s.toCharArray()) {
 			if (c == '(')
 				count++;
 			if (c == ')' && count-- == 0)
 				return false;
 		}
-
 		return count == 0;
 	}
 	

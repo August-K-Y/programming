@@ -64,6 +64,9 @@ public class LongestPalindromicSubsequence_H {
 		return table[i][j];
 	}
 	
+	
+	
+	
 	/**
 	 * Bottom-up Dynamic Programming
 	 * 
@@ -79,7 +82,7 @@ public class LongestPalindromicSubsequence_H {
        // Strings of length 1 are palindrome of lentgh 1
        for (i = 0; i < n; i++)
            L[i][i] = 1;
-              
+       
         // Build the table. Note that the lower diagonal values of table are
         // useless and not filled in the process. The values are filled in a
         // manner similar to Matrix Chain Multiplication DP solution (See

@@ -27,13 +27,6 @@ public class KClosestStars {
 			}
 		});
 		
-//		for (Star s : stars) {
-//			maxHeap.add(s);
-//			if (maxHeap.size() == k + 1) {
-//				maxHeap.poll();
-//			}
-//		}
-		
 		List<Star> result = new ArrayList<>(maxHeap);
 		Collections.sort(result); 
 		return result;

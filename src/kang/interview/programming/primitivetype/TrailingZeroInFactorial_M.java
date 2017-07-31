@@ -6,7 +6,7 @@ package kang.interview.programming.primitivetype;
  * @author yankang
  *
  */
-public class TrailingZeroInFactorial {
+public class TrailingZeroInFactorial_M {
 
 	/**
 	 * 

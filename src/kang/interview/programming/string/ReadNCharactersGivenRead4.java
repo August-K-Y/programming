@@ -17,7 +17,6 @@ public class ReadNCharactersGivenRead4 {
 		int cur = 0, total = 0;
 		for (int i = 0; i < batch; i++) {
 			int count = read4(temp);
-			System.out.println("c: " + count);
 			total += count;
 			int j = 0;
 			int end = cur + count;

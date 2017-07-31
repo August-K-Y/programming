@@ -19,9 +19,9 @@ import java.util.Map;
  * Note: The length of the array won't exceed 10,000. You may assume the sum of
  * all the numbers is in the range of a signed 32-bit integer.
  * 
- * @see {@link ComputeOccurrencesOfContinuouSubarrayBySum_withNegativeValue_M}
+ * @see {@link OccurrencesOfContinuouSubarrayBySum_withNegativeValue_M}
  * @see {@link CheckContinuousSubarrayBySum}
- * @see {@link MaximumLengthContinuousSubarrayBySum_M}
+ * @see {@link MaximumLengthContinuousSubarrayOfSum_M}
  * @author Yan Kang
  *
  */

@@ -24,7 +24,7 @@ import kang.interview.programming.util.DataPrinter;
  * @author Yan Kang
  *
  */
-public class ExpressionAddOperators_H {
+public class ExpressionAddOperators_HH {
 	
     public List<String> addOperators(String num, int target) {
     	
@@ -108,7 +108,7 @@ public class ExpressionAddOperators_H {
     }
     
     public static void main(String[] args) {
-    	ExpressionAddOperators_H alg = new ExpressionAddOperators_H();
+    	ExpressionAddOperators_HH alg = new ExpressionAddOperators_HH();
     	String s1 = "123";
     	String s2 = "2147483648";
     	String s3 = "02147483648";
