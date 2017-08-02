@@ -1,169 +1,140 @@
 package kang.interview.programming.graph;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
 import kang.interview.programming.util.DataPrinter;
 
-
+/**
+ * LeetCode 269. Alien Dictionary:
+ * https://leetcode.com/problems/alien-dictionary/description/
+ * 
+ * There is a new alien language which uses the latin alphabet. However, the
+ * order among letters are unknown to you. You receive a list of non-empty words
+ * from the dictionary, where words are sorted lexicographically by the rules of
+ * this new language. Derive the order of letters in this language.
+ * 
+ * Example 1: Given the following words in dictionary,
+ * 
+ * [ "wrt", "wrf", "er", "ett", "rftt" ] The correct order is: "wertf".
+ * 
+ * Example 2: Given the following words in dictionary,
+ * 
+ * [ "z", "x" ] The correct order is: "zx".
+ * 
+ * Example 3: Given the following words in dictionary,
+ * 
+ * [ "z", "x", "z" ] The order is invalid, so return "".
+ * 
+ * Note: 
+ * You may assume all letters are in lowercase. 
+ * You may assume that if a is a prefix of b, then a must appear before b in the given dictionary. 
+ * If the order is invalid, return an empty string. 
+ * There may be multiple valid order of letters, return any one of them is fine.
+ * 
+ * @author Yan Kang
+ *
+ */
 public class AlienDictionary {
-	
-	public static class Edge {
-		char s;
-		char e;
 
-		public Edge(char s, char e) {
-			this.s = s;
-			this.e = e;
-		}
-	}
 	public String alienOrder(String[] words) {
+		if (words == null || words.length == 0)
+			return "";
 
-		List<List<Character>> lists = new LinkedList<>();
-		createList(new LinkedList<String>(Arrays.asList(words)), lists);
+		Map<Character, Set<Character>> map = new HashMap<>();
+		Map<Character, Integer> indegree = new HashMap<>();
 
-//		DataPrinter.print2DList(lists);
-//		System.out.println();
-		
-		// topological sort
-		
-		List<Edge> edges = new LinkedList<>();
-		Set<Character> all = new HashSet<>();
-		Set<String> edgeTracker = new HashSet<>();
-		int[] indegree = new int[26]; // more general case, would use map
-		for (List<Character> list : lists) {
-			for (int i = 0; i < list.size(); i++) {
-				all.add(list.get(i));
-				
-				if (i < list.size() - 1) {
-					String edgeCode = list.get(i) + ":" + list.get(i + 1);
-					if (!edgeTracker.contains(edgeCode)) {
-						edgeTracker.add(edgeCode);
-						edges.add(new Edge(list.get(i), list.get(i + 1)));
+		for (String s : words) {
+			for (char c : s.toCharArray()) {
+				indegree.put(c, 0);
+			}
+		}
+
+		/*
+		 * left-aligned each word, characters in each column are sorted
+		 * lexicographically
+		 */
+		for (int i = 0; i < words.length - 1; i++) {
+			String word1 = words[i];
+			String word2 = words[i + 1];
+			int minLen = Math.min(word1.length(), word1.length());
+			for (int j = 0; j < minLen; j++) {
+				char c1 = word1.charAt(j);
+				char c2 = word2.charAt(j);
+				if (c1 != c2) {
+					Set<Character> set = null;
+					if (map.containsKey(c1)) {
+						set = map.get(c1);
+					} else {
+						set = new HashSet<>();
+						map.put(c1, set);
 					}
+					if (!set.contains(c2)) {
+						set.add(c2);
+						indegree.put(c2, indegree.get(c2) + 1);
+					}
+					break;
 				}
 			}
 		}
 
-//		List<Set<Character>> edges = new ArrayList<Set<Character>>(Collections.nCopies(26, new HashSet<>()));
-		List<Set<Character>> adj = new ArrayList<Set<Character>>(26);
-		for(int i = 0; i< 26; i++){
-			adj.add(i, new HashSet<>());
-		}
-		
-		for (Edge edge : edges) {
-			adj.get(edge.s - 'a').add(edge.e);
-			indegree[edge.e - 'a']++;
-		}
-		
-//		Set<Character> all = new HashSet<>();
-//		Set<String> edgeTracker = new HashSet<>();
-//		int[] indegree = new int[26]; // more general case, would use map
-//		for (List<Character> list : lists) {
-//			for (int i = 0; i < list.size(); i++) {
-//				all.add(list.get(i));
-//				int index = list.get(i) - 'a';
-//				if (i + 1 < list.size()) {
-//					String edge = list.get(i) + ":" + list.get(i + 1);
-//					if (!edgeTracker.contains(edge)) {
-//						edgeTracker.add(edge);
-//						adj.get(index).add(list.get(i + 1));
-//					}
-//				}
-//				if (i > 0)
-//					indegree[index]++;
-//			}
-//		}
-		
-//		for (int i = 0; i < edges.size(); i++) {
-//			System.out.println((char)(i + 'a'));
-//			for (char e : edges.get(i)) {
-//				System.out.println("---> " + e);
-//			}
-//		}
+		// topological sort
+		return topologicalSort(map, indegree);
+	}
 
-//		System.out.println("node count: " + all.size());
-//		DataPrinter.printArray(indegree);
+	/**
+	 * 
+	 * @param adj
+	 * @param indegree
+	 * @return
+	 */
+	private String topologicalSort(Map<Character, Set<Character>> adj, Map<Character, Integer> indegree) {
 
-		Queue<Integer> queue = new LinkedList<>();
-		for (int i = 0; i < indegree.length; i++) {
-			if (indegree[i] == 0 && all.contains((char)(i + 'a')))
-				queue.add(i);
+		//
+		Queue<Character> queue = new LinkedList<>();
+		for (char c : indegree.keySet()) {
+			if (indegree.get(c) == 0)
+				queue.add(c);
 		}
-		
-		int count = 0;
+
 		StringBuilder sb = new StringBuilder();
 		while (!queue.isEmpty()) {
-			int index = queue.poll();
-			sb.append((char) (index + 'a'));
+			char c = queue.poll();
+			sb.append(c);
 
-			for (char c : adj.get(index)) {
-				if (--indegree[c - 'a'] == 0)
-					queue.add(c - 'a');
-			}
-			count++;
-		}
-		return count == all.size() ? sb.toString() : "";
-	}
-
-	private void createList(List<String> list, List<List<Character>> lists) {
-
-		if(list.size() ==0)
-			return;
-		
-		List<Character> clist = new LinkedList<>();
-		List<String> subList = new LinkedList<>();
-		for (int i = 0; i < list.size(); i++) {
-			String w = list.get(i);
-			if (i == 0) {
-				clist.add(w.charAt(0));
-				if (w.length() > 1)
-					subList.add(w.substring(1));
-				continue;
-			}
-
-			if (w.charAt(0) == list.get(i - 1).charAt(0)) {
-				if (w.length() > 1)
-					subList.add(w.substring(1));
-			} else {
-//				if (subList.size() > 0)
-					createList(subList, lists);
-				subList = new LinkedList<>();
-				if (w.length() > 1)
-					subList.add(w.substring(1));
-				clist.add(w.charAt(0));
+			//
+			if (adj.containsKey(c)) {
+				
+				//
+				for (char a : adj.get(c)) {
+					indegree.put(a, indegree.get(a) - 1);
+					if (indegree.get(a) == 0)
+						queue.add(a);
+				}
 			}
 		}
-
-//		if (subList.size() > 0)
-			createList(subList, lists);
-		
-//		if (clist.size() > 1)
-			lists.add(clist);
+		//
+		return sb.length() == indegree.size() ? sb.toString() : "";
 	}
-	
-	public static void main(String[] args){
-		
-		
+
+	public static void main(String[] args) {
+
 		AlienDictionary alg = new AlienDictionary();
-		String[] words = {"wrt", "wrf", "er", "ett", "rftt"};
-		String[] words2 = {"z", "x"};
-		String[] words3 = {"z", "x", "z"};
-		String[] words4 = {"wrt","wrtkj"};
-		String[] words5 = {"za","zb","ca","cb"};
-		
-		
-//		List<String> list = Arrays.asList(words4);
-//		List<List<Character>> lists = new LinkedList<>();
-//		alg.createList(list, lists);
-//		DataPrinter.print2DList(lists);
-		
+		String[] words = { "wrt", "wrf", "er", "ett", "rftt" };
+		String[] words2 = { "z", "x" };
+		String[] words3 = { "z", "x", "z" };
+		String[] words4 = { "wrt", "wrtkj" };
+		String[] words5 = { "za", "zb", "ca", "cb" };
+
+		// List<String> list = Arrays.asList(words4);
+		// List<List<Character>> lists = new LinkedList<>();
+		// alg.createList(list, lists);
+		// DataPrinter.print2DList(lists);
+
 		DataPrinter.println(alg.alienOrder(words)); // wertf
 		DataPrinter.println(alg.alienOrder(words2)); // zx
 		DataPrinter.println(alg.alienOrder(words3)); // ""
