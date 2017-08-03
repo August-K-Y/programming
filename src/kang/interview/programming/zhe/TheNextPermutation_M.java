@@ -8,7 +8,7 @@ import java.util.Set;
 import kang.interview.programming.util.DataPrinter;
 
 /**
- * @see kang.interview.programming.zhe.SwapLexOrder_H
+ * @see kang.interview.programming.graph.connection.SwapLexOrder_H
  * @see https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
  */
 public class TheNextPermutation_M {

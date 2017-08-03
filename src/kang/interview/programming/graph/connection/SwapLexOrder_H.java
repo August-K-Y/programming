@@ -1,4 +1,4 @@
-package kang.interview.programming.zhe;
+package kang.interview.programming.graph.connection;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import kang.interview.programming.util.DataPrinter;
+import kang.interview.programming.zhe.TheNextPermutation_M;
 
 /**
  * 
@@ -130,6 +131,7 @@ public class SwapLexOrder_H {
 					set.add(p[1]);
 				}
 			}
+			
 			if (firstMatchedSet == null) {
 				// Current pair has not found a matched set, create a new one
 				// and add it to list.
