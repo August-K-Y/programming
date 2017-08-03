@@ -11,20 +11,15 @@ public class MaximumLengthOfContinuousSubarrayOfSmallerSum {
 		int l = 0;
 		int r = 0;
 		int maxL = 0;
-
 		int sum = 0;
 		while (r < nums.length) {
 			sum += nums[r++];
-
 			while (sum > s) {
 				sum -= nums[l++];
 			}
-
 			maxL = Math.max(maxL, r - l);
 		}
-
 		return maxL;
-
 	}
 	
 	

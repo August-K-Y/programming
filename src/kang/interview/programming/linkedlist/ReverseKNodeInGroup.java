@@ -36,38 +36,58 @@ public class ReverseKNodeInGroup {
 	}
 
 	public ListNode<Integer> reverseNodesInKGroups(ListNode<Integer> l, int k) {
-		
+
 		int length = computeLength(l);
-		
+
 		// The number of reversion to be performed
 		int iteration = length / k;
 
 		ListNode<Integer> dummy = new ListNode<>(0);
 		dummy.next = l;
-		
-		ListNode<Integer> cursor = dummy;
+
+		// We will move k - 1 nodes after pivot to the front of pivot
 		ListNode<Integer> pivot = dummy.next;
-		for(int i = 0; i<iteration; i++) {
-			
+
+		// The prev pointer always points to the node just before the pivot. The
+		// k - 1 nodes after pivot will be inserted after prev pointer one
+		// by one.
+		ListNode<Integer> prev = dummy;
+
+		for (int i = 0; i < iteration; i++) {
+
 			int j = 1;
 			ListNode<Integer> temp = null;
+
+			/*
+			 * IMPORTANT: The while loop will move k - 1 nodes after pivot to
+			 * the front of pivot to perform the reverse.
+			 * For example:
+			 * 
+			 *                1 -> 2 -> 3 -> 4 , 1 is pivot 
+			 *           2 -> 1 -> 3 -> 4
+			 *      3 -> 2 -> 1 -> 4    
+			 * 4 -> 2 -> 3 -> 1
+			 */
 			
-			while(j < k && pivot.next!=null) {
-				
+			// It is not necessary to add pivot.next != null into the while
+			// condition since if k is guaranteed to be less than or equal to
+			// the length of the linked list we will just reach the end at most.
+			while (j < k) {
+
 				temp = pivot.next;
 				pivot.next = temp.next;
-				
-				temp.next = cursor.next;
-				cursor.next = temp;
+
+				temp.next = prev.next;
+				prev.next = temp;
 				
 				j++;
 			}
-			
+
 			// Forwards the pivot to the start of the next k nodes
-			cursor = pivot;
+			prev = pivot;
 			pivot = pivot.next;
 		}
-		
+
 		return dummy.next;
 	}
 
@@ -80,16 +100,16 @@ public class ReverseKNodeInGroup {
 		}
 		return length;
 	}
-	
+
 	public static void main(String[] arg) {
 		System.out.println("result:");
 		ReverseKNodeInGroup ora = new ReverseKNodeInGroup();
-		
+
 		ListNode<Integer> head = createLongLinkedList();
 		ListNode<Integer> newHead = ora.reverseNodesInKGroups(head, 3);
 		printLinkedList(newHead);
 	}
-	
+
 	public static void printLinkedList(ListNode<Integer> head) {
 		while (head != null) {
 			System.out.print(head.value + " ");

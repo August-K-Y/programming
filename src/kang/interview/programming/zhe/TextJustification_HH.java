@@ -107,6 +107,8 @@ public class TextJustification_HH {
 			}
 			spaceLen -= numSpace;
 		}
+		
+		// deal with one word
 		sb.append(words[e]);
 		for (int i = 0; i < spaceLen; i++) {
 			sb.append(" ");
