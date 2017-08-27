@@ -33,7 +33,7 @@ public class Sqrt_M {
 			} else if (x / mid < mid) {
 				r = mid - 1;
 			} else {
-				max = Math.max(max, mid);
+				max = mid;
 				l = mid + 1;
 			}
 		}

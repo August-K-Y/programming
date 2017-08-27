@@ -65,7 +65,7 @@ public class ProductExceptSelf_M {
 		int[] res = new int[n];
 
 		// In the first iteration, res[i] is the product from nums[0]
-		// to nums[i-1]. Written with mathematical equation:
+		// to nums[i-1]. Written it as mathematical equation:
 		// res[i] = res[i - 1] * nums[i - 1];
 		res[0] = 1;
 		for (int i = 1; i < n; i++) {

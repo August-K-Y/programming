@@ -121,6 +121,40 @@ public class SparseMatrixMultiplication_M {
 		return result;
 	}
 
+	public int[][] multiply_BEST(int[][] A, int[][] B) {
+
+		int[][] result = new int[A.length][B[0].length];
+		Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
+
+		for (int i = 0; i < A.length; i++) {
+			Map<Integer, Integer> row = new HashMap<>();
+			boolean hasRow = false;
+			for (int j = 0; j < A[0].length; j++) {
+				// A[i][j] != 0 is important for performance boosting for sparse
+				// matrix since all 0 values are ruled out.
+				if (A[i][j] != 0) {
+					hasRow = true;
+					row.put(j, A[i][j]);
+				}
+			}
+			if (hasRow)
+				map.put(i, row);
+		}
+
+		for (int m : map.keySet()) {
+			Map<Integer, Integer> row = map.get(m);
+			for (int k : row.keySet()) {
+				for (int n = 0; n < B[0].length; n++) {
+					if (B[k][n] != 0) {
+						result[m][n] += row.get(k) * B[k][n];
+					}
+				}
+
+			}
+		}
+		return result;
+    }
+
 	/**
 	 * 
 	 * @param A

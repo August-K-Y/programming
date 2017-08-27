@@ -34,14 +34,14 @@ public class RemoveDuplicatesFromSortedArray {
 			return 1;
 
 		// pointer point to the position to be filled
-		int pos = 1; 
+		int pos = 0; 
 		for (int i = 1; i < array.length; i++) {
 
 			// if current element is equal to previous element, skip current
 			// element and not write it back to the array. Otherwise, put this
 			// element to the position specified by
 			// pos pointer.
-			if (array[i] != array[i - 1]) {
+			if (i == 0 || array[i] != array[i - 1]) {
 				array[pos++] = array[i];
 			}
 		}

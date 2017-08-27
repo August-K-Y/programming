@@ -46,7 +46,12 @@ public class RegularExpressionMatching_I_H {
 		}
 
 		boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
+		// dp[i][j] indicates is the substring from 0 to i matches the subpattern from 0 to j
 		dp[0][0] = true;
+		
+		// more loose than wildcard matching
+		// if current position is "*" and the dp of two position ahead is true,
+		// dp of current position is true
 		for (int i = 2; i < p.length() + 1; i += 2) {
 			if (p.charAt(i - 1) == '*' && dp[0][i - 2] == true) {
 				dp[0][i] = true;

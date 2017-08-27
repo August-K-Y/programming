@@ -35,7 +35,6 @@ public class ThreeSum {
 		 */
 		for (int i = 0; i < nums.length; i++) {
 			
-			
 			if (i > 0 && nums[i] == nums[i-1])
 				continue;
 			
@@ -47,15 +46,14 @@ public class ThreeSum {
 			while (start < end) {
 				if (nums[start] + nums[end] == sum) {
 					
-					
 					if (found && nums[start] == prev) {
 						start++;
 						end--;
 						continue;
 					}
+					
 					found = true;
 					prev = nums[start];
-					
 					
 					result.add(Arrays.asList(nums[i], nums[start], nums[end]));
 					start++;

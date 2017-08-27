@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import kang.interview.programming.recursive.backtracking.permutation.TheNextPermutation_M;
 import kang.interview.programming.util.DataPrinter;
-import kang.interview.programming.zhe.TheNextPermutation_M;
 
 /**
  * 

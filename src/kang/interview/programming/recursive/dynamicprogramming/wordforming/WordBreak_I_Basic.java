@@ -80,7 +80,7 @@ public class WordBreak_I_Basic {
 	public boolean wordBreak_(String s, List<String> wordDict) {
 
 		// dp[i] indicates whether substring of string s from the first
-		// character to ith character is word-breakable.
+		// character to ith (1-based) character is word-breakable.
 		boolean[] dp = new boolean[s.length() + 1];
 
 		dp[0] = true;
@@ -88,14 +88,15 @@ public class WordBreak_I_Basic {
 		// NOTE: i, j are not index of the string s, but 1-based indices of
 		// the dynamic programming table.
 		for (int i = 1; i <= s.length(); i++) {
-			for (int j = 1; j <= i; j++) {
-				// dp[i] is breakable only if dp[j - 1] is breakable and
-				// substring from jth char to ith char of string s is a word
-				// contained in the dictionary.
+			for (int j = 0; j < i; j++) {
+				// dp[i] is breakable only if dp[j] (1-based) is breakable and
+				// substring from jth (0-based) char to ith char of string s is
+				// a word contained in the dictionary.
 
-				// Should be careful here: s.substring(j - 1, i) actually
-				// returns jth char to ith char of the string s.
-				if (dp[j - 1] && wordDict.contains(s.substring(j - 1, i))) {
+				// Should be careful here: s.substring(j, i) actually
+				// returns jth (0-based) char to ith (0-based) char of the
+				// string s.
+				if (dp[j] && wordDict.contains(s.substring(j, i))) {
 					dp[i] = true;
 					break;
 				}

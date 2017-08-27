@@ -27,12 +27,22 @@ package kang.interview.programming.sort.irregular;
  */
 public class SortColors {
 	public void sortColors(int[] nums) {
-		int n0 = 0, n2 = nums.length - 1;
-		for (int i = 0; i <= n2; i++) {
+		if (nums == null || nums.length == 0)
+			return;
+
+		int ri = 0;
+		int wi = 0;
+		int bi = nums.length - 1;
+
+		// NOTE: i <= bi since elements after bi should all be blue color
+		for (int i = 0; i <= bi; i++) {
 			if (nums[i] == 0) {
-				swap(nums, i, n0++);
+				swap(nums, ri++, i);
 			} else if (nums[i] == 2) {
-				swap(nums, i--, n2--);
+				swap(nums, bi--, i);
+				// After swapping blue color with color at i, we need to examine
+				// color at i since it might be either red or white.
+				i--;
 			}
 		}
 	}
@@ -41,6 +51,24 @@ public class SortColors {
 		int temp = nums[i];
 		nums[i] = nums[j];
 		nums[j] = temp;
+	}
+
+	public void sortColors_CountingSort(int[] nums) {
+		if (nums == null || nums.length == 0)
+			return;
+
+		int[] b = new int[3];
+		for (int n : nums) {
+			b[n]++;
+		}
+
+		int z = 0;
+		for (int i = 0; i < b.length; i++) {
+			int count = b[i];
+			for (int j = 0; j < count; j++) {
+				nums[z++] = i;
+			}
+		}
 	}
 	
 	public static void main(String[] args) {

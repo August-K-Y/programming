@@ -21,6 +21,12 @@ public class MergeKSortedLists_M {
 		}
 	}
 
+	/**
+	 * Q(logK * (M+N))
+	 * 
+	 * @param lists
+	 * @return
+	 */
 	public ListNode mergeKLists(ListNode[] lists) {
 		if (lists == null || lists.length == 0)
 			return null;

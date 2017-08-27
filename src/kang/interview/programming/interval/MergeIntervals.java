@@ -26,11 +26,7 @@ public class MergeIntervals {
 		if (intervals == null || intervals.size() == 0)
 			return list;
 
-		Collections.sort(intervals, new Comparator<Interval>() {
-			public int compare(Interval val1, Interval val2) {
-				return Integer.compare(val1.start, val2.start);
-			}
-		});
+		Collections.sort(intervals, (a, b) -> a.start - b.start);
 
 		Interval prev = intervals.get(0);
 		for (int i = 1; i < intervals.size(); i++) {

@@ -1,14 +1,15 @@
 package kang.interview.programming.recursive.backtracking;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import kang.interview.programming.util.DataPrinter;
 
 /**
  * In chess, queens can move any number of squares vertically, horizontally, or
- * diagonally. The n-queens puzzle is the problem of placing n queens on an n ×
- * n chess board so that no two queens can attack each other.
+ * diagonally. The n-queens puzzle is the problem of placing n queens on an n*n 
+ * chess board so that no two queens can attack each other.
  * 
  * Given an integer n, print all possible distinct solutions to the n-queens
  * puzzle. Each solution contains distinct board configurations of the placement
@@ -133,10 +134,78 @@ public class NQueens {
 		}
 		return true;
 	}
+	
+	
+	public List<List<String>> solveNQueens(int n) {
+		List<List<String>> result = new LinkedList<>();
+		if (n == 0)
+			return result;
+
+		int[][] b = new int[n][n];
+
+		find(b, 0, result);
+
+		return result;
+
+	}
+
+	private void find(int[][] b, int col, List<List<String>> result) {
+		if (col == b[0].length) {
+			List<String> list = new LinkedList<>();
+			for (int x = 0; x < b.length; x++) {
+				StringBuilder sb = new StringBuilder();
+				for (int y = 0; y < b[0].length; y++) {
+					if (b[x][y] == 1) {
+						sb.append('Q');
+					} else {
+						sb.append('.');
+					}
+				}
+				list.add(sb.toString());
+			}
+
+			result.add(list);
+			return;
+		}
+
+		for (int i = 0; i < b.length; i++) {
+
+			if (isValid(b, i, col)) {
+				b[i][col] = 1;
+				find(b, col + 1, result);
+				b[i][col] = 0;
+			}
+
+		}
+	}
+
+	private boolean isValid(int[][] b, int row, int col) {
+		if (row < 0 || row >= b.length || col < 0 || col >= b[0].length)
+			return false;
+
+		for (int i = col - 1; i >= 0; i--) {
+			if (b[row][i] == 1)
+				return false;
+		}
+
+		for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+			if (b[i][j] == 1)
+				return false;
+		}
+
+		for (int i = row + 1, j = col - 1; i < b.length && j >= 0; i++, j--) {
+			if (b[i][j] == 1)
+				return false;
+		}
+		return true;
+	}
 
 	public static void main(String[] args) {
 		NQueens q = new NQueens();
-		int[][] result = q.nQueens(4);
-		DataPrinter.print2DArray(result);
+//		int[][] result = q.nQueens(4);
+//		DataPrinter.print2DArray(result);
+		
+		List<List<String>> result = q.solveNQueens(4);
+		DataPrinter.print2DList(result);
 	}
 }

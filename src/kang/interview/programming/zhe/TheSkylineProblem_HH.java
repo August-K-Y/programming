@@ -12,7 +12,6 @@ import java.util.Queue;
 
 
 /**
- * 
  * 218. The Skyline Problem:
  * https://leetcode.com/problems/the-skyline-problem/tabs/description
  * 
@@ -23,83 +22,62 @@ import java.util.Queue;
  */
 public class TheSkylineProblem_HH {
 
-	public List<int[]> getSkyline_(int[][] buildings) {
-		List<int[]> result = new LinkedList<>();
-		if (buildings == null || buildings.length == 0)
-			return result;
-
-		Map<Integer, Integer> map = new LinkedHashMap<>();
-
-		for (int i = 0; i < buildings.length; i++) {
-			for (int j = buildings[i][0]; j <= buildings[i][1]; j++) {
-				map.put(j, Math.max(map.getOrDefault(j, 0), buildings[i][2]));
-			}
-		}
-
-		int[] prev = new int[2];
-		prev[0] = -1;
-		prev[1] = -1;
-		for (int key : map.keySet()) {
-			int height = map.get(key);
-
-			if (prev[1] == -1) {
-				prev[0] = key;
-				prev[1] = height;
-				result.add(prev);
-			}
-
-			if (height > prev[1]) {
-				int[] curr = new int[2];
-				curr[0] = key;
-				curr[1] = height;
-				result.add(curr);
-				prev = curr;
-			} else if (height == prev[1] && (map.get(key + 1) == null || map.get(key + 1) < prev[1])) {
-
-				int[] curr = new int[2];
-				curr[0] = key;
-				curr[1] = map.get(key + 1) == null ? 0 : map.get(key + 1);
-				result.add(curr);
-				prev = curr;
-			}
-		}
-		return result;
-	}
 
 	public List<int[]> getSkyline(int[][] buildings) {
-		List<int[]> result = new LinkedList<>();
 		if (buildings == null || buildings.length == 0)
-			return result;
+			return new LinkedList<>();
 
+		// track the critical points of all buildings. the critical point is the
+		// position of left boundary or right boundary of a building
 		int[] cp = new int[buildings.length * 2];
+
+		// track the height of each critical points
 		int[] h = new int[buildings.length * 2];
 
-		int i = 0;
-		for (int[] building : buildings) {
-			cp[i++] = building[0];
-			cp[i++] = building[1];
+		// populate critical points
+		int z = 0;
+		for (int[] b : buildings) {
+			cp[z++] = b[0];
+			cp[z++] = b[1];
 		}
 
 		Arrays.sort(cp);
 
-		for (int j = 0; j < cp.length; j++) {
-			for (int[] building : buildings) {
-				if (cp[j] >= building[0] && cp[j] < building[1]) {
-					h[j] = Math.max(h[j], building[2]);
+		// For each critical point, record the max height across all the
+		// buildings sitting on this critical point skipping the building whose
+		// right boundary aligned with the critical point. This is because:
+
+		// the requirement that for recording points that are on the right
+		// boundaries of buildings appearing in the sky line, its height should
+		// be the height of the building that is shorter than the highest
+		// building but (some part of this building) appearing in the sky line.
+		for (int i = 0; i < cp.length; i++) {
+			for (int j = 0; j < buildings.length; j++) {
+				// skip the building whose right boundary aligned with the
+				// critical point.
+				if (cp[i] >= buildings[j][0] && cp[i] < buildings[j][1]) {
+					h[i] = Math.max(h[i], buildings[j][2]);
 				}
 			}
 		}
 
-		for (int z = 0; z < h.length; z++) {
-			if (z == 0 || h[z] != h[z - 1]) {
-				int[] p = new int[2];
-				p[0] = cp[z];
-				p[1] = h[z];
-				result.add(p);
-			}
-		}
+		// record the critical point and its height where the height of current
+		// critical point should NOT be the same as the height of previous
+		// critical point. The is because the critical point whose height
+		// appearing before is not one of the critical points compose the
+		// sky line.
+		List<int[]> ret = new LinkedList<>();
+		for (int i = 0; i < h.length; i++) {
+			if (i == 0 || h[i] != h[i - 1]) {
 
-		return result;
+				int[] p = new int[2];
+				p[0] = cp[i];
+				p[1] = h[i];
+				ret.add(p);
+			}
+
+		}
+		return ret;
 	}
 	
 	

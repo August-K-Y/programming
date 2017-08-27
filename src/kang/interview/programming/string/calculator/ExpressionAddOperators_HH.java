@@ -25,87 +25,52 @@ import kang.interview.programming.util.DataPrinter;
  *
  */
 public class ExpressionAddOperators_HH {
-	
-    public List<String> addOperators(String num, int target) {
-    	
-    	LinkedList<String> result = new LinkedList<>();
-        if (num.length() == 0) return result;
-        
+
+	public List<String> addOperators(String num, int target) {
+		List<String> result = new LinkedList<>();
+		if (num == null || num.length() == 0)
+			return result;
+
 		char[] path = new char[2 * num.length()];
 		char[] nums = num.toCharArray();
-		
-		int n = 0;
-	
+		long sum = 0;
 		for (int i = 0; i < nums.length; i++) {
-			n = n * 10 + (nums[i] - '0');
-			if(n < 0)
-				break;
+			sum = sum * 10 + nums[i] - '0';
 			path[i] = nums[i];
-			find(nums, i + 1, path, i + 1, 0, n, target, result);
-			if(n == 0) break;
+			calculate(nums, i + 1, path, i + 1, 0, sum, target, result);
+			if (sum == 0)
+				break;
 		}
-		return result;
-        
-    }
 
-    /**
-     * 
-     * @param nums
-     * @param index
-     * @param path
-     * @param pathIndex
-     * @param ac
-     * @param hold
-     * @param target
-     * @param result
-     */
-	private void find(char[] nums, int index, char[] path, int pathIndex, int ac, int hold, int target,
-			LinkedList<String> result) {
+		return result;
+	}
+
+	private void calculate(char[] nums, int index, char[] path, int pindex, long prev, long hold, int target,
+			List<String> result) {
 		if (index == nums.length) {
-			int val = ac + hold;
-			if (val == target) {
-				result.add(new String(path, 0, pathIndex));
+			if (prev + hold == target) {
+				result.add(new String(path, 0, pindex));
 			}
 			return;
 		}
 
-		int j = pathIndex + 1;
-		int n = 0;
+		int sign = pindex++;
+		long sum = 0;
 		for (int i = index; i < nums.length; i++) {
-			n = n * 10 + (nums[i] - '0');
-			path[j++] = nums[i];
-			path[pathIndex] = '+' ;
-			find(nums, i + 1, path, j, ac + hold, n, target, result);
-			if (n >= 0) {
-				path[pathIndex] = '-';
-				find(nums, i + 1, path, j, ac + hold, -n, target, result);
-			}
-			path[pathIndex] = '*' ;
-			find(nums, i + 1, path, j, ac, hold * n, target, result);
-			
-			if(n == 0) break;
-		}
-	}
-	
-    public List<String> addOperators_(String num, int target) {
-    	
-    	LinkedList<String> result = new LinkedList<>();
-        if (num.length() == 0) return result;
-        
-		char[] path = new char[2 * num.length() - 1];
-		char[] nums = num.toCharArray();
-		
-		int n = 0;
-	
-		for (int i = 0; i < nums.length; i++) {
-			n = n * 10 + (nums[i] - '0');
-			path[i] = nums[i];
-			find(nums, i + 1, path, i + 1, 0, n, target, result);
-			if (n == 0)
+			sum = sum * 10 + nums[i] - '0';
+
+			path[pindex++] = nums[i];
+			path[sign] = '+';
+			calculate(nums, i + 1, path, pindex, prev + hold, sum, target, result);
+			path[sign] = '-';
+			calculate(nums, i + 1, path, pindex, prev + hold, -sum, target, result);
+			path[sign] = '*';
+			calculate(nums, i + 1, path, pindex, prev, hold * sum, target, result);
+			if (sum == 0)
 				break;
 		}
-		return result;
-    }
+
+	}
     
     public static void main(String[] args) {
     	ExpressionAddOperators_HH alg = new ExpressionAddOperators_HH();

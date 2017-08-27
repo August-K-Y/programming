@@ -42,6 +42,10 @@ public class GraphValidTree {
 			Set<Integer> set2 = null;
 			
 			for (Set<Integer> set : list) {
+
+				// This is IMPORTANT: when both points of an edge have already
+				// existed in the set, it means that a loop occurs and it is not
+				// a valid tree.
 				if (set.contains(edge[0]) && set.contains(edge[1]))
 					return false;
 
@@ -51,6 +55,9 @@ public class GraphValidTree {
 					} else {
 						set2 = set;
 					}
+					
+					// One of the two nodes of the edge was in the set, but we
+					// do not know which one. Therefore, we add both of them.
 					set.add(edge[0]);
 					set.add(edge[1]);
 				}

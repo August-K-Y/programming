@@ -73,6 +73,8 @@ public class AlienDictionary {
 						set = new HashSet<>();
 						map.put(c1, set);
 					}
+					
+					//
 					if (!set.contains(c2)) {
 						set.add(c2);
 						indegree.put(c2, indegree.get(c2) + 1);
@@ -117,7 +119,8 @@ public class AlienDictionary {
 				}
 			}
 		}
-		//
+		// when all node are in the string builder, it is valid. Otherwise, it
+		// is invalid since loop exists
 		return sb.length() == indegree.size() ? sb.toString() : "";
 	}
 

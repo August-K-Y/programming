@@ -10,4 +10,8 @@ public class HammingDistance {
 		}
 		return res;
 	}
+	
+//	public int hammingDistance_(int x, int y) { 
+//		
+//	}
 }

@@ -1,10 +1,7 @@
 package kang.interview.programming.recursive.backtracking;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import kang.interview.programming.util.DataPrinter;
 

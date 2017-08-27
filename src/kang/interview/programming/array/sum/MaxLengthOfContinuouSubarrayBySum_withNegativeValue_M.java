@@ -23,7 +23,7 @@ import java.util.Map;
  * 
  * @see {@link CheckContinuousSubarrayBySum}
  * @see {@link OccurrencesOfContinuouSubarrayBySum_withNegativeValue_M}
- * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
+ * @see {@link CheckContinuousSubarrayKTimesOfSum_HH}
  * @author yankang
  *
  */
@@ -36,16 +36,11 @@ public class MaxLengthOfContinuouSubarrayBySum_withNegativeValue_M {
 		map.put(0, -1);
 		int max = 0, sum = 0;
 		for (int i = 0; i < nums.length; i++) {
+			// no need to compute the sum using a separate loop
 			sum += nums[i];
 			if (map.containsKey(sum - k)) {
 				max = Math.max(max, i - map.get(sum - k));
 			}
-
-//			Integer val = map.get(sum);
-//			if (val == null) {
-//				map.put(sum, i);
-//			}
-			
 			map.putIfAbsent(sum, i);
 		}
 		return max;
