@@ -148,27 +148,22 @@ public class SpiralOrderingOf2DArray {
     }
     
     private void compute(int[][] matrix, int level, List<Integer> ret) {
-        if(ret.size() >= matrix.length * matrix[0].length){
+        if(ret.size() >= matrix.length * matrix[0].length)
             return;
-        }
-        
-        if(level == 2)
-        	return;
         
         int frow = level;
         int fcol = level;
         int lrow = matrix.length - level - 1;
         int lcol = matrix[0].length - level - 1;
-        System.out.println("frow: " + frow);
-        System.out.println("fcol: " + fcol);
-        System.out.println("lrow: " + lrow);
-        System.out.println("lcol: " + lcol);
+        
+        
         for(int i = fcol; i <= lcol; i++) ret.add(matrix[frow][i]);
         for(int i = frow + 1; i <= lrow; i++) ret.add(matrix[i][lcol]);
         if(frow != lrow)
-        for(int i = lcol - 1; i >= fcol; i--) ret.add(matrix[lrow][i]);
-        for(int i = lrow - 1; i > frow; i--) ret.add(matrix[i][fcol]);
-		System.out.println(ret.size());
+        	for(int i = lcol - 1; i >= fcol; i--) ret.add(matrix[lrow][i]);
+        if(fcol != lcol)
+        	for(int i = lrow - 1; i > frow; i--) ret.add(matrix[i][fcol]);
+        
         compute(matrix, level + 1, ret);
     }
 	
