@@ -17,7 +17,7 @@ import java.util.HashMap;
  * [-1e7, 1e7].
  * 
  * @see {@link CheckContinuousSubarrayBySum}
- * @see {@link MaxLengthOfContinuouSubarrayBySum_withNegativeValue_M}
+ * @see {@link MaxLengthOfContinuouSubarrayBySum_withNegativeValue_H}
  * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
  * @see https://leetcode.com/problems/subarray-sum-equals-k/#/solution
  * @author Yan Kang

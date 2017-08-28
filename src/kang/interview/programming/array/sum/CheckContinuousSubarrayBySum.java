@@ -12,7 +12,7 @@ import kang.interview.programming.util.DataPrinter;
  * [1, 3, 5, 23, 2], 7 Return False because no sequence in this array adds up to 7
  * 
  * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
- * @see {@link MaximumLengthContinuousSubarrayOfSum_M}
+ * @see {@link MaxLengthOfContinuousSubarrayBySum_withNoNegativeValue_M}
  * @author Yan Kang
  *
  */

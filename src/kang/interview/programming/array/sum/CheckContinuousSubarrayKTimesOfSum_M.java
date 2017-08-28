@@ -21,7 +21,7 @@ import java.util.Map;
  * 
  * @see {@link OccurrencesOfContinuouSubarrayBySum_withNegativeValue_M}
  * @see {@link CheckContinuousSubarrayBySum}
- * @see {@link MaximumLengthContinuousSubarrayOfSum_M}
+ * @see {@link MaxLengthOfContinuousSubarrayBySum_withNoNegativeValue_M}
  * @author Yan Kang
  *
  */

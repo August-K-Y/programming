@@ -56,8 +56,25 @@ import kang.interview.programming.util.DataPrinter;
  * @author Yan Kang
  *
  */
-public class SparseMatrixMultiplication_M {
+public class SparseMatrixMultiplication_H {
 	
+	
+	public int[][] multiply_normal(int[][] A, int[][] B) {
+		int m = A.length, n = A[0].length, nB = B[0].length;
+		int[][] C = new int[m][nB];
+
+		for (int i = 0; i < m; i++) {
+			for (int k = 0; k < n; k++) {
+				if (A[i][k] != 0) {
+					for (int j = 0; j < nB; j++) {
+						if (B[k][j] != 0)
+							C[i][j] += A[i][k] * B[k][j];
+					}
+				}
+			}
+		}
+		return C;
+	}
 	
 	/**
 	 * 
@@ -121,32 +138,47 @@ public class SparseMatrixMultiplication_M {
 		return result;
 	}
 
-	/**
-	 * 
-	 * @param A
-	 * @param B
-	 * @return
-	 */
-    public int[][] multiply_(int[][] A, int[][] B) {
-		int m = A.length, n = A[0].length, nB = B[0].length;
-		int[][] C = new int[m][nB];
+	public int[][] multiply_optimized(int[][] A, int[][] B) {
 
-		for (int i = 0; i < m; i++) {
-			for (int k = 0; k < n; k++) {
-				if (A[i][k] != 0) {
-					for (int j = 0; j < nB; j++) {
-						if (B[k][j] != 0)
-							C[i][j] += A[i][k] * B[k][j];
-					}
+		int[][] result = new int[A.length][B[0].length];
+		if (A == null || A.length == 0)
+			return result;
+
+		if (B == null || B.length == 0)
+			return result;
+
+		Map<Integer, Map<Integer, Integer>> mapA = new HashMap<>();
+
+		for (int i = 0; i < A.length; i++) {
+			Map<Integer, Integer> row = new HashMap<>();
+			boolean hasRow = false;
+			for (int j = 0; j < A[0].length; j++) {
+				if (A[i][j] == 0)
+					continue;
+				hasRow = true;
+				row.put(j, A[i][j]);
+			}
+			if (hasRow)
+				mapA.put(i, row);
+		}
+
+		for (int m : mapA.keySet()) {
+			Map<Integer, Integer> row = mapA.get(m);
+			for (int k : row.keySet()) {
+				for (int n = 0; n < B[0].length; n++) {
+					if (B[k][n] == 0)
+						continue;
+
+					result[m][n] += row.get(k) * B[k][n];
 				}
 			}
 		}
-		return C;
+		return result;
 	}
     
     
 	public static void main(String[] args) {
-		SparseMatrixMultiplication_M alg = new SparseMatrixMultiplication_M();
+		SparseMatrixMultiplication_H alg = new SparseMatrixMultiplication_H();
 		int[][] A = { { 1, 0, 0 }, { -1, 0, 3 } };
 		int[][] B = { { 7, 0, 0 }, { 0, 0, 0 }, { 0, 0, 1 } };
 		DataPrinter.print2DArray(alg.multiply(A, B));

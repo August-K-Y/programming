@@ -30,7 +30,7 @@ import kang.interview.programming.util.DataPrinter;
  * @author yankang
  *
  */
-public class GenerateParentheses_H {
+public class GenerateParentheses_HH {
 
 	/**
 	 * From LeetCode, very brilliant solution
@@ -115,7 +115,7 @@ public class GenerateParentheses_H {
 	private Map<Integer, Set<String>> mem = new HashMap<>();
 
 	public static void main(String[] arg) {
-		GenerateParentheses_H alg = new GenerateParentheses_H();
+		GenerateParentheses_HH alg = new GenerateParentheses_HH();
 		DataPrinter.printList(alg.generateParenthesis(4));
 	}
 }

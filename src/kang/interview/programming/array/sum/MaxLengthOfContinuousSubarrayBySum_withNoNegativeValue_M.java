@@ -57,7 +57,7 @@ package kang.interview.programming.array.sum;
  * @author Yan Kang
  *
  */
-public class MaximumLengthContinuousSubarrayOfSum_M {
+public class MaxLengthOfContinuousSubarrayBySum_withNoNegativeValue_M {
 
 	int[] findLongestSubarrayBySum(int s, int[] arr) {
 		int[] res = new int[2];
