@@ -9,9 +9,9 @@ import kang.interview.programming.binarytree.ZTestDataCreator;
  * Given a binary search tree (BST), find the lowest common ancestor (LCA) of
  * two given nodes in the BST.
  * 
- * According to the definition of LCA on Wikipedia: “The lowest common ancestor
+ * According to the definition of LCA on Wikipedia: The lowest common ancestor
  * is defined between two nodes v and w as the lowest node in T that has both v
- * and w as descendants (where we allow a node to be a descendant of itself).”
+ * and w as descendants (where we allow a node to be a descendant of itself).
  * 
  *      _______6______
        /              \
@@ -27,8 +27,8 @@ import kang.interview.programming.binarytree.ZTestDataCreator;
  * 
  * 
  * @author Yan Kang
- *@see kang.interview.programming.binarytree.LowestCommonAncestor_BinaryTree
- *@see https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/#/description
+ * @see kang.interview.programming.binarytree.LowestCommonAncestor_BinaryTree
+ * @see https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/#/description
  */
 public class LowestCommonAncestor_BinarySearchTree {
 //	public static class TreeNode {
@@ -55,6 +55,19 @@ public class LowestCommonAncestor_BinarySearchTree {
 		return null;
 	}
 
+	public TreeNode lowestCommonAncestor_recursive(TreeNode root, TreeNode p, TreeNode q) {
+		if (root == null)
+			return null;
+
+		if (p.val > root.val && q.val > root.val) {
+			return lowestCommonAncestor(root.right, p, q);
+		} else if (p.val < root.val && q.val < root.val) {
+			return lowestCommonAncestor(root.left, p, q);
+		} else {
+			return root;
+		}
+	}
+    
 	public static void main(String[] arg) {
 		LowestCommonAncestor_BinarySearchTree c = new LowestCommonAncestor_BinarySearchTree();
 //		System.out.println(

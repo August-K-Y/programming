@@ -14,6 +14,9 @@ public class QueueWithStack {
 		if (!outputStack.isEmpty()) {
 			return outputStack.pop();
 		} else {
+
+			// if the output stack is empty, push all elements in the input
+			// stack into the output stack
 			while (!inputStack.isEmpty()) {
 				outputStack.push(inputStack.pop());
 			}

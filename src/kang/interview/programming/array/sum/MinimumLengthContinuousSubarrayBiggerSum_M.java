@@ -27,7 +27,6 @@ public class MinimumLengthContinuousSubarrayBiggerSum_M {
 
 		while (r < nums.length) {
 			sum += nums[r++];
-
 			while (sum >= s) {
 				// keep updating the minimum length while keep removing left
 				// most element of the window from the sum until sum < s
@@ -35,8 +34,6 @@ public class MinimumLengthContinuousSubarrayBiggerSum_M {
 				sum -= nums[l++];
 			}
 		}
-		
-		// 
 		return minL == (nums.length + 1) ? 0 : minL;
 	}
 	

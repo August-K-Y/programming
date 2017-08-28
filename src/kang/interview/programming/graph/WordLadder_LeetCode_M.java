@@ -1,11 +1,14 @@
 package kang.interview.programming.graph;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 
 /**
  * LeetCode: 127. Word Ladder:
@@ -87,25 +90,76 @@ public class WordLadder_LeetCode_M {
 	}
 
 	private int getNeighbors(String word, Map<String, Boolean> map, Queue<String> queue) {
-		int count = 0;
+		int numOfN = 0;
 		for (int j = 0; j < word.length(); j++) {
 			for (int i = 0; i < 26; i++) {
 				char r = (char) (i + 'a');
-				if (word.charAt(j) != r) {
+				if (word.charAt(j) != r) { // Point 4
 					char[] chars = word.toCharArray();
 					chars[j] = r;
 					String neighbor = new String(chars);
 					
 					// Only when the dictionary contains the created neighbor,
 					// it is added the neighbor set
-					if (map.containsKey(neighbor)) { // Point 4
-						count++;
+					if (map.containsKey(neighbor)) { // Point 5
+						numOfN++;
 						queue.add(neighbor);
 					}
 				}
 			}
 		}
-		return count;
+		return numOfN;
+	}
+	
+	
+	
+	private Integer len = Integer.MAX_VALUE;
+	/**
+	 * Depth First Search. Passed Time Limit
+	 * 
+	 * @param beginWord
+	 * @param endWord
+	 * @param wordList
+	 * @return
+	 */
+	public int ladderLength_DFS(String beginWord, String endWord, List<String> wordList) {
+		Set<String> words = new HashSet<>(wordList);
+		find(beginWord, endWord, words, 1);
+		return len == Integer.MAX_VALUE ? 0 : len;
+	}
+
+	private void find(String word, String endWord, Set<String> words, int l) {
+		if (word.equals(endWord)) {
+			len = Math.min(len, l);
+			return;
+		}
+
+		for (String w : getNeighbors_(word, words)) {
+			words.remove(w);
+			find(w, endWord, words, l + 1);
+			words.add(w);
+		}
+	}
+
+	private List<String> getNeighbors_(String word, Set<String> words) {
+
+		List<String> ret = new ArrayList<>();
+		for (int i = 0; i < 26; i++) {
+			for (int j = 0; j < word.length(); j++) {
+				char c = (char) (i + 'a');
+				if (c != word.charAt(j)) {
+					
+					//
+					char[] chars = word.toCharArray();
+					chars[j] = c;
+					String str = new String(chars);
+					if (words.contains(str)) {
+						ret.add(str);
+					}
+				}
+			}
+		}
+		return ret;
 	}
 	
 	public static void main(String[] args) {

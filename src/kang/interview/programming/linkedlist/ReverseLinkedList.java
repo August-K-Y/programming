@@ -29,8 +29,9 @@ public class ReverseLinkedList {
 		ListNode pivot = dummy.next;
 
 		/*
-		 * Reverse each node, say N, involves two steps: (1) remove node N from
-		 * the list and (2) insert node N to the front of the list.
+		 * Reverse each node, say N, involves two steps: 
+		 * (1) remove node N from the list and 
+		 * (2) insert node N to the front of the list.
 		 * 
 		 * Makes temp node pointing to node N is to help remove node N from the
 		 * list and then insert it to the front

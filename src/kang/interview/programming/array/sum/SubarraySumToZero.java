@@ -27,9 +27,7 @@ public class SubarraySumToZero {
 	 * @return
 	 */
 	public boolean isSumToZero(int[] array) {
-
 		for (int i = 0; i < array.length; i++) {
-
 			int sum = array[i];
 			for (int j = i - 1; j >= 0; j--) {
 				sum += array[j];
@@ -46,7 +44,6 @@ public class SubarraySumToZero {
 		for (; j <= i; j++) {
 			System.out.print(array[j] + " ");
 		}
-
 	}
 	
 	public static void main(String[] args) 
@@ -55,5 +52,4 @@ public class SubarraySumToZero {
 		int[] array = {4, 2, -3, 1, 6};
 		System.out.println(s.isSumToZero(array));
 	} 
-
 }

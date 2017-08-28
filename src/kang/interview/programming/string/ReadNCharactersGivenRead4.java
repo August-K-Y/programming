@@ -12,33 +12,28 @@ public class ReadNCharactersGivenRead4 {
 	 */
 	public int read(char[] buf, int n) {
 
-		int batch = n / 4;
 		char[] temp = new char[4];
-		int cur = 0, total = 0;
-		for (int i = 0; i < batch; i++) {
+		int total = 0;
+		boolean eof = false;
+
+		// either reach the end of file or complete the total number of
+		// character reading, the while loop end;
+		while (!eof && total < n) {
 			int count = read4(temp);
-			total += count;
-			int j = 0;
-			int end = cur + count;
-			while (cur < end) {
-				buf[cur++] = temp[j++];
+
+			// if the number of characters read from file is smaller than 4,
+			// it's the end of the file
+			eof = count < 4;
+
+			// the number of characters left to be read may be smaller than the
+			// number of character read from file. Chose the smaller one.
+			count = Math.min(count, n - total);
+
+			// copy from temp buffer to buf
+			for (int i = 0; i < count; i++) {
+				buf[total++] = temp[i];
 			}
-
-			if (count < 4)
-				return total;
-
 		}
-
-		int res = n % 4;
-		int count = read4(temp);
-		int min = Math.min(res, count);
-		int j = 0;
-		total += min;
-		int end = cur + min;
-		while (cur < end) {
-			buf[cur++] = temp[j++];
-		}
-		
 		return total;
 	}
 
@@ -60,29 +55,6 @@ public class ReadNCharactersGivenRead4 {
 		} else {
 			return 0;
 		}
-	}
-	
-	
-	public int read_(char[] buf, int n) {
-		boolean eof = false; // end of file flag
-		int total = 0; // total bytes have read
-		char[] tmp = new char[4]; // temp buffer
-
-		while (!eof && total < n) {
-			int count = read4(tmp);
-
-			// check if it's the end of the file
-			eof = count < 4;
-
-			// get the actual count
-			count = Math.min(count, n - total);
-
-			// copy from temp buffer to buf
-			for (int i = 0; i < count; i++)
-				buf[total++] = tmp[i];
-		}
-
-		return total;
 	}
 	
 	public static void main(String[] args) {

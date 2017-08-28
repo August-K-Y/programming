@@ -52,6 +52,13 @@ public class MaxRectangle_H {
 		int maxRec = 0;
 		for (int i = 0; i < table.length; i++) {
 			for (int j = 0; j < table[0].length; j++) {
+
+				// Only search for max rectangle when matrix[i][j] == '1' and
+				// when it is possible that a bigger rectangle can be found
+				// (table[i][j].H * table[i][j].W is the possible biggest
+				// rectangle that can be found in this iteration. If such value
+				// is smaller than or equal to current maxRec, no bigger
+				// rectangle can be found in this iteration)
 				if (matrix[i][j] == '1' && table[i][j].H * table[i][j].W > maxRec) {
 
 					int minW = Integer.MAX_VALUE;

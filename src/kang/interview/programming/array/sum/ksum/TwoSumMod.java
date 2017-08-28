@@ -4,12 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import kang.interview.programming.array.FindAllParisOfTwoSum;
-import kang.interview.programming.array.sum.CheckContinuousSubarrayKTimesOfSum_M;
 
 /**
  * 
  * @see {@link FindAllParisOfTwoSum}
- * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
+ * @see {@link CheckContinuousSubarrayKTimesOfSum_HH}
  * 
  * @author Yan Kang
  *

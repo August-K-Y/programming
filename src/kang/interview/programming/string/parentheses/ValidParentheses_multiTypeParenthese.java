@@ -20,6 +20,7 @@ import java.util.Stack;
  *
  */
 public class ValidParentheses_multiTypeParenthese {
+	
     public boolean isValid(String s) {
 		Map<Character, Character> map = new HashMap<>();
 		map.put(')', '('); map.put(']', '['); map.put('}', '{');
@@ -28,11 +29,17 @@ public class ValidParentheses_multiTypeParenthese {
 		char[] chars = s.toCharArray();
 		for (char c : chars) {
 			if (map.containsKey(c)) {
-				if (stack.isEmpty() || map.get(c) != stack.pop()) return false;
+				// if stack is empty there is no open parenthesis match current
+				// close parenthesis.
+				// if map.get(c) != stack.pop() the type of parentheses is not
+				// matched correctly.
+				if (stack.isEmpty() || map.get(c) != stack.pop())
+					return false;
 			} else
 				stack.push(c);
 		}
-		return stack.isEmpty() ? true : false;
+		// If stack is empty, all parentheses matched as pairs correctly
+		return stack.isEmpty();
 	}
     
 	/**

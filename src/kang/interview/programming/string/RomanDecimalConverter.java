@@ -5,10 +5,9 @@ import java.util.Map;
 
 public class RomanDecimalConverter {
 
-	private static Map<Character, Integer> r2i  = new HashMap<Character, Integer>();
-	
-	static {
-		System.out.println("here");
+	public int roman2integer(String input) {
+		
+		Map<Character, Integer> r2i = new HashMap<Character, Integer>();
 		r2i.put('I', 1);
 		r2i.put('V', 5);
 		r2i.put('X', 10);
@@ -16,29 +15,16 @@ public class RomanDecimalConverter {
 		r2i.put('C', 100);
 		r2i.put('D', 500);
 		r2i.put('M', 1000);
-	}
-	
-	public int roman2integer(String input)
-	{
-		int length = input.length();
 
-		if(length == 1)
-			return -1;
-		
-		int i = length - 2;
-		int sum = r2i.get(input.charAt(length - 1));
-		for (; i >= 0; i--) {
-            
-			int value = r2i.get(input.charAt(i));
-			int next = r2i.get(input.charAt(i+1));
-			if(value < next) {
-				sum -= value;
+		int sum = 0;
+		for (int i = 0; i < input.length() - 1; i++) {
+			if (r2i.get(input.charAt(i)) < r2i.get(input.charAt(i + 1))) {
+				sum -= r2i.get(input.charAt(i));
 			} else {
-				sum += value;
+				sum += r2i.get(input.charAt(i));
 			}
 		}
-		return sum;
-		
+		return sum + r2i.get(input.charAt(input.length() - 1));
 	}
 	
 	

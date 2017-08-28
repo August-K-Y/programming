@@ -98,6 +98,49 @@ public class PopulatingNextRightPointers_II_M {
 			}
 		}
 	}
+
+	/**
+	 * The same idea as the previous version except no need call setNextPointers
+	 * for each level.
+	 * 
+	 * @param root
+	 */
+	public void connect2(TreeLinkNode root) {
+		if (root == null)
+			return;
+
+		Queue<TreeLinkNode> q = new LinkedList<>();
+
+		q.add(root);
+		int cn = 1;
+		int nn = 0;
+		TreeLinkNode prev = null;
+		while (!q.isEmpty()) {
+			TreeLinkNode top = q.remove();
+			if (prev != null)
+				prev.next = top;
+			prev = top;
+			cn--;
+
+			if (top.left != null) {
+				q.add(top.left);
+				nn++;
+			}
+
+			if (top.right != null) {
+				q.add(top.right);
+				nn++;
+			}
+
+			if (cn == 0) {
+				cn = nn;
+				nn = 0;
+				prev = null;
+			}
+		}
+
+	}
+	  
 	
 	/**
 	 * Code from LeetCode: 

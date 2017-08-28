@@ -40,14 +40,17 @@ public class GroupAnagrams {
 		
 		for(String str : strs) {
 			String code = getCode(str);
-			List<String> list = null;
-			if(map.containsKey(code)){
-				list = map.get(code);
-			} else {
-				list = new LinkedList<String>();
-				map.put(code, list);
-			}
-			list.add(str);
+			
+            // if(map.containsKey(code)){
+            //     map.get(code).add(str);
+            // } else {
+            //     List<String> list = new LinkedList<>();
+            //     list.add(str);
+            //     map.put(code, list);
+            // }
+            
+            if(!map.containsKey(code)) map.put(code, new LinkedList<>());
+            map.get(code).add(str);
 		}
 		result.addAll(map.values());
 		return result;

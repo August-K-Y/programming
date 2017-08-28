@@ -3,7 +3,6 @@ package kang.interview.programming.array.rearrange;
 import kang.interview.programming.util.DataPrinter;
 
 /**
- * 
  * LeetCode 621. Task Scheduler
  * https://leetcode.com/problems/task-scheduler/#/description
  * 

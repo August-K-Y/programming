@@ -138,45 +138,40 @@ public class SparseMatrixMultiplication_H {
 		return result;
 	}
 
-	public int[][] multiply_optimized(int[][] A, int[][] B) {
+	public int[][] multiply_BEST(int[][] A, int[][] B) {
 
 		int[][] result = new int[A.length][B[0].length];
-		if (A == null || A.length == 0)
-			return result;
-
-		if (B == null || B.length == 0)
-			return result;
-
-		Map<Integer, Map<Integer, Integer>> mapA = new HashMap<>();
+		Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
 
 		for (int i = 0; i < A.length; i++) {
 			Map<Integer, Integer> row = new HashMap<>();
 			boolean hasRow = false;
 			for (int j = 0; j < A[0].length; j++) {
-				if (A[i][j] == 0)
-					continue;
-				hasRow = true;
-				row.put(j, A[i][j]);
+				// A[i][j] != 0 is important for performance boosting for sparse
+				// matrix since all 0 values are ruled out.
+				if (A[i][j] != 0) {
+					hasRow = true;
+					row.put(j, A[i][j]);
+				}
 			}
 			if (hasRow)
-				mapA.put(i, row);
+				map.put(i, row);
 		}
 
-		for (int m : mapA.keySet()) {
-			Map<Integer, Integer> row = mapA.get(m);
+		for (int m : map.keySet()) {
+			Map<Integer, Integer> row = map.get(m);
 			for (int k : row.keySet()) {
 				for (int n = 0; n < B[0].length; n++) {
-					if (B[k][n] == 0)
-						continue;
-
-					result[m][n] += row.get(k) * B[k][n];
+					if (B[k][n] != 0) {
+						result[m][n] += row.get(k) * B[k][n];
+					}
 				}
+
 			}
 		}
 		return result;
-	}
-    
-    
+    }
+
 	public static void main(String[] args) {
 		SparseMatrixMultiplication_H alg = new SparseMatrixMultiplication_H();
 		int[][] A = { { 1, 0, 0 }, { -1, 0, 3 } };

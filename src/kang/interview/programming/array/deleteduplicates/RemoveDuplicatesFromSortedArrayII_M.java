@@ -16,7 +16,7 @@ import kang.interview.programming.util.DataPrinter;
  * length.
  * 
  * 
- * @author yankang
+ * @author Yan Kang
  *
  */
 public class RemoveDuplicatesFromSortedArrayII_M {
@@ -39,6 +39,24 @@ public class RemoveDuplicatesFromSortedArrayII_M {
 			} else if (appear < 2) {
 				nums[pos++] = nums[i];
 				appear++;
+			}
+		}
+		return pos;
+	}
+	
+	public int removeDuplicates_(int[] nums) {
+		if (nums == null || nums.length == 0)
+			return 0;
+
+		int pos = 0;
+		int count = 0;
+		for (int i = 0; i < nums.length; i++) {
+			if (i == 0 || nums[i] == nums[i - 1] && count < 2) {
+				nums[pos++] = nums[i];
+				count++;
+			} else if (nums[i] != nums[i - 1]) {
+				nums[pos++] = nums[i];
+				count = 1;
 			}
 		}
 		return pos;

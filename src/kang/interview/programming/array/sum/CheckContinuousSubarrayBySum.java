@@ -13,6 +13,8 @@ import kang.interview.programming.util.DataPrinter;
  * 
  * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
  * @see {@link MaxLengthOfContinuousSubarrayBySum_withNoNegativeValue_M}
+ * @see {@link CheckContinuousSubarrayKTimesOfSum_HH}
+ * @see {@link MaximumLengthContinuousSubarrayOfSum_M}
  * @author Yan Kang
  *
  */

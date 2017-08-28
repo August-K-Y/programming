@@ -19,6 +19,8 @@ import java.util.HashMap;
  * @see {@link CheckContinuousSubarrayBySum}
  * @see {@link MaxLengthOfContinuouSubarrayBySum_withNegativeValue_H}
  * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
+ * @see {@link MaxLengthOfContinuouSubarrayBySum_withNegativeValue_M}
+ * @see {@link CheckContinuousSubarrayKTimesOfSum_HH}
  * @see https://leetcode.com/problems/subarray-sum-equals-k/#/solution
  * @author Yan Kang
  */

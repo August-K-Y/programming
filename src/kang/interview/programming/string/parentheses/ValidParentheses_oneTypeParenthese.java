@@ -37,6 +37,8 @@ public class ValidParentheses_oneTypeParenthese {
 			if (c == ')' && count-- == 0)
 				return false;
 		}
+		
+		// all ( and ) should be matched as pair
 		return count == 0;
 	}
 	

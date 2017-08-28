@@ -22,7 +22,7 @@ package kang.interview.programming.bitmanipulation;
  * 10^9 Length of the array will not exceed 10^4.
  * 
  * 
- * @author yankang
+ * @author Yan Kang
  *
  */
 public class TotalHammingDistance_H {

@@ -20,9 +20,11 @@ public class Pow_H {
 		if (n < 0) {
 			
 			if (n == Integer.MIN_VALUE) {
+				// change n to valid integer (i.e., Integer.MAX_VALUE), However,
+				// the n is smaller by 1 than directly flipping the sign of
+				// original value. Therefore, we multiple extra x with myPow(x, n);
 				++n;
 				n = -n;
-				System.out.println(n);
 				x = 1 / x;
 				return x * myPow(x, n);
 			}
@@ -31,8 +33,8 @@ public class Pow_H {
 			x = 1 / x;
 		}
 		
-		// if n%2 == 0,  (x ^ 2) ^ (n/2)
-		// if n%2 != 0,  x * (x ^ 2) ^ (n/2)
+		// if n%2 == 0,  x ^ n == (x ^ 2) ^ (n/2)
+		// if n%2 != 0,  x ^ n == x * (x ^ 2) ^ (n/2)
 		return n % 2 == 0 ? myPow(x * x, n / 2) : x * myPow(x * x, n / 2);
 	}
 	

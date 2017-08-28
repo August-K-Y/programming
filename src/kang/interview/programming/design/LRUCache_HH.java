@@ -97,7 +97,6 @@ public class LRUCache_HH {
 		node.prev = dummyH;
 
 		dummyH.next.prev = node;
-
 		dummyH.next = node;
 	}
 

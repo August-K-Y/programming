@@ -57,6 +57,7 @@ public class MaxSquare_H {
 					int minW = Integer.MAX_VALUE;
 					for (int z = 0; z < table[i][j].H; z++) {
 						minW = Math.min(minW, table[i + z][j].W);
+						// compute the smallest edge
 						int val = Math.min(minW, z + 1);
 						maxRec = Math.max(maxRec, val * val);
 					}

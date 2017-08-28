@@ -53,7 +53,7 @@ package kang.interview.programming.array.sum;
  * [-1].
  * 
  * @see {@link CheckContinuousSubarrayBySum}
- * @see {@link CheckContinuousSubarrayKTimesOfSum_M}
+ * @see {@link CheckContinuousSubarrayKTimesOfSum_HH}
  * @author Yan Kang
  *
  */

@@ -1,5 +1,7 @@
 package kang.interview.programming.binarytree;
 
+import java.util.List;
+
 /**
  * LeetCode 236. Lowest Common Ancestor of a Binary Tree Given a binary tree,
  * find the lowest common ancestor (LCA) of two given nodes in the tree.
@@ -52,7 +54,7 @@ public class LowestCommonAncestor_BinaryTree {
 	 * @return the lowest common ancestor of node one and node two
 	 */
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-		if (root == null || root == p || root == q)
+		if (root == null)
 			return root;
 
 		boolean onLeft1 = contains(root.left, p);
@@ -73,6 +75,25 @@ public class LowestCommonAncestor_BinaryTree {
 		if (root.val == node.val)
 			return true;
 		return contains(root.left, node) || contains(root.right, node);
+	}
+	
+	public void lowestCommonAncestor__(TreeNode root, TreeNode p, TreeNode q, List<TreeNode> result) {
+		if (root == null)
+			return;
+
+		boolean onLeft1 = contains(root.left, p);
+		boolean onLeft2 = contains(root.left, q);
+
+		// If p and q are on different sides
+		if (onLeft1 != onLeft2) {
+			result.add(root);
+			lowestCommonAncestor(root.left, p, q);
+			lowestCommonAncestor(root.right, p, q);
+		}
+
+		// If p and q are on the same side. Traverse this side.
+		TreeNode childSide = onLeft1 ? root.left : root.right;
+		lowestCommonAncestor(childSide, p, q);
 	}
 	
 	/**
