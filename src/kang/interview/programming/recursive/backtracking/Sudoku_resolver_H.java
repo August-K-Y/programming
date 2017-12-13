@@ -6,9 +6,9 @@ import java.util.Set;
 import kang.interview.programming.util.DataPrinter;
 
 /**
- * Sudoku is a number-placement puzzle. The objective is to fill a 9 � 9 grid
+ * Sudoku is a number-placement puzzle. The objective is to fill a 9 x 9 grid
  * with numbers in such a way that each column, each row, and each of the nine 3
- * � 3 sub-grids that compose the grid all contain all of the numbers from 1 to
+ * x 3 sub-grids that compose the grid all contain all of the numbers from 1 to
  * 9 one time.
  * 
  * Implement an algorithm that will check whether the given grid of numbers
@@ -19,35 +19,41 @@ import kang.interview.programming.util.DataPrinter;
  * 
  * For
  * 
- * grid = [['.', '.', '.', '1', '4', '.', '.', '2', '.'], ['.', '.', '6', '.',
- * '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '.', '.', '.', '.', '.'],
- * ['.', '.', '1', '.', '.', '.', '.', '.', '.'], ['.', '6', '7', '.', '.', '.',
- * '.', '.', '9'], ['.', '.', '.', '.', '.', '.', '8', '1', '.'], ['.', '3',
- * '.', '.', '.', '.', '.', '.', '6'], ['.', '.', '.', '.', '.', '7', '.', '.',
- * '.'], ['.', '.', '.', '5', '.', '.', '.', '7', '.']]
+ * grid = [['.', '.', '.', '1', '4', '.', '.', '2', '.'], 
+ * 		   ['.', '.', '6', '.', '.', '.', '.', '.', '.'], 
+ * 		   ['.', '.', '.', '.', '.', '.', '.', '.', '.'],
+ * 		   ['.', '.', '1', '.', '.', '.', '.', '.', '.'], 
+ *         ['.', '6', '7', '.', '.', '.', '.', '.', '9'], 
+ *         ['.', '.', '.', '.', '.', '.', '8', '1', '.'], 
+ *         ['.', '3', '.', '.', '.', '.', '.', '.', '6'], 
+ *         ['.', '.', '.', '.', '.', '7', '.', '.', '.'], 
+ *         ['.', '.', '.', '5', '.', '.', '.', '7', '.']]
  * 
  * the output should be sudoku2(grid) = true;
  * 
  * For
  * 
- * grid = [['.', '.', '.', '.', '2', '.', '.', '9', '.'], ['.', '.', '.', '.',
- * '6', '.', '.', '.', '.'], ['7', '1', '.', '.', '7', '5', '.', '.', '.'],
- * ['.', '7', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '8', '3',
- * '.', '.', '.'], ['.', '.', '8', '.', '.', '7', '.', '6', '.'], ['.', '.',
- * '.', '.', '.', '2', '.', '.', '.'], ['.', '1', '.', '2', '.', '.', '.', '.',
- * '.'], ['.', '2', '.', '.', '3', '.', '.', '.', '.']]
+ * grid = [['.', '.', '.', '.', '2', '.', '.', '9', '.'], 
+ * 		   ['.', '.', '.', '.', '6', '.', '.', '.', '.'], 
+ * 		   ['7', '1', '.', '.', '7', '5', '.', '.', '.'],
+ * 		   ['.', '7', '.', '.', '.', '.', '.', '.', '.'], 
+ * 		   ['.', '.', '.', '.', '8', '3', '.', '.', '.'], 
+ * 		   ['.', '.', '8', '.', '.', '7', '.', '6', '.'], 
+ *         ['.', '.', '.', '.', '.', '2', '.', '.', '.'], 
+ *         ['.', '1', '.', '2', '.', '.', '.', '.', '.'], 
+ *         ['.', '2', '.', '.', '3', '.', '.', '.', '.']]
  * 
  * the output should be sudoku2(grid) = false.
  * 
  * The given grid is not correct because there are two 1s in the second column.
- * Each column, each row, and each 3 � 3 subgrid can only contain the numbers 1
+ * Each column, each row, and each 3 x 3 subgrid can only contain the numbers 1
  * through 9 one time.
  * 
  * Input/Output
  * 
  * [time limit] 3000ms (java) [input] array.array.char grid
  * 
- * A 9 � 9 array of characters, in which each character is either a digit from
+ * A 9 x 9 array of characters, in which each character is either a digit from
  * '1' to '9' or a period '.'.
  * 
  * [output] boolean
@@ -78,7 +84,7 @@ public class Sudoku_resolver_H {
 	}
 
 	/**
-	 * Check if the Sudoku problem is solvable and if it is the the specified
+	 * Check if the Sudoku problem is solvable and if it is true the specified
 	 * grid will hold one solution.
 	 * 
 	 * @param grid
@@ -94,11 +100,12 @@ public class Sudoku_resolver_H {
 		int cols = grid[0].length;
 
 		// This is the way to change the position represented by two indices
-		// while traveling: if the column index j equals the size of the columns
-		// of the grid, we start a new row by increasing the row index i by one,
-		// and setting the column index j to zero. If the the increased i equals
-		// the size of row of the grid, it means that the entire grid has been
-		// filed without conflicts
+		// while traveling: 
+		// - If the column index j equals the size of the columns of the grid, we 
+		// start a new row by increasing the row index i by one, and setting the 
+		// column index j to zero. 
+		// - If the the increased i equals the size of row of the grid, it means 
+		// that the entire grid has been filed without conflicts
 		if (j == cols) {
 			j = 0;
 			if (++i == rows) {
@@ -118,21 +125,25 @@ public class Sudoku_resolver_H {
 					// Note that we only return true if isSolvable_backTracking
 					// returned true, which means that a solution has been
 					// found. If isSolvable_backTracking returned false, we will
-					// try a different value for this entry and continue to
-					// search the solution
+					// try a different number for this entry and continue to
+					// search the solution.
 					if (isSolvable_backTracking(grid, i, j + 1)) {
 						return true;
 					}
 				}
 			}
+			
+			// If all nine digits do not work, this Sudoku is not resolvable.
+			// We will set grid[i][j] to its original state which is '.' and
+			// return false.
 
 			// This is an important step of backtracking since we need to go
-			// back to previous status (of the grid) to search a different
+			// back to previous state (of the grid) to search a different
 			// solution
 			grid[i][j] = '.';
 			return false;
 		} else {
-			return isSolvable_backTracking(grid, i, j+1);
+			return isSolvable_backTracking(grid, i, j + 1);
 		}
 	}
 
@@ -148,11 +159,10 @@ public class Sudoku_resolver_H {
 	 * @return true if no violation; false otherwise
 	 */
 	public boolean isValid(char[][] grid, int i, int j) {
-		int rows = grid.length;
-		int cols = grid[0].length;
 
 		Set<Character> track1 = new HashSet<>();
-		for (int z = 0; z < cols; z++) {
+		for (int z = 0; z < 9; z++) {
+			// Only count value that is digit
 			if (grid[i][z] != '.') {
 				if (track1.contains(grid[i][z])) {
 					return false;
@@ -163,7 +173,7 @@ public class Sudoku_resolver_H {
 		}
 
 		Set<Character> track2 = new HashSet<>();
-		for (int z = 0; z < rows; z++) {
+		for (int z = 0; z < 9; z++) {
 			if (grid[z][j] != '.') {
 				if (track2.contains(grid[z][j])) {
 					return false;
@@ -203,9 +213,10 @@ public class Sudoku_resolver_H {
 						  { '.', '.', '.', '.', '.', '7', '.', '.', '.' }, 
 						  { '.', '.', '.', '5', '.', '.', '.', '7', '.' } };
 
-		System.out.println(s.isSolvable_backtracking(grid));
-		DataPrinter.printGrid(grid);
+		solve(grid);
 
+		System.out.println();
+		
 		char[][] grid2 = { { '.', '.', '.', '.', '2', '.', '.', '9', '.' },
 						   { '.', '.', '.', '.', '6', '.', '.', '.', '.' }, 
 						   { '7', '1', '.', '.', '7', '5', '.', '.', '.' },
@@ -216,7 +227,39 @@ public class Sudoku_resolver_H {
 						   { '.', '1', '.', '2', '.', '.', '.', '.', '.' }, 
 						   { '.', '2', '.', '.', '3', '.', '.', '.', '.' } };
 		
-		System.out.println(s.isSolvable_backtracking(grid2));
-		DataPrinter.printGrid(grid2);
+		solve(grid2);
+		
+		System.out.println();
+		
+		char[][] grid3 = { { '.', '.', '3', '.', '2', '.', '6', '.', '.' },
+				   		   { '9', '.', '.', '3', '.', '5', '.', '.', '1' }, 
+				           { '.', '.', '1', '8', '.', '6', '4', '.', '.' },
+				           { '.', '.', '8', '1', '.', '2', '9', '.', '.' }, 
+				           { '7', '.', '.', '.', '.', '.', '.', '.', '8' },
+				           { '.', '.', '6', '7', '.', '8', '2', '.', '.' }, 
+				           { '.', '.', '2', '6', '.', '9', '5', '.', '.' },
+				           { '8', '.', '.', '2', '.', '3', '.', '.', '9' }, 
+				           { '.', '.', '5', '.', '1', '.', '3', '.', '.' } };
+		
+		
+		solve(grid3);
+
+		System.out.println();
+	}
+
+	private static void solve(char[][] grid) {
+		Sudoku_resolver_H s = new Sudoku_resolver_H();
+		boolean isResovlable = s.isSolvable_backtracking(grid);
+		DataPrinter.printGrid(grid);
+		if (isResovlable) {
+			printList(grid);
+		}
+	}
+
+	private static void printList(char[][] grid) {
+		for (int i = 0; i < grid.length; i++) {
+			String row = new String(grid[i]);
+			System.out.println(row);
+		}
 	}
 }
