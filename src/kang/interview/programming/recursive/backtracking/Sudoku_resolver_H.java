@@ -257,8 +257,6 @@ public class Sudoku_resolver_H {
 
 
 		solve(grid4);
-
-		System.out.println();
 	}
 
 	private static void solve(char[][] grid) {

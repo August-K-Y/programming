@@ -3,7 +3,7 @@ package kang.interview.programming.recursive.dynamicprogramming;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Fibonacci {
+public class Fibonacci_M {
 	public Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
 	public int fib(int n) {
@@ -19,7 +19,7 @@ public class Fibonacci {
 	}
 
 	public static void main(String[] args) {
-		Fibonacci f = new Fibonacci();
+		Fibonacci_M f = new Fibonacci_M();
 		int n = 9;
 		System.out.println("Fibonacci number is" + " " + f.fib(n));
 	}

@@ -30,7 +30,9 @@ import kang.interview.programming.util.DataPrinter;
  * @author Yan Kang
  *
  */
-public class ClimbingStairs {
+public abstract class ClimbingStairs {
+	
+	protected abstract void foo(); 
 	
 	/**
 	 * 
@@ -59,13 +61,22 @@ public class ClimbingStairs {
 	}
 	
 	public static void main(String[] args) {
-		ClimbingStairs alg = new ClimbingStairs();
-		DataPrinter.println(alg.climbingStairs(1));
-		DataPrinter.println(alg.climbingStairs(2));
-		DataPrinter.println(alg.climbingStairs(3));
-		DataPrinter.println(alg.climbingStairs(4));
-		DataPrinter.println(alg.climbingStairs(5));
-		DataPrinter.println(alg.climbingStairs(6));
+//		ClimbingStairs alg = new ClimbingStairs();
+//		DataPrinter.println(alg.climbingStairs(1));
+//		DataPrinter.println(alg.climbingStairs(2));
+//		DataPrinter.println(alg.climbingStairs(3));
+//		DataPrinter.println(alg.climbingStairs(4));
+//		DataPrinter.println(alg.climbingStairs(5));
+//		DataPrinter.println(alg.climbingStairs(6));
+		
+		String a  = "String";
+		String b = new String("String");
+		String c = a;
+		
+		System.out.println(a == b);
+		System.out.println(a == c);
+		System.out.println(b.equals(c));
+
 	}
 
 }
