@@ -1,6 +1,6 @@
 package kang.interview.programming.recursive.backtracking;
 
-public class Checker {
+public class FinalTurn {
 
 	private int[][] shifts = new int[][] { { -1, -1 }, { -1, 1 } };
 
@@ -83,7 +83,7 @@ public class Checker {
 				"..X.X.", 
 				"...O.."};
 		
-		Checker checker = new Checker();
+		FinalTurn checker = new FinalTurn();
 		System.out.println("result: " + checker.solution(input));
 	}
 
